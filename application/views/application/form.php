@@ -6,14 +6,17 @@
 	.chosen-select:hover{
   		height:200px;
   	}
+
   	#show{
   		border:2px solid red;
   		width:300px;
   		height:200px;
   		margin:-100px 407px;
   	}
+
 </style>
-<link rel="stylesheet" href="<?=base_url('docsupport/style.css')?>">;
+
+<link rel="stylesheet" href="<?=base_url('docsupport/style.css')?>">
 <link rel="stylesheet" href="<?=base_url('docsupport/prism.css')?>">
 <link rel="stylesheet" href="<?=base_url('chosen.css')?>">
 </head>
