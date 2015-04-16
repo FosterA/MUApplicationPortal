@@ -95,7 +95,7 @@
         }
         xmlhttp.open("post","<?=site_url('register/checkUnique')?>",true);
  		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
- 		xmlhttp.send("student_id="+username);
+ 		xmlhttp.send("username="+username);
 	}
 	$(document).ready(function(){
 	

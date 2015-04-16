@@ -7,6 +7,26 @@ class Register extends CI_Controller {
 		$this->load->view('register');
 	}
 
+	public function validate_credentials(){
+		$this->load->model('register_model');
+		$query = $this->register_model->validate();
+
+		if ($query){
+			$data = array(
+				'username' => $this->input->post('username'),
+				'profession' => $this->input->post('profession'),
+				'logged_in' => TRUE
+			);
+
+			$this->session->set_userdata($data);
+			$this->load->view('homepage');
+			//redirect(/views/homepage');
+		}
+		else{
+			$this->index();
+		}
+	}
+
 	public function add_student()
 	{
 		$this->load->library('form_validation');
@@ -24,9 +44,9 @@ class Register extends CI_Controller {
   	
   		else
 		{
-   			$this->load->model('register_model','register');
+   			$this->load->model('register_model');
    			$user=$this->input->post('username');
-   			$bol=$this->register->insert($_POST);
+   			$bol=$this->register_model->insert($_POST);
    			
    			if($bol){
    				$this->load->library('session');
@@ -61,19 +81,19 @@ public function password_check($str)
 	}
 }
  public function checkUnique(){
- 	$student_id=$this->input->post('student_id');
- 	$this->load->model('register_model','register');
- 	echo $this->register->ajxCheck($student_id);
+ 	$username=$this->input->post('username');
+ 	$this->load->model('register_model');
+ 	echo $this->register_model->ajxCheck($username);
  }
 
  	public function student(){
- 		echo "student";
+ 		$this->validate_credentials();
  	}
  	public function instructor(){
- 		echo "instructor";
+ 		$this->validate_credentials();
  	}
  	public function admin(){
- 		echo "admin";
+ 		$this->validate_credentials();
  	}
 }
 ?>
