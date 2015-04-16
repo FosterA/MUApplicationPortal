@@ -19,7 +19,7 @@ class Register extends CI_Controller {
 			);
 
 			$this->session->set_userdata($data);
-			$this->load->view('homepage');
+			$this->load->view('Homepage');
 			//redirect(/views/homepage');
 		}
 		else{
