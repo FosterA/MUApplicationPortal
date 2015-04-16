@@ -90,7 +90,7 @@ public function password_check($str)
  	public function student(){
  		//$this->validate_credentials();
  		
- 		$this->load->view('testtest');
+ 		$this->load->view('homepage');
  	}
  	public function instructor(){
  		$this->validate_credentials();
