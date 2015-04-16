@@ -3,7 +3,7 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->database();
-			$this->db->query("use test");
+			//$this->db->query("use test");
 		}
 
 		public function validate(){
