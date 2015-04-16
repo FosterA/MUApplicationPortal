@@ -7,6 +7,13 @@
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/hp.css">
+<style>
+	#mulogo:hover{
+		text-indent: -9999em;
+		font-size: .5em;
+		background: url(<?=base_url('images/mu_bw_line.png')?>) no-repeat left top;
+	}
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -14,7 +21,9 @@
 		<div id="header-wrapper">
 			<div id="header">
 				<div id="logo">
-					<h1><a href="#">Group L</a></h1>
+					<a href="<?=base_url();?>" id="mulogo">
+  						<img src="<?=base_url();?>images/mu_color_line.png" alt="MU Logo">
+					</a>
 				</div>
 				<div id="menu">
 					<ul>
@@ -27,5 +36,5 @@
 			</div>
 		</div>
 
-                <h1><?php echo $title ?></h1>
+            
                 
