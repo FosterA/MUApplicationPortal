@@ -6,7 +6,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css" />
-<link href="hp.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="<?=base_url();?>css/hp.css">
 </head>
 <body>
 <div id="wrapper">
@@ -38,8 +38,6 @@
 		</div>
 	</div>
 </div>
-<div id="footer">
-	<p></p>
 </div>
 </body>
 </html>
