@@ -43,50 +43,20 @@ class Form extends CI_Controller {
 	}
 	
 	public function interUnder(){
-		$id=$this->input->post('id');
-		$data[0]=$this->input->post('id');
-		$data[1]=$this->input->post('fname');
-		$data[2]=$this->input->post('lname');
-		$data[3]=$this->input->post('gpa');
-		$data[4]=$this->input->post('phone');
-		$data[5]=$this->input->post('email');
-		$data[6]=$this->input->post('gradDate');
-		$data[7]=$this->input->post('work');
-		$teaching=$this->input->post('teaching');
-		$taught=$this->input->post('taught');
-		$teach=$this->input->post('teach');
-		foreach($teach as $name){
-			$course[$name]=$this->input->post($name);
-		}
-		$under[0]=$this->input->post('id');
-		$under[1]=$this->input->post('program');
-		$under[2]=$this->input->post('level');
-		$inter[0]=$this->input->post('id');
-		$inter[1]=$this->input->post('score');
-		$inter[2]=$this->input->post('test');
+		
 		$this->load->model('form_model','form');
-		$this->form->closeAutoCommit();
-		$b1=$this->form->putApp($data);
-		$b2=$this->form->putTeaching($id,$teaching);
-		$b3=$this->form->putTaught($id,$taught);
-		$b4=$this->form->putTeach($id,$course);
-		$b5=$this->form->putUnder($under);
-		$b6=$this->form->putInter($inter);
-		if($b1&&$b2&&$b3&&$b4&&$b5&&$b6){
-			$this->form->commit();
-			$this->form->openAutoCommit();
-		}else{
-			$this->form->rollback();
-			$this->form->openAutoCommit();
-		}
+		$this->form->interUnder();
 	}
 	public function interGra(){
-		echo "interGra";
+		$this->load->model('form_model','form');
+		$this->form->interGra();
 	}
 	public function natUnder(){
-		echo "natUnder";
+		$this->load->model('form_model','form');
+		$this->form->natUnder();
 	}
 	public function natGra(){
-		echo "natGra";
+		$this->load->model('form_model','form');
+		$this->form->natGra();
 	}
 }
