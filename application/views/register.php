@@ -123,5 +123,8 @@
    		var url="<?=base_url('register')?>"+"/"+profession;
 		form.action=url;
 		}
+	<?php if(isset($error)){?>
+	alert("<?=$error?>");
+	<?php } ?>
 </script>
 </html>

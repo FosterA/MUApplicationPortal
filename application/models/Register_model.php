@@ -10,23 +10,28 @@
 			$profession = $this->input->post('profession');
 
 			if ($profession == 'admin'){
-				$this->db->where('admin_id', $this->input->post('username'));
-				$this->db->where('password', md5($this->input->post('password')));
-				$query = $this->db->get('admin');
+				$sql='select * from admin where admin_id=? and password=md5(?)';
+				$data[0]=$this->input->post('username');
+				$data[1]=$this->input->post('password');
+				$res=$this->db->query($sql,$data);
 			}
 			else if ($profession == 'instructor'){
-				$this->db->where('instructor_id', $this->input->post('username'));
-				$this->db->where('password', md5($this->input->post('password')));
-				$query = $this->db->get('instructor');	
+				$sql='select * from instructor where faculty_id=? and password=md5(?)';
+				$data[0]=$this->input->post('username');
+				$data[1]=$this->input->post('password');
+				$res=$this->db->query($sql,$data);
 			}
 			else{
-				$this->db->where('student_id', $this->input->post('username'));
-				$this->db->where('password', md5($this->input->post('password')));
-				$query = $this->db->get('student');
+				$sql='select * from student where student_id=? and password=md5(?)';
+				$data[0]=$this->input->post('username');
+				$data[1]=$this->input->post('password');
+				$res=$this->db->query($sql,$data);
 			}
 
-			if ($query->num_rows() == 1){
+			if ($res->num_rows() == 1){
 				return true;
+			}else{
+				return false;
 			}
 		}
 

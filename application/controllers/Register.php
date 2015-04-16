@@ -16,15 +16,13 @@ class Register extends CI_Controller {
 				'username' => $this->input->post('username'),
 				'profession' => $this->input->post('profession'),
 				'logged_in' => TRUE
-			);
-
+			);	
 			$this->session->set_userdata($data);
-			//$this->load->view('homepage');
-			//redirect('/views/homepage');
-			//$this->load->view('testtest');
+			$this->load->view('homepage');
 		}
 		else{
-			$this->index();
+			$data['error']="sorry you username or password is wrong";
+			$this->load->view('register',$data);
 		}
 	}
 
@@ -88,9 +86,7 @@ public function password_check($str)
  }
 
  	public function student(){
- 		//$this->validate_credentials();
- 		
- 		$this->load->view('homepage');
+ 		$this->validate_credentials();
  	}
  	public function instructor(){
  		$this->validate_credentials();
