@@ -29,7 +29,7 @@ class Welcome extends CI_Controller {
 		$data['title'] = "TA/PLA App";
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('home');
+		$this->load->view('Homepage');
 		$this->load->view('templates/footer', $data);
 	}
 }
