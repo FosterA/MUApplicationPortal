@@ -20,7 +20,8 @@ class Register extends CI_Controller {
 
 			$this->session->set_userdata($data);
 			//$this->load->view('homepage');
-			redirect('/views/homepage');
+			//redirect('/views/homepage');
+			//$this->load->view('testtest');
 		}
 		else{
 			$this->index();
@@ -87,7 +88,8 @@ public function password_check($str)
  }
 
  	public function student(){
- 		$this->validate_credentials();
+ 		//$this->validate_credentials();
+ 		$this->load->view('testtest');
  	}
  	public function instructor(){
  		$this->validate_credentials();
