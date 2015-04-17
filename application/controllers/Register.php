@@ -1,5 +1,11 @@
 <?php
 class Register extends CI_Controller {
+
+	public function __construct()
+        {
+                parent::__construct();
+                // Your own constructor code
+        }
  
 	public function index()
 	{
@@ -8,13 +14,30 @@ class Register extends CI_Controller {
 	}
 
 	public function home(){
+			if (!isset($_SESSION['logged_in'])){
+				$this->index();
+			}			
+
 			$page_data = array(
 				'title' => ucfirst($this->session->userdata('profession') . ' ' . 'Home'),
 				'user' => ucfirst($this->session->userdata('user'))
 			);
 
 			$this->load->view('templates/header', $page_data);
-			$this->load->view('homepage', $page_data);
+
+			if ($this->session->userdata('profession') == 'student'){
+				$this->load->view('student_home', $page_data);
+			}
+			else if ($this->session->userdata('profession') == 'instructor'){
+				$this->load->view('instructor_home', $page_data);
+			}
+			else if ($this->session->userdata('profession') == 'admin'){
+				$this->load->view('admin_home', $page_data);
+			}
+			else{
+				show_404();
+			}
+			
 			$this->load->view('templates/footer');
 	}
 
@@ -67,7 +90,6 @@ class Register extends CI_Controller {
    			$bol=$this->register_model->insert($_POST);
    			
    			if($bol){
-   				$this->load->library('session');
  				$this->session->set_userdata('user',$user);
  				$this->session->set_userdata('profession','student');
  				$this->load->view('registersuccess');
