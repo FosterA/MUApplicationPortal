@@ -21,7 +21,7 @@ class Register extends CI_Controller {
 			$this->load->view('homepage');
 		}
 		else{
-			$data['error']="sorry you username or password is wrong";
+			$data['error']="Sorry, your username or password is incorrect.";
 			$this->load->view('register',$data);
 		}
 	}
