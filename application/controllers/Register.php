@@ -1,11 +1,5 @@
 <?php
 class Register extends CI_Controller {
-
-	public function __construct()
-        {
-                parent::__construct();
-                // Your own constructor code
-        }
  
 	public function index()
 	{
@@ -63,9 +57,12 @@ class Register extends CI_Controller {
    			$bol=$this->register_model->insert($_POST);
    			
    			if($bol){
+   				$this->session->set_userdata('logged_in', TRUE);
  				$this->session->set_userdata('user',$user);
  				$this->session->set_userdata('profession','student');
- 				$this->load->view('registersuccess');
+ 				//$this->load->view('registersuccess');
+ 				$data['confirm']="Registration sucessful, Please login.";
+				$this->load->view('register',$data);
 			}
 		}
 	}
@@ -86,6 +83,7 @@ class Register extends CI_Controller {
 	public function logout(){
 		$this->session->unset_userdata('user');
 		$this->session->unset_userdata('profession');
+		$this->session->unset_userdata('logged_in');
 		$this->session->sess_destroy();
 		$this->index();
 	}

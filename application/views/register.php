@@ -126,5 +126,8 @@
 	<?php if(isset($error)){?>
 	alert("<?=$error?>");
 	<?php } ?>
+  <?php if(isset($confirm)){?>
+  alert("<?=$confirm?>");
+  <?php } ?>
 </script>
 </html>
