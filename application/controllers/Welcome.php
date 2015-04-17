@@ -2,34 +2,37 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+	
 	public function index()
 	{
-		//$this->load->view('form');
 		$this->home();
 	}
 
-	public function home()
-	{
-		$data['title'] = "TA/PLA App";
+	public function home(){
+		if (!isset($_SESSION['logged_in'])){
+			$this->index();
+		}			
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('homepage');
-		//$this->load->view('templates/footer', $data);
+		$page_data = array(
+			'title' => ucfirst($this->session->userdata('profession') . ' ' . 'Home'),
+			'user' => ucfirst($this->session->userdata('user'))
+		);
+
+		$this->load->view('templates/header', $page_data);
+
+		if ($this->session->userdata('profession') == 'student'){
+			$this->load->view('student_home', $page_data);
+		}
+		else if ($this->session->userdata('profession') == 'instructor'){
+			$this->load->view('instructor_home', $page_data);
+		}
+		else if ($this->session->userdata('profession') == 'admin'){
+			$this->load->view('admin_home', $page_data);
+		}
+		else{
+			show_404();
+		}
+		
+		$this->load->view('templates/footer');
 	}
 }
