@@ -7,19 +7,38 @@ class Register extends CI_Controller {
 		$this->load->view('register');
 	}
 
+	public function home(){
+			$page_data = array(
+				'title' => ucfirst($this->session->userdata('profession') . ' ' . 'Home'),
+				'user' => ucfirst($this->session->userdata('user'))
+			);
+
+			$this->load->view('templates/header', $page_data);
+			$this->load->view('homepage', $page_data);
+			$this->load->view('templates/footer');
+	}
+
 	public function validate_credentials(){
 		$this->load->model('register_model');
 		$query = $this->register_model->validate();
 
 		if ($query){
 			$data = array(
-				'username' => $this->input->post('username'),
+				'user' => $this->input->post('username'),
 				'profession' => $this->input->post('profession'),
 				'logged_in' => TRUE
-			);	
+			);
+
 			$this->session->set_userdata($data);
-			$this->load->view('homepage');
+
+			$page_data = array(
+				'title' => ucfirst($this->session->userdata('profession') . ' ' . 'Home'),
+				'user' => ucfirst($this->session->userdata('user'))
+			);
+
+			$this->home();
 		}
+
 		else{
 			$data['error']="Sorry, your username or password is incorrect.";
 			$this->load->view('register',$data);
@@ -55,44 +74,57 @@ class Register extends CI_Controller {
 			}
 		}
 	}
-public function username_check($str)
-{
-	if (0)
+
+	public function username_check($str)
 	{
-		$this->form_validation->set_message('username_check', 'The %s field can not be ...');
-		return FALSE;
-	}
-	else
-	{
-	return TRUE;
-	}
-}
-public function password_check($str)
-	{
-	if (0)
-	{
-		$this->form_validation->set_message('username_check', 'The %s field can not be ...');
-		return FALSE;
-	}
-	else
-	{
+		if (0)
+		{
+			$this->form_validation->set_message('username_check', 'The %s field can not be ...');
+			return FALSE;
+		}
+		else
+		{
 		return TRUE;
+		}
 	}
-}
- public function checkUnique(){
- 	$username=$this->input->post('username');
- 	$this->load->model('register_model');
- 	echo $this->register_model->ajxCheck($username);
- }
+
+	public function logout(){
+		$this->session->unset_userdata('user');
+		$this->session->unset_userdata('profession');
+		$this->session->sess_destroy();
+		$this->index();
+	}
+
+	public function password_check($str)
+		{
+		if (0)
+		{
+			$this->form_validation->set_message('username_check', 'The %s field can not be ...');
+			return FALSE;
+		}
+		else
+		{
+			return TRUE;
+		}
+	}
+
+	public function checkUnique(){
+	 	$username=$this->input->post('username');
+	 	$this->load->model('register_model');
+	 	echo $this->register_model->ajxCheck($username);
+	 }
 
  	public function student(){
  		$this->validate_credentials();
  	}
+
  	public function instructor(){
  		$this->validate_credentials();
  	}
+
  	public function admin(){
  		$this->validate_credentials();
  	}
+
 }
 ?>
