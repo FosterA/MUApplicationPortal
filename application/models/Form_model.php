@@ -12,7 +12,9 @@
 			$data[3]=$this->input->post('gpa');
 			$data[4]=$this->input->post('phone');
 			$data[5]=$this->input->post('email');
-			$data[6]=$this->input->post('gradDate');
+			$grad = $this->input->post('gradDate');
+			$data[6]='CAST('.$grad.' AS DATE)';
+			//$data[6]=$this->input->post('gradDate');
 			$data[7]=$this->input->post('work');
 			$sql='insert into app values(?,?,?,?,?,?,?,?)';
 			
@@ -24,27 +26,30 @@
 			
 			$id=$this->input->post('id');
 			$teach=$this->input->post('teaching');
-			foreach($teach as $course){
-				$data[0]=$id;
-				$data[1]=$course;
-				$sql="insert into curTeach values(?,?)";
-				$bool=$this->db->query($sql,$data);
+			$boo=NULL;
+			if($teach!=NULL){
+				foreach($teach as $course){
+					$data[0]=$id;
+					$data[1]=$course;
+					$sql="insert into curTeach values(?,?)";
+					$boo=$this->db->query($sql,$data);
+				}
 			}
-			
-			return $bool;
+			return $boo;
 		}
 		public function putTaught(){
 			$id=$this->input->post('id');
 			$teach=$this->input->post('taught');
-			
-			foreach($teach as $course){
-				$data[0]=$id;
-				$data[1]=$course;
-				$sql="insert into preTeach values(?,?)";
-				$bool=$this->db->query($sql,$data);
+			$boo=NULL;
+			if($teach!=NULL){
+				foreach($teach as $course){
+					$data[0]=$id;
+					$data[1]=$course;
+					$sql="insert into preTeach values(?,?)";
+					$boo=$this->db->query($sql,$data);
+				}
 			}
-			
-			return $bool;
+			return $boo;
 		}
 		public function putTeach(){
 			$teach=$this->input->post('teach');
@@ -58,10 +63,10 @@
 				$data[1]=$name;
 				$data[2]=$score;
 				$sql="insert into likeTeach values(?,?,?)";
-				$bool=$this->db->query($sql,$data);
+				$boo=$this->db->query($sql,$data);
 			}
 			
-			return $bool;
+			return $boo;
 		}
 		public function putUnder(){
 			$under[0]=$this->input->post('id');
