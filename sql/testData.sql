@@ -17,22 +17,22 @@ INSERT INTO student VALUES ('12345','098f6bcd4621d373cade4e832627b4f6','test@tes
 						('12360','098f6bcd4621d373cade4e832627b4f6','test@test.com')
 ;
 
-INSERT INTO app VALUES  ('12345','TestF','TestL','3.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12346','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12347','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12348','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12349','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12350','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12351','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12352','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12353','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12354','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12355','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12356','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12357','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12358','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12359','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
-						('12360','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL)
+INSERT INTO app VALUES  ('12345','TestF','TestL','3.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12346','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12347','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12348','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12349','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12350','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12351','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12352','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12353','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12354','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12355','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12356','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12357','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12358','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12359','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
+						('12360','TestF','TestL','2.8','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL)
 ;
 
 INSERT INTO instructor VALUES('98765','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
