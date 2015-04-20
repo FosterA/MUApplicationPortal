@@ -100,3 +100,30 @@ create table comment(
 	foreign key(student_id) references student(student_id) on delete cascade,
 	foreign key(faculty_id) references instructor(faculty_id) on delete cascade
 )engine=InnoDB;
+
+
+CREATE TABLE `status` (
+  `student_id` varchar(128) NOT NULL DEFAULT '',
+  `nation` varchar(128) DEFAULT NULL,
+  `degree` varchar(128) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`student_id`);
+ALTER TABLE `status`
+ADD CONSTRAINT `status_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `app` (`student_id`) ON DELETE CASCADE;
+
+create view interUnder as
+select *
+from status natural join app natural join undergraduate natural join interStudent;
+
+create view interGra as
+select *
+from status natural join app natural join graduate natural join interStudent;
+
+create view nativeUnder as
+select *
+from status natural join app natural join undergraduate;
+
+create view nativeGra as
+select *
+from status natural join app natural join graduate;

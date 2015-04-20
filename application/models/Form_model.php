@@ -3,7 +3,7 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->database();
-			//$this->db->query("use test");
+			$this->db->query("use applicationportal");
 		}
 		public function putApp(){
 			$data[0]=$this->input->post('id');
@@ -106,6 +106,11 @@
 			$this->generalInfo();
 			$this->putUnder();
 			$this->putInter();
+			$data[0]=$this->input->post("id");
+			$data[1]='international';
+			$data[2]='undergraduate';
+			$sql="insert into status values(?,?,?)";
+			$this->db->query($sql,$data);
 			$this->db->trans_complete();
 		}
 		public function interGra(){
@@ -113,18 +118,33 @@
 			$this->generalInfo();
 			$this->putGra();
 			$this->putInter();
+			$data[0]=$this->input->post("id");
+			$data[1]='international';
+			$data[2]='graduate';
+			$sql="insert into status values(?,?,?)";
+			$this->db->query($sql,$data);
 			$this->db->trans_complete();
 		}
 		public function natUnder(){
 			$this->db->trans_start();
 			$this->generalInfo();
 			$this->putUnder();
+			$data[0]=$this->input->post("id");
+			$data[1]='native';
+			$data[2]='undergraduate';
+			$sql="insert into status values(?,?,?)";
+			$this->db->query($sql,$data);
 			$this->db->trans_complete();
 		}
 		public function natGra(){
 			$this->db->trans_start();
 			$this->generalInfo();
 			$this->putGra();
+			$data[0]=$this->input->post("id");
+			$data[1]='native';
+			$data[2]='graduate';
+			$sql="insert into status values(?,?,?)";
+			$this->db->query($sql,$data);
 			$this->db->trans_complete();
 		}
 	}
