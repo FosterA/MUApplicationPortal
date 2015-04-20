@@ -127,3 +127,7 @@ from status natural join app natural join undergraduate;
 create view nativeGra as
 select *
 from status natural join app natural join graduate;
+
+create view statusname as
+select student_id,firstName,lastName,nation,degree
+from status natural join app; 

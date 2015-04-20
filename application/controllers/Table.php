@@ -27,6 +27,13 @@ class Table extends CI_Controller {
 		$config['per_page']=4;
 		$config['total_rows']=$this->table_model->getStatusRow();
 		$config['base_url']=base_url('index.php/table/index');
+		$config['full_tag_open'] = '<div id="links">';
+		$config['full_tag_close'] = '</div>';
+		$config['cur_tag_open'] = '<span id="current">';
+		$config['cur_tag_close'] = '</span>';
+		$config['num_tag_open'] = '&nbsp&nbsp';
+		$config['num_tag_close'] = '&nbsp&nbsp';
+
 		$this->pagination->initialize($config);
 		$data['links']=$this->pagination->create_links();
 		$offset=intval($this->uri->segment(3));
@@ -57,5 +64,12 @@ class Table extends CI_Controller {
 		$this->load->view('table',$data);
 	}
 
-	
+	public function test(){
+		$this->load->model("table_model");
+		$id=$this->uri->segment('3');
+		$data=$this->table_model->getInfor($id);
+		echo "<pre>";
+		echo print_r($data);
+		echo "</pre>";
+	}
 }
