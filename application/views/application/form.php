@@ -70,7 +70,7 @@
 		<?php }?>
 		
 		<br>&nbsp;Anticipated graduation date:&nbsp;
-		<input type="text" name="grad date">
+		<input type="text" name="gradDate">
 		<br>
 
 		<br>&nbsp;Course(s) You Are Currently Teaching: <br>&nbsp;(Select multiple by holding command)<br>

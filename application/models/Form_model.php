@@ -11,10 +11,7 @@
 			$data[2]=$this->input->post('lname');
 			$data[3]=$this->input->post('gpa');
 			$data[4]=$this->input->post('phone');
-			$data[5]=$this->input->post('email');
-			$grad = $this->input->post('gradDate');
-			$data[6]='CAST('.$grad.' AS DATE)';
-			//$data[6]=$this->input->post('gradDate');
+			$data[6]=$this->input->post('gradDate');
 			$data[7]=$this->input->post('work');
 			$sql='insert into app values(?,?,?,?,?,?,?,?)';
 			
