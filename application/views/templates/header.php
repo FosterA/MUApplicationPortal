@@ -24,7 +24,6 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="msapplication-TileImage" content="<?=base_url();?>images/mstile-144x144.png">
 <meta name="theme-color" content="#ffffff">
-</head>
 <style>
 	#mulogo:hover{
 		text-indent: -9999em;
@@ -32,6 +31,7 @@
 		background: url(<?=base_url('images/mu_bw_line.png')?>) no-repeat left top;
 	}
 </style>
+</head>
 <body>
 <div id="wrapper">
 	<div id="wrapper-bgtop">
