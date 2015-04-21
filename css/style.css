@@ -16,12 +16,8 @@
         }
 
         .container{
-
-            position: absolute;
-            right: 40%;
-            margin-top: 20%;
-
-           
+            vertical-align: center;
+            width: 300px;
         }
 
         h1 {
