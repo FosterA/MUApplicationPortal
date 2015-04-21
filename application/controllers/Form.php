@@ -46,17 +46,25 @@ class Form extends CI_Controller {
 		
 		$this->load->model('form_model','form');
 		$this->form->interUnder();
+		//Redirect to Welcome.php controller and home method
+			redirect('welcome/home');
 	}
 	public function interGra(){
 		$this->load->model('form_model','form');
 		$this->form->interGra();
+		//Redirect to Welcome.php controller and home method
+			redirect('welcome/home');
 	}
 	public function natUnder(){
 		$this->load->model('form_model','form');
 		$this->form->natUnder();
+		//Redirect to Welcome.php controller and home method
+			redirect('welcome/home');
 	}
 	public function natGra(){
 		$this->load->model('form_model','form');
 		$this->form->natGra();
+		//Redirect to Welcome.php controller and home method
+			redirect('welcome/home');
 	}
 }
