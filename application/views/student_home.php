@@ -3,7 +3,15 @@
 			<div id="content">
 				<div>
 					<h2>Welcome <?php echo $user?></h2>
-					<p><a href="<?=base_url('index.php/form/index')?>" class="button1">Begin Application</a></p>
+					<?php
+					$this->load->database();
+					$this->db->query("use applicationportal");
+					$sql = "SELECT * FROM app WHERE student_id = $user";
+					$valid = $this->db->query($sql);
+
+					if($valid->num_rows()==0){?>
+						<p><a href="<?=base_url('index.php/form/index')?>" class="button1">Begin Application</a></p>
+					<?php } ?>
 					<p><a href="#" class="button1">Appication Status</a></p>
 				</div>
 			</div>
