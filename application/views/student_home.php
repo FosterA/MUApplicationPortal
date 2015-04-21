@@ -1,3 +1,4 @@
+	
 		<div id="page" class="container">
 			<div id="content">
 				<div>
@@ -7,7 +8,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="banner" class="container">
+		<div id="content" class="container">
 		<img src="<?=base_url('images/mizzou.jpg')?>" width="1000" height="500" alt="" />
 		</div>
 	</div>

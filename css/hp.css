@@ -181,7 +181,6 @@ hr {
 /** PAGE */
 
 #page {
-	float: left;
 	overflow: hidden;
 	padding: 50px 0px 0px 5px;
 }
@@ -189,8 +188,10 @@ hr {
 /** CONTENT */
 
 #content {
-	float: left;
+	margin-left: auto;
+	margin-right: auto;
 	width: 640px;
+	text-align: center;
 	text-shadow: 1px 1px 0px #FFFFFF;
 }
 
@@ -201,10 +202,6 @@ hr {
 	color: #3B3B3B;
 }
 
-#banner {
-	float: left;
-	padding-top: 60px;
-}
 
 /** FOOTER */
 
