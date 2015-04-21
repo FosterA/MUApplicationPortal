@@ -15,9 +15,7 @@
 			$data[6]=$this->input->post('gradDate');
 			$data[7]=$this->input->post('work');
 			$sql='insert into app values(?,?,?,?,?,?,?,?)';
-			
 			$boo=$this->db->query($sql,$data);
-			
 			return $boo;
 		}
 		public function putTeaching(){

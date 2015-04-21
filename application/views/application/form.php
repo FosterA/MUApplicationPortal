@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Application Form</title>
+
 <style>
 	
 	.chosen-select:hover{
@@ -14,12 +15,26 @@
   		height:200px;
   		margin:-100px 407px;
   	}
+.calender{ width:319px;margin:50px auto;top:0;left:0;border:4px #D6D6D6 solid;background:#EBEBEB;position:absolute;display:none;z-index:999;}
+.calendertb{width:100%;}
+.calendertb td{width:35px;height:35px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;font-size:14px;font-weight:bold;}
+.calendertb td.hover,.calendertb td.weekendhover{background:#D6D6D6;}
+.calendertb th{width:35px;height:30px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;color:#979797;}
+.tdtoday{ background:#0080FF;color:#fff;width:35px;height:35px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;font-size:14px;font-weight:bold;}
+.getyear{ height:35px;line-height:35px;width:100%;text-align:center;}
+.preMonth{ font-size:14px;font-weight:bold;cursor:pointer;margin-right:18px;color:#0080FF;}
+.nextMonth{ font-size:14px;font-weight:bold;cursor:pointer;margin-left:18px;color:#0080FF;}
+.mh_date{width:319px;height:30px;line-height:20px;padding:5px;cursor:pointer;background:white url("<?=base_url('images/dateIco.png')?>") no-repeat right center;}
+.zhezhao{width:100%;height:100%;position:fixed;z-index:998;background:#fff;filter:alpha(opacity=10);opacity:0.1;display:none;}
+
+
 
 </style>
 
 <link rel="stylesheet" href="<?=base_url('docsupport/style.css')?>">
 <link rel="stylesheet" href="<?=base_url('docsupport/prism.css')?>">
-<link rel="stylesheet" href="<?=base_url('chosen.css')?>">
+<script  src="<?=base_url('jquery-ui-1.11.2/js/jquery-1.7.2.min.js')?>"></script>
+<script src="<?=base_url('jquery-ui-1.11.2/js/manhuaDate.1.0.js')?>"></script>
 </head>
 <body>
 	<form action="#" method="POST" name="application">
@@ -66,8 +81,7 @@
 		
 
 		<br>Anticipated graduation date:<br>
-		<input type="text" name="grad date">
-
+ 		<input type="text" class="mh_date" name='gradDate' id='date'>
 		<br>Course(s) You Are Currently Teaching:<br>
 
 		<select name="teaching[]" style="width:350px;" class="chosen-select" multiple tabindex="6">
@@ -121,7 +135,9 @@
 		<br>
 		<button type="button" onclick="sub()">submit</button>
 	</form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+	
+	
+	
     <script type="text/javascript">
    	function fun(){
    		var content=document.getElementById('show');
@@ -168,6 +184,19 @@
 		form.submit();
 		}
 		
+
+
+$(document).ready(function(){
+    $("input.mh_date").manhuaDate({					       
+		Event : "click",//可选				       
+		Left : 0,//弹出时间停靠的左边位置
+		Top : -16,//弹出时间停靠的顶部边位置
+		fuhao : "-",//日期连接符默认为-
+		isTime : false,//是否开启时间值默认为false
+		beginY : 1949,//年份的开始默认为1949
+		endY :2100//年份的结束默认为2049
+	});
+});
   </script>
 </body>
 </html>
