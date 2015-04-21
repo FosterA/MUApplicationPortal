@@ -5,7 +5,8 @@ class Welcome extends CI_Controller {
 	
 	public function index()
 	{
-		$this->home();
+		//$this->home();
+		redirect('welcome/home');
 	}
 
 	public function home(){

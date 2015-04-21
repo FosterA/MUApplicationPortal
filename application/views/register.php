@@ -8,15 +8,6 @@
     <script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
     <script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
 <style>
-    /*body 
-    {
-        background-image:url(<?=base_url('images/mizzou.jpg')?>);
-        background-repeat:no-repeat;
-        background-size: cover;
-       /* -webkit-animation-name: example; /* Chrome, Safari, Opera */
-        /*-webkit-animation-duration: 5s;*/ /* Chrome, Safari, Opera */
-        /*-webkit-animation-iteration-count: infinite;*/
-   /* }*/
 
     body {
       width: 100%;
@@ -28,9 +19,9 @@
     body::after {
       content: "";
       background-image:url(<?=base_url('images/mizzou.jpg')?>);
-      background-repeat:no-repeat;
+      background-position: center;
       background-size: cover;
-      opacity: 0.5;
+      opacity: 2;
       top: 0;
       left: 0;
       bottom: 0;
@@ -39,14 +30,6 @@
       z-index: -1;   
     }
 
-    /* Chrome, Safari, Opera */
-   /* @-webkit-keyframes example 
-    {
-        0%   {background-image:url(<?=base_url('images/1.jpg')?>);}
-        25%  {background-image:url(<?=base_url('images/2.jpg')?>);}
-        50%  {background-image:url(<?=base_url('images/3.jpg')?>);}
-        100% {background-image:url(<?=base_url('images/4.jpg')?>);}
-    }*/
 </style>
 <body>
 
@@ -56,7 +39,7 @@
     </div>
 
     <div id="container2" class="container">
-        <h1>Login</h1>
+        <h1>Please login to continue.</h1>
         <form action="<?=base_url('register/student')?>" method="post" name="login" id="login">
             <input type="text" name="username" class="username" placeholder="Username">
             <input type="password" name="password" class="password" placeholder="Password">
