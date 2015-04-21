@@ -10,16 +10,18 @@
         }
 
         .background{
-            position: absolute;
             top: 0px;
             left: 0px;
             opacity: 0.3;
         }
 
-        .container {
+        .container{
+
             position: absolute;
-            top: 150px;
-            left: 480px;
+            right: 40%;
+            margin-top: 20%;
+
+           
         }
 
         h1 {

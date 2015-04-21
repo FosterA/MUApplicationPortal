@@ -28,7 +28,7 @@
     body::after {
       content: "";
       background-image:url(<?=base_url('images/mizzou.jpg')?>);
-      background-repeat:no-repeat;
+      background-position: center;
       background-size: cover;
       opacity: 0.5;
       top: 0;
