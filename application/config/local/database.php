@@ -86,7 +86,7 @@ if(true)
 	$db['default']['port'] = '8889';
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = 'root';
-	$db['default']['database'] = 'test';		
+	$db['default']['database'] = 'applicationportal';		
 }
 else // default to MySQL
 {
