@@ -1,4 +1,4 @@
-use test;
+use applicationportal;
 INSERT INTO student VALUES ('12345','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
 						('12346','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
 						('12347','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
