@@ -23,7 +23,7 @@ class Admin extends CI_Controller {
 		}
 
 		else{
-			$this->load->model('admin_model', TRUE);
+			$this->load->model('Admin_model');
 	   		$bol=$this->admin_model->insert($_POST);
 	   			
 			if($bol){
