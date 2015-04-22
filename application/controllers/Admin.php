@@ -7,12 +7,12 @@ class Admin extends CI_Controller {
 		$this->load->library('form_validation');
 
 		//Validation rules
-		$this->form_validation->set_rules('season', 'Season', 'required');
-		$this->form_validation->set_rules('year', 'Year', 'required');
-		$this->form_validation->set_rules('appfrom', 'Application Submittal Start Date', 'required');
-		$this->form_validation->set_rules('appto', 'Applicaiton Submittal End Date', 'required');
-		$this->form_validation->set_rules('commentfrom', 'Comments Start Date', 'required');
-		$this->form_validation->set_rules('commentto', 'Comments End Date', 'required');
+		$this->form_validation->set_rules('season', 'Season', 'trim|required');
+		$this->form_validation->set_rules('year', 'Year', 'trim|required');
+		$this->form_validation->set_rules('appfrom', 'Application Submittal Start Date', 'trim|required');
+		$this->form_validation->set_rules('appto', 'Applicaiton Submittal End Date', 'trim|required');
+		$this->form_validation->set_rules('commentfrom', 'Comments Start Date', 'trim|required');
+		$this->form_validation->set_rules('commentto', 'Comments End Date', 'trim|required');
 
 		if($this->form_validation->run() == FALSE)
 		{
@@ -24,17 +24,42 @@ class Admin extends CI_Controller {
 
 		else
 		{
+
 			$this->load->model('administration_model');
-	   		$bol=$this->administration_model->insert($_POST);
-	   			
+
+			$checkSemester=$this->administration_model->checkSet($_POST);
+
+			if ($checkSemester)
+			{
+				$bol=$this->administration_model->updateDates($_POST);
+				if($bol){
+					$data['confirm'] = "The action window dates have been updated.";		
+				}
+			}	
+			else
+			{
+	   			$bol=$this->administration_model->insert($_POST);
+	   			if($bol){
+	   				$data['confirm'] = "The action window dates have been set.";
+	   			}	
+	   		}
+
 			if($bol)
 			{
-				$data['confirm'] = "The action window dates have been set.";
 				$data['user'] = ucfirst($this->session->userdata('user'));
 				$this->load->view('templates/header');
 				$this->load->view('admin_home',$data);
 				$this->load->view('templates/footer');
-			}	
+			}
+			else
+			{
+				$data['user'] = ucfirst($this->session->userdata('user'));
+				$data['error'] = "Unable to set window dates.";
+				$this->load->view('templates/header');
+				$this->load->view('admin_home',$data);
+				$this->load->view('templates/footer');
+			}
+
 		}
 	}
 }
