@@ -1,3 +1,28 @@
+DROP TABLE IF EXISTS windows;
+DROP TABLE IF EXISTS admin;
+DROP TABLE IF EXISTS likeTeach;
+DROP TABLE IF EXISTS preTeach;
+DROP TABLE IF EXISTS comment;
+DROP TABLE IF EXISTS status;
+DROP TABLE IF EXISTS curTeach;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS undergraduate;
+DROP TABLE IF EXISTS graduate;
+DROP TABLE IF EXISTS interStudent;
+DROP TABLE IF EXISTS app;
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS instructor;
+DROP VIEW IF EXISTS interUnder, interGra, nativeUnder, nativeGra, statusname; 
+
+create table windows(
+	semester varchar(15),
+	appOpen date,
+	appClose date,
+	commentOpen date,
+	commentClose date,
+	primary key(semester)
+)engine=innodb;
+
 create table student(
 	student_id varchar(128),
 	password varchar(128),
