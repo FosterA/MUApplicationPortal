@@ -20,6 +20,5 @@
 			if($bol)
 				return true;
 		}
-		
 	}
 ?>	
