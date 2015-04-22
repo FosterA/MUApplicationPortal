@@ -2,13 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
-	public function index()
-	{
-		$this->load->model('admin_model');
-	}
-
 	public function setwindows(){
-	
 
 		$this->load->library('form_validation');
 
@@ -29,7 +23,7 @@ class Admin extends CI_Controller {
 		}
 
 		else{
-			$this->load->model('admin_model');
+			$this->load->model('admin_model', TRUE);
 	   		$bol=$this->admin_model->insert($_POST);
 	   			
 			if($bol){
