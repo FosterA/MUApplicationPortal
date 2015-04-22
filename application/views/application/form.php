@@ -40,6 +40,7 @@
 	<form action="#" method="POST" name="application">
 		<br><div align="center">TA/PLA Application Form</div><br>
 		<br><left>
+		<input type="hidden" name="id" value="<?=$this->session->userdata('user')?>">
 		&nbsp;First Name: &nbsp;
 		<input type="text" name="fname">
 		&nbsp; &nbsp;
