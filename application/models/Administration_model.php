@@ -2,6 +2,8 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 class Administration_model extends CI_Model{
+
+	//Establlish database connection
 	public function __construct(){
 		parent::__construct();
 		$this->load->database();
@@ -21,7 +23,7 @@ class Administration_model extends CI_Model{
 		}
 	}
 
-	//Method to insert window dates into the windows table for a given semester
+	//Method to update window dates in the windows table for a given semester if they have already been set
 	public function updateDates($array){
 		$sql="UPDATE windows SET appOpen=?, appClose=?, commentOpen=?, commentClose=? WHERE semester=?";
 		$data[0]=$array['appfrom'];

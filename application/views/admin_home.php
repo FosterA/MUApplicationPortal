@@ -5,6 +5,11 @@
 				</div>
 				<?php echo validation_errors(); ?>
 				<div id="windows">
+					<h3>Current Set Action Windows</h3>
+					<br>
+					<div id='results'>
+						<?php echo $this->table->generate($windows); ?>
+					</div>
 					<h3>Set Action Windows</h3>
 					<br>
 					<p>Select Semester</P>

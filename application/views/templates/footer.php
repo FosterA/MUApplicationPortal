@@ -2,7 +2,7 @@
 <hr id="footerhr">
 <br>
 		<div id="footer">
-                <em>&copy;Group L <?php echo date('Y'); ?></em>
+                <strong>&copy;Group L <?php echo date('Y'); ?></strong>
 
 		</div>
 	</body>
