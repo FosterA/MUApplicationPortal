@@ -19,7 +19,7 @@
 		}
 		public function getInfor($id){
 			$sql="select nation,degree from status where student_id=?";
-			$data[0]=$id;
+			$data['student_id']=$id;
 			$res=$this->db->query($sql,$id);
 			$array=$res->result_array();
 			$nation=$array[0]['nation'];

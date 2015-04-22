@@ -37,7 +37,7 @@
 <script src="<?=base_url('jquery-ui-1.11.2/js/manhuaDate.1.0.js')?>"></script>
 </head>
 <body>
-	<form action="#" method="POST" name="application">
+	<form method="POST" name="application">
 		<br><div align="center">TA/PLA Application Form</div><br>
 		<br><left>
 		<input type="hidden" name="id" value="<?=$this->session->userdata('user')?>">
@@ -141,7 +141,7 @@
 		<br>
 		<?php }?>
 		<br>
-		&nbsp;&nbsp;&nbsp;<button type="button" onclick="sub()">submit</button><br><br>
+		&nbsp;&nbsp;&nbsp;<button type="button" onclick="sub()">button</button><br><br>
 	</form>
 	
 	
@@ -174,19 +174,54 @@
    	} 
    	function sub(){
    		var form=document.forms['application'];
+   		var x=form['fname'].value;
+   		if (x == null || x == "") {
+        	alert("FirstName must be filled out");
+        	return false;
+    	}
+    	var x=form['lname'].value;
+   		if (x == null || x == "") {
+        	alert("LastName must be filled out");
+        	return false;
+    	}
+    	var x=form['phone'].value;
+   		if (x == null || x == "" || !(/^[0-9]*$/.test(x))) {
+        	alert("Phone must be filled out and can only contain number");
+        	return false;
+    	}
+    	
+    	var x=form['gpa'].value;
+   		if (x == null || x == "" || !(/^[0-9]*$/.test(x)) || x>5) {
+        	alert("gpa must be filled out and can only contain number and must less that 5");
+        	return false;
+    	}
+    	
+    	var obj=document.getElementById('taught');
+   		if(obj.selectedIndex ==-1){
+   			alert('you must select at least one course you Would Like to Teach');
+   			return false;
+   		}
+    	
    		<?php if($nation=='international'){
    			if($degree=='undergraduate'){
    		?>
+   		
+   		
 			form.action="<?=base_url('index.php/form/interUnder')?>";
 		<?php }else{?>
+		
+		
 			form.action="<?=base_url('index.php/form/interGra')?>";
 		<?php }}else{
 			if($degree='undergraduate'){
 		?>	
+		
+		
 			form.action="<?=base_url('index.php/form/natUnder')?>";
 		<?php }else{?>
 		
-		form.action="<?=base_url('index.php/form/natGra')?>";
+		
+			form.action="<?=base_url('index.php/form/natGra')?>";
 		<?php }}?>
 		form.submit();
 		}

@@ -20,20 +20,8 @@ class Test extends CI_Controller {
 	 */
 	public function index()
 	{
-	
-	}
-	public function show(){
-		$arr=$this->input->post('course');
-		print_r($arr);
-	}
-	public function test1(){
-		$this->load->model("test_model","test");
-		$data['course']=$this->test->showDept();
-		foreach($data['course'] as $value){
-			$dept=$value['deptment'];
-			$data[$dept]=$this->test->showCourse($dept);
-		}
-		$this->load->helper(array('form', 'url'));
+		$this->load->helper('url');
 		$this->load->view('test',$data);
 	}
+	
 }
