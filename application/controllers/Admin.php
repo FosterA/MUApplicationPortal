@@ -22,11 +22,13 @@ class Admin extends CI_Controller {
 			$this->load->view('templates/footer');
 		}
 
-		else{
+		else
+		{
 			$this->load->model('Admin_model');
-	   		$bol=$this->admin_model->insert($_POST);
+	   		$bol=$this->Admin_model->insert($_POST);
 	   			
-			if($bol){
+			if($bol)
+			{
 				$data['confirm'] = "The action window dates have been set.";
 				$data['user'] = ucfirst($this->session->userdata('user'));
 				$this->load->view('templates/header');
