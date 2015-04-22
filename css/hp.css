@@ -26,6 +26,20 @@ p, ol {
 	line-height: 190%;
 }
 
+#windows{
+	padding: 10px;
+	border: 1px solid black;
+}
+
+#footer{
+	border-top: 1px solid black;
+	padding: 10px;
+}
+
+#footerhr{
+	height: 10px;
+}
+
 /*strong {
 }*/
 
