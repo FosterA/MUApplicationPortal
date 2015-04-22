@@ -8,7 +8,7 @@ class Admin extends CI_Controller {
 	}*/
 
 	public function setwindows(){
-		//print_r($_POST);
+	
 
 		$this->load->library('form_validation');
 
