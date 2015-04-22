@@ -37,22 +37,33 @@
 <script src="<?=base_url('jquery-ui-1.11.2/js/manhuaDate.1.0.js')?>"></script>
 </head>
 <body>
-	<form action="#" method="POST" name="application">
+	<form method="POST" name="application">
+		<br><div align="center">TA/PLA Application Form</div><br>
+		<br><left>
 		<input type="hidden" name="id" value="<?=$this->session->userdata('user')?>">
-		First Name: <br>
+		&nbsp;First Name: &nbsp;
 		<input type="text" name="fname">
-		<br>
+		&nbsp; &nbsp;
 		
-		Last Name: <br>
+		Last Name: &nbsp;
 		<input type="text" name="lname">
-		<br>
-		
-		GPA:<br>
+		<br> <br>
+		&nbsp;Phone Number: &nbsp;
+		<input type="text" name="phone">
+		&nbsp; &nbsp;
+		GPA: &nbsp;
 		<input type="text" name="gpa">
 		<br>
+		<br>
+
+		&nbsp;Mizzou email address: &nbsp;
+		<input type="text" name="email">
+		<br><br>
+
 		<?php if($degree=='undergraduate'){?>
-		If undergraduate, indicate program and level:<br>
+		&nbsp;Degree Program:&nbsp;
 		<input type="text" name="program">
+		&nbsp;Level:&nbsp;
 		<select name='level'>
   			<option value="freshmen">freshmen</option>
  			<option value="sophomore">sophomore</option>
@@ -61,29 +72,24 @@
 		</select>
 		<br>
 		<?php }else{?>
-		If graduate: <br>
+		&nbsp;Degree Type:
 		<input type='radio' name='position' id='MS' value='MS'> 
 		<label for="MS">MS</label>
-		<br>
+		
 		<input type='radio' name='position' id='PhD' value='PhD'>
 		<label for="PhD">PhD</label>
-		<br>
+		&nbsp;&nbsp;
 		Advisor's Name:
 		<input type="text" name="advisor">
 		<br>
 		<?php }?>
-		Phone Number:<br>
-		<input type="text" name="phone">
-		<br>
 		
-		Mizzou email address:<br>
-		<input type="text" name="email">
-		
-
-		<br>Anticipated graduation date:<br>
+		<br>&nbsp;Anticipated graduation date:&nbsp;
  		<input type="text" class="mh_date" name='gradDate' id='date'>
-		<br>Course(s) You Are Currently Teaching:<br>
+		<br>
 
+		<br>&nbsp;Course(s) You Are Currently Teaching: <br>&nbsp;(Select multiple by holding command)<br>
+		&nbsp;
 		<select name="teaching[]" style="width:350px;" class="chosen-select" multiple tabindex="6">
         	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
@@ -95,7 +101,8 @@
           	<?php endforeach;?>
           </select>
 
-		<br>Course(s) You Have Previously Taught:<br>
+		<br>&nbsp;Course(s) You Have Previously Taught: <br>&nbsp;(Select multiple by holding command)<br>
+		&nbsp;
 		<select name="taught[]" style="width:350px;" class="chosen-select" multiple tabindex="6">
         	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
@@ -106,7 +113,8 @@
         		 </optgroup>
           	<?php endforeach;?>
           </select>
-		<br>Course(s) You Would Like to Teach:<br>
+		<br>&nbsp;Course(s) You Would Like to Teach: <br>&nbsp;(Select multiple by holding command)<br>
+		&nbsp;
 		<select name="teach[]" style="width:350px;" class="chosen-select" onchange="fun()" id='taught' class="select" multiple tabindex="6">
         	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
@@ -119,23 +127,22 @@
           </select>
 		<br>
 		<div id="show"></div>
-		Other Places You Work:<br>
+		<br>&nbsp;Other Places You Work:&nbsp;
 		<input type="text" name="work">
 		<br>
 		
 		<?php if($nation=='international'){?>
-		SPEAK/OPT score, if applicable:<br>
+		<br>&nbsp;SPEAK/OPT score:&nbsp;
 		<input type="text" name="score">
 		<br>
 		
-		Semester of last test:<br>
+		&nbsp;Semester of last test:&nbsp;
 		<input type="text" name="test">
 		<br>
 		<?php }?>
 		<br>
-		<button type="button" onclick="sub()">submit</button>
+		&nbsp;&nbsp;&nbsp;<button type="button" onclick="sub()">button</button><br><br>
 	</form>
-	
 	
 	
     <script type="text/javascript">
@@ -167,19 +174,54 @@
    	} 
    	function sub(){
    		var form=document.forms['application'];
+   		var x=form['fname'].value;
+   		if (x == null || x == "") {
+        	alert("FirstName must be filled out");
+        	return false;
+    	}
+    	var x=form['lname'].value;
+   		if (x == null || x == "") {
+        	alert("LastName must be filled out");
+        	return false;
+    	}
+    	var x=form['phone'].value;
+   		if (x == null || x == "" || !(/^[0-9]*$/.test(x))) {
+        	alert("Phone must be filled out and can only contain number");
+        	return false;
+    	}
+    	
+    	var x=form['gpa'].value;
+   		if (x == null || x == "" || !(/^[0-9]*$/.test(x)) || x>5) {
+        	alert("gpa must be filled out and can only contain number and must less that 5");
+        	return false;
+    	}
+    	
+    	var obj=document.getElementById('taught');
+   		if(obj.selectedIndex ==-1){
+   			alert('you must select at least one course you Would Like to Teach');
+   			return false;
+   		}
+    	
    		<?php if($nation=='international'){
    			if($degree=='undergraduate'){
    		?>
+   		
+   		
 			form.action="<?=base_url('index.php/form/interUnder')?>";
 		<?php }else{?>
+		
+		
 			form.action="<?=base_url('index.php/form/interGra')?>";
 		<?php }}else{
 			if($degree='undergraduate'){
 		?>	
+		
+		
 			form.action="<?=base_url('index.php/form/natUnder')?>";
 		<?php }else{?>
 		
-		form.action="<?=base_url('index.php/form/natGra')?>";
+		
+			form.action="<?=base_url('index.php/form/natGra')?>";
 		<?php }}?>
 		form.submit();
 		}
