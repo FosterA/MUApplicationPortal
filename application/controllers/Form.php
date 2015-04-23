@@ -26,19 +26,24 @@ class Form extends CI_Controller {
 		$this->form_validation->set_rules('degree', 'degree', 'required');
 	if($this->form_validation->run() == FALSE)
 		{
+			$this->load->view('templates/header.php');
    			$this->load->view('application/status');
+   			$this->load->view('templates/footer.php');
 		}
   		else
 		{
    			$data['nation']=$this->input->post('nation');
    			$data['degree']=$this->input->post('degree');
+   			
    			$this->load->model("test_model","test");
 			$data['course']=$this->test->showDept();
 			foreach($data['course'] as $value){
 				$dept=$value['deptment'];
 				$data[$dept]=$this->test->showCourse($dept);
 			}
+			$this->load->view('templates/header.php');
 			$this->load->view('application/form',$data);
+			$this->load->view('templates/footer.php');
 		}
 	}
 	

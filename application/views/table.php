@@ -9,6 +9,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 html { overflow-y: scroll; }
+button {
+    cursor: pointer;
+    width: 77px;
+    height: 30px;
+    margin-top: 2px;
+    padding: 0;
+    background: #ef4300;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #ff730e;
+    -moz-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;
+}
+
+button:hover {
+    -moz-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+}
+
+button:active {
+    -moz-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow:        
+        0 5px 8px 0 rgba(0,0,0,.1) inset,
+        0 1px 4px 0 rgba(0,0,0,.1);
+
+    border: 0px solid #ef4300;
+}
 body { 
   background: #eee url('http://i.imgur.com/eeQeRmk.png'); /* http://subtlepatterns.com/weave/ */
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -82,14 +137,160 @@ h1 {
   text-align: left;
 }
 
-#links{
+#app table {
+	background: #f5f5f5;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 16px;
+	line-height: 24px;
+	margin: 5px 20px;
+	text-align: left;
+	width: 200px;
+}	
 
+#app th {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+	border-left: 1px solid #555;
+	border-right: 1px solid #777;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #333;
+	box-shadow: inset 0 1px 0 #999;
+	color: #fff;
+  font-weight: bold;
+	padding: 5px 10px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;	
 }
 
-#current{
-
+#app th:after {
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+	content: '';
+	display: block;
+	height: 25%;
+	left: 0;
+	margin: 1px 0 0 0;
+	position: absolute;
+	top: 25%;
+	width: 100%;
 }
 
+#app th:first-child {
+	border-left: 1px solid #777;	
+	box-shadow: inset 1px 1px 0 #999;
+}
+
+#app th:last-child {
+	box-shadow: inset -1px 1px 0 #999;
+}
+
+#app td {
+	border-right: 1px solid #fff;
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 1px 6px;
+	position: relative;
+	transition: all 300ms;
+}
+
+#app td:first-child {
+	box-shadow: inset 1px 0 0 #fff;
+}	
+
+#app td:last-child {
+	border-right: 1px solid #e8e8e8;
+	box-shadow: inset -1px 0 0 #fff;
+}	
+
+#app tr {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png);	
+}
+
+#app tr:nth-child(odd) td {
+	background: #f1f1f1 url(http://jackrugile.com/images/misc/noise-diagonal.png);	
+}
+
+#app tr:last-of-type td {
+	box-shadow: inset 0 -1px 0 #fff; 
+}
+
+#app tr:last-of-type td:first-child {
+	box-shadow: inset 1px -1px 0 #fff;
+}	
+
+#app tr:last-of-type td:last-child {
+	box-shadow: inset -1px -1px 0 #fff;
+}	
+
+#app tbody:hover td {
+	color: transparent;
+	text-shadow: 0 0 3px #aaa;
+}
+
+#app tbody:hover tr:hover td {
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
+}
+
+div#overlay {
+	display: none;
+	z-index: 2;
+	background-color:rgba(55, 58, 71, 0.9);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+}
+div#specialBox {
+  display: block;
+  position: absolute;
+  z-index: 3;
+  left: 20%;
+  top: 15%;
+  width: 640px;
+  height: 450px;
+  background: #FFF;
+  color: #000;
+  border: 5px outset rgb(49, 140, 85);
+  border-radius: 5px;
+  box-shadow: 0px 0px 50px 5px black;
+  font-size: 16px;
+}
+
+#curTeach {
+  position: absolute;
+  top: 2%;
+  left: 51%;
+  width: 320px;
+  height: 110px;
+  overflow: scroll;
+}
+#preTeach {
+  position: absolute;
+  top: 26%;
+  left: 51%;
+  width: 320px;
+  height: 110px;
+  overflow: scroll;
+}
+#likeTeach {
+  position: absolute;
+  top: 51%;
+  left: 51%;
+  width: 320px;
+  height: 110px;
+  overflow: scroll;
+}
+#divClose {
+  position: absolute;
+  top: 77%;
+  left: 40%;
+}
+p,ul{
+	margin:2px;
+}
 
 </style>
 <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
@@ -98,9 +299,10 @@ h1 {
  
 </head>
 <body>
+	<div id="overlay"></div>
 	<?=$table?>
 	<?=$links?>
-	<div id="show"></div>
+	
 
 <script>
 $(document).ready(function(){
@@ -112,20 +314,34 @@ $(document).ready(function(){
     	a1.value="<?=base_url('index.php/table/test')?>"+'/'+str;
     }
     
-   
-
-});
-function showInfo(href){
-		var xmlhttp = new XMLHttpRequest();
+   $("button.detail").click(function(value){
+   		var href=$(this).attr('value');
+   		var xmlhttp = new XMLHttpRequest();
+   		var overlay = document.getElementById('overlay');
+   		overlay.style.display = "block";
+   		overlay.style.opacity = .8;
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("show").innerHTML = xmlhttp.responseText;
+            	var ele=$("<div id='specialBox'></div>");
+            	$('body').prepend(ele);
+                ele.html(xmlhttp.responseText);
             }
         }
         xmlhttp.open("post",href,true);
  		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  		xmlhttp.send();
-	}
+   });
+	 $('body').delegate('#close','click',function(){
+	 	$('#specialBox').remove();
+	 	$('#overlay').css('display','none');
+	 });
+	
+	
+});
+
+
+
+
 
 </script>
 </script>

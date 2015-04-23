@@ -1,13 +1,13 @@
 <?php
 class Register extends CI_Controller {
  
-	public function index()
-	{
+	public function index(){
 		//Load registration/signin page
-		$this->load->view('templates/header');
+		$this->load->view('templates/header_main');
 		$this->load->view('register');
 	}
 
+	//Method to call the function to validate login credentials and set session data
 	public function validate_credentials(){
 		$this->load->model('register_model');
 		$query = $this->register_model->validate();
@@ -37,8 +37,7 @@ class Register extends CI_Controller {
 		}
 	}
 
-	public function add_student()
-	{
+	public function add_student(){
 		$this->load->library('form_validation');
 
 		//Validation rules
@@ -49,6 +48,7 @@ class Register extends CI_Controller {
 	
 		if($this->form_validation->run() == FALSE)
 		{
+			$this->load->view('templates/header_main');
  	   		$this->load->view('register');
 		}
   	
@@ -63,23 +63,10 @@ class Register extends CI_Controller {
  				$this->session->set_userdata('user',$user);
  				$this->session->set_userdata('profession','student');
  				$data['confirm']="Registration sucessful, Please login.";
- 				$this->load->view('templates/header');
+ 				$this->load->view('templates/header_main');
 				$this->load->view('register',$data);
-				$this->load->view('templates/footer');
+				
 			}
-		}
-	}
-
-	public function username_check($str)
-	{
-		if (0)
-		{
-			$this->form_validation->set_message('username_check', 'The %s field can not be ...');
-			return FALSE;
-		}
-		else
-		{
-		return TRUE;
 		}
 	}
 
@@ -91,15 +78,23 @@ class Register extends CI_Controller {
 		$this->index();
 	}
 
-	public function password_check($str)
-		{
-		if (0)
-		{
+	public function username_check($str){
+		if (0){
 			$this->form_validation->set_message('username_check', 'The %s field can not be ...');
 			return FALSE;
 		}
-		else
-		{
+
+		else{
+			return TRUE;
+		}
+	}
+
+	public function password_check($str){
+		if (0){
+			$this->form_validation->set_message('username_check', 'The %s field can not be ...');
+			return FALSE;
+		}
+		else{
 			return TRUE;
 		}
 	}

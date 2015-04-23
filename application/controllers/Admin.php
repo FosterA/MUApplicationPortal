@@ -9,7 +9,7 @@ class Admin extends CI_Controller {
 		}
 
 		$data=$this->pageData();
-		$this->load->view('templates/header', $data);
+		$this->load->view('templates/header_admin', $data);
 		$this->load->view('admin_home', $data);
 		$this->load->view('templates/footer');
 	}
@@ -51,7 +51,7 @@ class Admin extends CI_Controller {
 		if($this->form_validation->run() == FALSE)
 		{
 			$data=$this->pageData();
-			$this->load->view('templates/header', $data);
+			$this->load->view('templates/header_admin', $data);
 			$this->load->view('admin_home', $data);
 			$this->load->view('templates/footer');
 		}
@@ -88,7 +88,7 @@ class Admin extends CI_Controller {
 	   		//If table was changed properly, display confirmation feedback
 			if($bol)
 			{
-				$this->load->view('templates/header', $data);
+				$this->load->view('templates/header_admin', $data);
 				$this->load->view('admin_home', $data);
 				$this->load->view('templates/footer');
 			}
@@ -98,7 +98,7 @@ class Admin extends CI_Controller {
 			{
 				$data=$this->pageData();
 				$data['error'] = "Unable to set window dates.";
-				$this->load->view('templates/header', $data);
+				$this->load->view('templates/header_admin', $data);
 				$this->load->view('admin_home', $data);
 				$this->load->view('templates/footer');
 			}

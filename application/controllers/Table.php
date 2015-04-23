@@ -47,12 +47,12 @@ class Table extends CI_Controller {
                     'heading_cell_end'    => '</span></th>',
 
                     'row_start'           => "<tr><td><image src='$url'></td>",
-                    'row_end'             => '<td><button class="detail" type="button" onclick="showInfo(this.value)">detail</button></td></tr>',
+                    'row_end'             => '<td><button class="detail" type="button">detail</button></td></tr>',
                     'cell_start'          => '<td>',
                     'cell_end'            => '</td>',
 
                     'row_alt_start'       => "<tr><td><image src='$url'></td>",
-                    'row_alt_end'         => '<td><button class="detail" type="button" onclick="showInfo(this.value)">detail</button></td></tr>',
+                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td></tr>',
                     'cell_alt_start'      => '<td>',
                     'cell_alt_end'        => '</td>',
 
@@ -70,9 +70,7 @@ class Table extends CI_Controller {
 		$id=$this->uri->segment('3');
 		$info=$this->table_model->getInfor($id);
 		$i=0;
-		echo "<pre>";
-			print_r($info);
-		echo "<pre>";
+		
 		foreach($info['res'][0] as $key=>$value){
 			$data[$i][0]=$key;
 			$data[$i++][1]=$value;
@@ -108,24 +106,24 @@ class Table extends CI_Controller {
 			$curTeach=$curTeach."<li>".$value['courseName']."</li>";
 		}
 		$curTeach=$curTeach."</ul>";
-		$curTeach="<div id='curTeach'>".$curTeach."</div>";
+		$curTeach="<div id='curTeach'><p>Course(s) This Applicant Are Currently Teaching:</p>".$curTeach."</div>";
 		
 		$preTeach="<ul>";
 		foreach($info['preTeach'] as $value){
 			$preTeach=$preTeach."<li>".$value['courseName']."</li>";
 		}
 		$preTeach=$preTeach."</ul>";
-		$preTeach="<div id='preTeach'>".$preTeach."</div>";
+		$preTeach="<div id='preTeach'><p>Course(s) This Applicant Have Previously Taught:</p>".$preTeach."</div>";
 		
 		$likeTeach="<select name='likeTeach'>";
 		foreach($info['likeTeach'] as $value){
-			$likeTeach=$likeTeach."<option value=".$value['courseName']."> course name:".$value['courseName']." score:".$value['score']."</option>"; 
+			$likeTeach=$likeTeach."<option value=".$value['courseName']."> course's name:".$value['courseName']." score:".$value['score']."</option>"; 
 		}
 		$likeTeach=$likeTeach."</select>";
-		$likeTeach="<form action=".base_url('index.php/table/**')."><input type='hidden' value=$id >".$likeTeach."<br><button onclick='agree()' type='button'>agree</button><button onclick='disagree()' type='button'>disagree</button></form>";
-		$likeTeach="<div id='likeTeach'>".$likeTeach."</div>";
+		$likeTeach="<form><input type='hidden' value=$id >".$likeTeach."<br><button onclick='agree()' type='button'>agree</button>&nbsp&nbsp<button onclick='disagree()' type='button'>disagree</button></form>";
+		$likeTeach="<div id='likeTeach'><p>Course(s) This Applicant Would Like to Teach and please choose one:</p>".$likeTeach."</div>";
 		
-		$allInform=$app.$curTeach.$preTeach.$likeTeach;
+		$allInform=$app.$curTeach.$preTeach.$likeTeach."<div id='divClose'><button type='button' id='close'>close</button></div>";
 		
 		echo $allInform;
 		
