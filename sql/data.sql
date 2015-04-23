@@ -81,32 +81,6 @@ insert into app values('aadsfaaa','first','last',5,'234','liu@gmail.com','2015-1
 insert into app values('aatea','first','last',5,'234','liu@gmail.com','2015-12-30','beijing');
 insert into app values('ytr','first','last',5,'234','liu@gmail.com','2015-12-30','beijing');
 
-create table agree(
-	student_id varchar(128),
-	firstName varchar(128),
-	lastName varchar(128),
-	gpa double,
-	phoneNumber varchar(128),
-	email varchar(128),
-	graduateDate date,
-	workPlace varchar(256),
-	primary key(student_id),
-	foreign key(student_id) references student(student_id) on delete cascade
-)engine=InnoDB;
-
-
-create table disagree(
-	student_id varchar(128),
-	firstName varchar(128),
-	lastName varchar(128),
-	gpa double,
-	phoneNumber varchar(128),
-	email varchar(128),
-	graduateDate date,
-	workPlace varchar(256),
-	primary key(student_id),
-	foreign key(student_id) references student(student_id) on delete cascade
-)engine=InnoDB;
 
 
 
@@ -455,6 +429,61 @@ insert into status values('aatreraa','international','graduate');
 insert into status values('aadsfaaa','international','graduate');
 insert into status values('aatea','international','graduate');
 insert into status values('ytr','international','graduate');
+
+
+
+CREATE TABLE `disagree` (
+  `student_id` varchar(128) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `disagree`
+--
+ALTER TABLE `disagree`
+  ADD KEY `student_id` (`student_id`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `disagree`
+--
+ALTER TABLE `disagree`
+ADD CONSTRAINT `disagree_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE;
+
+
+
+
+CREATE TABLE `agree` (
+  `student_id` varchar(128) DEFAULT NULL,
+  `courseName` varchar(128) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `agree`
+--
+ALTER TABLE `agree`
+  ADD KEY `student_id` (`student_id`), ADD KEY `courseName` (`courseName`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `agree`
+--
+ALTER TABLE `agree`
+ADD CONSTRAINT `agree_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE,
+ADD CONSTRAINT `agree_ibfk_2` FOREIGN KEY (`courseName`) REFERENCES `course` (`courseName`) ON DELETE CASCADE;
 
 
 
