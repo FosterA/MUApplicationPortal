@@ -3,6 +3,9 @@
 <head>
 <title>Application Form</title>
 <link href="<?=base_url();?>css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+<link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
+<script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
+<script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
 <style>
 	body {
  background-image:url(<?=base_url('images/old_paper_background-wallpaper-1280x800.jpg')?>);
@@ -17,12 +20,6 @@
   		height:200px;
   	}
 
-  	#show{
-  		border:2px solid red;
-  		width:300px;
-  		height:200px;
-  		margin:-100px 407px;
-  	}
   
 
   	.form-body{
@@ -72,6 +69,47 @@
 		-ms-transition: all .2s;
 
 }
+ input {
+            width: 270px;
+            height: 42px;
+            margin-top: 25px;
+            padding: 0 15px;
+            background: rgba(45,45,45);
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,.15);
+            -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+            -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+            box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+            font-size: 14px;
+            color: #040105;
+            text-shadow: 0 1px 2px rgba(0,0,0,.1);
+            -o-transition: all .2s;
+            -moz-transition: all .2s;
+            -webkit-transition: all .2s;
+            -ms-transition: all .2s;
+        }
+	input.score{
+		width: 100px;
+        height: 30px;
+        margin:2px;
+	}
+	div#score {
+  	position: absolute;
+  	top: 168%;
+  	left: 55%;
+ 	 z-index: 100;
+ 	 background: #FFF;
+ 	 color: #000;
+ 	 border: 5px outset rgb(49, 140, 85);
+ 	 border-radius: 5px;
+ 	 box-shadow: 0px 0px 50px 5px black;
+  	font-size: 12px;
+  	overflow:scroll;
+  	width:200px;
+  	height:250px;
+	}
 /*.calender{ width:319px;margin:50px auto;top:0;left:0;border:4px #D6D6D6 solid;background:#EBEBEB;position:absolute;display:none;z-index:999;}
 .calendertb{width:100%;}
 .calendertb td{width:35px;height:35px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;font-size:14px;font-weight:bold;}
@@ -177,7 +215,7 @@
 
 
 
-		<select name="teach[]" style="width:350px;" class="chosen-select" onchange="fun()" id='teach' class="select" multiple tabindex="6">
+		<select name="teach[]" style="width:350px;" class="chosen-select" id='teach' class="select" multiple tabindex="6">
         	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
         		 <optgroup label="<?=$dept?>">
@@ -197,9 +235,6 @@
 
 
 
-
-
-		<div id="show"></div>
 		<br>&nbsp;Other Places You Work:&nbsp;
 		<input type="text" name="work">
 		<br>
@@ -222,32 +257,22 @@
 	<script src="<?=base_url('js/jquery.multi-select.js');?>" type="text/javascript"></script>
     <script type="text/javascript">
 
-   	function fun(){
-   		var content=document.getElementById('show');
-   		content.innerHTML="";
-   		var obj=document.getElementById('taught');
-   		var choose=new Array();
-   		for(var i=0;i<obj.length;i++){
-   			if(obj[i].selected){
-   				choose[choose.length]=obj[i].value;
+   	$(document).ready(function(){
+   		$("#ms-teach").click(function(){
+   			var sel=$("#teach  option:selected");
+   			$('#score').remove();
+   			var newele=$("<div id='score'></div>");
+   			$('form').append(newele);
+   			for(var i=0;i<sel.length;i++){
+   				var data=sel.eq(i).text();
+  				var label=$("<label for="+data+">"+data+" : </label>");
+  				var input=$("<input class='score' name="+data+" id="+data+" type='text'><br>");
+   				newele.append(label);
+   				newele.append(input);
    			}
-   		}
-   
-   		for(var i=0;i<teach.length;i++){
-   			var node=document.createElement("input");
-   			var label=document.createElement("label");
-			var br=document.createElement("br");
-   			node.type='text';
-   			node.name=teach[i];
-   			node.id=teach[i];
-   			node.class="course";
-   			label.for=teach[i];
-   			label.innerHTML=teach[i]+" score:";
-   			content.appendChild(label);
-   			content.appendChild(node);
-   			content.appendChild(br);
-   		}
-   	} 
+   		});
+   	
+   	});
 
    	function sub(){
    		var form=document.forms['application'];
@@ -290,7 +315,7 @@
 		
 			form.action="<?=base_url('index.php/form/interGra')?>";
 		<?php }}else{
-			if($degree='undergraduate'){
+			if($degree=='undergraduate'){
 		?>	
 		
 		

@@ -34,6 +34,7 @@ class Form extends CI_Controller {
 		{
    			$data['nation']=$this->input->post('nation');
    			$data['degree']=$this->input->post('degree');
+   			
    			$this->load->model("test_model","test");
 			$data['course']=$this->test->showDept();
 			foreach($data['course'] as $value){
