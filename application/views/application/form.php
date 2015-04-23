@@ -202,7 +202,15 @@
 	
     <script type="text/javascript">
    	function fun(){
-   		
+   		var content=document.getElementById('show');
+   		content.innerHTML="";
+   		var obj=document.getElementById('taught');
+   		var choose=new Array();
+   		for(var i=0;i<obj.length;i++){
+   			if(obj[i].selected){
+   				choose[choose.length]=obj[i].value;
+   			}
+   		}
    
    		for(var i=0;i<choose.length;i++){
    			var node=document.createElement("input");
