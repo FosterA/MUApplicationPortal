@@ -222,6 +222,7 @@ hr {
 #footer {
 	overflow: hidden;
 	height: 150px;
+	background-color: black;
 }
 
 #footer p {
