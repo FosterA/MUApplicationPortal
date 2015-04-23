@@ -296,7 +296,30 @@ p,ul{
 <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
 <script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
 <script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
- 
+ <script>
+ 	<?php
+ 		if(isset($result)){
+ 		$student_id=$result['student_id'];
+ 		if($result['type']=='add'){
+ 			
+ 			if($result['status']){
+ 				echo "alert('You have already accept $student_id application')";
+ 			}else{
+ 				echo "alert('You FAILED TO accept $student_id application')";
+ 			}
+ 			}else{
+ 			
+ 			if($result['status']){
+ 				echo "alert('You have already deny $student_id application')";
+ 			}else{
+ 				echo "alert('You FAILED TO deny $student_id application')";
+ 			}
+ 			
+ 			}
+ 			
+ 		}
+ 	?>
+ </script>
 </head>
 <body>
 	<div id="overlay"></div>
@@ -336,7 +359,12 @@ $(document).ready(function(){
 	 	$('#overlay').css('display','none');
 	 });
 	
-	
+	$('body').delegate('#agreeButton','click',function(){
+	 	$("form").attr('action',"<?=base_url('index.php/table/addStudent')?>");
+	 });
+	$('body').delegate('#disagreeButton','click',function(){
+	 	$("form").attr('action',"<?=base_url('index.php/table/denyStudent')?>");
+	 });
 });
 
 

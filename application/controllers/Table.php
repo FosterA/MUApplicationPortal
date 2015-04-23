@@ -18,8 +18,10 @@ class Table extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
+	public function index($result=NULL)
+	{	if(isset($result)){
+			$data['result']=$result;
+		}
 		$this->load->database();
 		$this->load->library(array('table','pagination'));
 		$this->load->model('table_model');
@@ -120,12 +122,28 @@ class Table extends CI_Controller {
 			$likeTeach=$likeTeach."<option value=".$value['courseName']."> course's name:".$value['courseName']." score:".$value['score']."</option>"; 
 		}
 		$likeTeach=$likeTeach."</select>";
-		$likeTeach="<form><input type='hidden' value=$id >".$likeTeach."<br><button onclick='agree()' type='button'>agree</button>&nbsp&nbsp<button onclick='disagree()' type='button'>disagree</button></form>";
+		$likeTeach="<form method='post'><input type='hidden' name='student_id' value=$id >".$likeTeach."<br><button id='agreeButton' type='submit'>agree</button>&nbsp&nbsp<button id='disagreeButton' type='submit'>disagree</button></form>";
 		$likeTeach="<div id='likeTeach'><p>Course(s) This Applicant Would Like to Teach and please choose one:</p>".$likeTeach."</div>";
 		
 		$allInform=$app.$curTeach.$preTeach.$likeTeach."<div id='divClose'><button type='button' id='close'>close</button></div>";
 		
 		echo $allInform;
 		
+	}
+	
+	public function addStudent(){
+		$this->load->model("table_model");
+		$result['type']='add';
+		$result['status']=$this->table_model->addStudent();
+		$result['student_id']=$this->input->post('student_id');
+		$this->index($result);
+	}
+	
+	public function denyStudent(){
+		$this->load->model("table_model");
+		$result['type']='deny';
+		$result['status']=$this->table_model->denyStudent();
+		$result['student_id']=$this->input->post('student_id');
+		$this->index($result);
 	}
 }

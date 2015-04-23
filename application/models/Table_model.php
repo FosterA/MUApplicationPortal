@@ -18,29 +18,29 @@
 			return $res;
 		}
 		public function getInfor($id){
-			$sql="select nation,degree from status where student_id=?";
+			$sql="select nation,Degrees from status where student_id=?";
 			$data['student_id']=$id;
 			$res=$this->db->query($sql,$id);
 			$array=$res->result_array();
 			$nation=$array[0]['nation'];
-			$degree=$array[0]['degree'];
+			$degree=$array[0]['Degrees'];
 			if($nation=='international'){
 				if($degree=='undergraduate'){
-					$sql="select * from interunder where student_id=?";
+					$sql="select * from interUnder where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}else{
-					$sql="select * from intergra where student_id=?";
+					$sql="select * from interGra where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}
 			}else{
 				if($degree=='undergraduate'){
-					$sql="select * from nativeunder where student_id=?";
+					$sql="select * from nativeUnder where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}else{
-					$sql="select * from nativegra where student_id=?";
+					$sql="select * from nativeGra where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}
@@ -55,6 +55,29 @@
 			$res=$this->db->query($sql,$id);
 			$data['likeTeach']=$res->result_array();
 			return $data;
+		}
+		
+		public function addStudent(){
+			$data[0]=$this->input->post('student_id');
+			$data[1]=$this->input->post('likeTeach');
+			$sql1="delete from app where student_id='$data[0]'";
+			$sql2="insert into agree values(?,?)";
+			$this->db->trans_start();
+			$b1=$this->db->query($sql1);
+			$b2=$this->db->query($sql2,$data);
+			$this->db->trans_complete();
+			return $b1&&$b2;
+		}
+		
+		public function denyStudent(){
+			$data[0]=$this->input->post('student_id');
+			$sql1="delete from app where student_id='$data[0]'";
+			$sql2="insert into disagree values(?)";
+			$this->db->trans_start();
+			$b1=$this->db->query($sql1);
+			$b2=$this->db->query($sql2,$data);
+			$this->db->trans_complete();
+			return $b1&&$b2;
 		}
 	}
 ?>
