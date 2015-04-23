@@ -19,6 +19,8 @@ class Welcome extends CI_Controller {
 		);
 
 		if ($this->session->userdata('profession') == 'student'){
+			$this->load->model('register_model');
+			$page_data['existingApp'] = $this->register_model->checkForApp($page_data['user']);
 			$this->load->view('templates/header', $page_data);
 			$this->load->view('student_home', $page_data);
 			$this->load->view('templates/footer');
@@ -29,7 +31,6 @@ class Welcome extends CI_Controller {
 			$this->load->view('templates/footer');
 		}
 		else if ($this->session->userdata('profession') == 'admin'){
-			//$this->load->view('admin_home', $page_data);
 			redirect('admin');
 		}
 		else{
