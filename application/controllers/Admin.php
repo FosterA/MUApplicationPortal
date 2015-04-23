@@ -5,7 +5,7 @@ class Admin extends CI_Controller {
 	
 	public function index(){
 		if (!isset($_SESSION['logged_in'])){
-			$this->load->view('register');
+			redirect('register');
 		}
 
 		$data=$this->pageData();
