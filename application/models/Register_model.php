@@ -25,7 +25,7 @@
 				$res=$this->db->query($sql,$data);
 			}
 			else{
-				$sql='select * from student where student_id=? and password=md5(?)';
+				$sql='SELECT * FROM student WHERE student_id=? AND password=md5(?)';
 				$data[0]=$this->input->post('username');
 				$data[1]=$this->input->post('password');
 				$res=$this->db->query($sql,$data);
@@ -61,5 +61,19 @@
 			$res=$this->db->query($sql,$data);
 			return $res->num_rows();
 		}
+
+		public function checkForApp($user){
+			$sql = "SELECT * FROM app WHERE student_id = ?";
+			$lower = strtolower($user);
+			$data[0]=$lower;
+			$valid = $this->db->query($sql,$data);
+
+			if($valid->num_rows()==0){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}	
 	}
 ?>
