@@ -15,6 +15,16 @@
   		height:200px;
   		margin:-100px 407px;
   	}
+  	.container{
+  		margin: 0 auto;
+  		width: 900px;
+  	}
+
+  	.form-body{
+  		color: black;
+  		width: auto;
+  		font-size: 14px;
+  	}
 .calender{ width:319px;margin:50px auto;top:0;left:0;border:4px #D6D6D6 solid;background:#EBEBEB;position:absolute;display:none;z-index:999;}
 .calendertb{width:100%;}
 .calendertb td{width:35px;height:35px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;font-size:14px;font-weight:bold;}
@@ -31,15 +41,16 @@
 
 </style>
 
-<link rel="stylesheet" href="<?=base_url('docsupport/style.css')?>">
+
 <link rel="stylesheet" href="<?=base_url('docsupport/prism.css')?>">
 <script  src="<?=base_url('jquery-ui-1.11.2/js/jquery-1.7.2.min.js')?>"></script>
 <script src="<?=base_url('jquery-ui-1.11.2/js/manhuaDate.1.0.js')?>"></script>
 </head>
 <body>
+<div class="container">
+	<div class="form-body">
 	<form method="POST" name="application">
-		<br><div align="center">TA/PLA Application Form</div><br>
-		<br><left>
+		<br>
 		<input type="hidden" name="id" value="<?=$this->session->userdata('user')?>">
 		&nbsp;First Name: &nbsp;
 		<input type="text" name="fname">
@@ -141,21 +152,15 @@
 		<br>
 		<?php }?>
 		<br>
-		&nbsp;&nbsp;&nbsp;<button type="button" onclick="sub()">button</button><br><br>
+		&nbsp;&nbsp;&nbsp;<button type="button" onclick="sub()">Submit Application</button><br><br>
 	</form>
+	</div>
+	</div>
 	
 	
     <script type="text/javascript">
    	function fun(){
-   		var content=document.getElementById('show');
-   		content.innerHTML="";
-   		var obj=document.getElementById('taught');
-   		var choose=new Array();
-   		for(var i=0;i<obj.length;i++){
-   			if(obj[i].selected){
-   				choose[choose.length]=obj[i].value;
-   			}
-   		}
+   		
    
    		for(var i=0;i<choose.length;i++){
    			var node=document.createElement("input");
