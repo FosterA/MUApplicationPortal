@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Registration Form</title>
+        <title>Application Portal</title>
 </head>
     <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/style.css">
     <script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
     <script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
 <style>
-
     body {
       width: 100%;
       height: 100%;
@@ -32,7 +31,6 @@
 
 </style>
 <body>
-
     <div id="container1" class="container">
         <button id="button1" type="button">I want to login</button><br>
         <button id="button2" type="button">I want to register</button>
@@ -44,9 +42,9 @@
             <input type="text" name="username" class="username" placeholder="Username">
             <input type="password" name="password" class="password" placeholder="Password">
             <select name='profession' id="profession" onchange="identity()">
-          		<option value="student">student</option>
-         		<option value="instructor">instructor</option>
-        		<option value="admin">admin</option>
+            	<option value="student">student</option>
+           		<option value="instructor">instructor</option>
+          		<option value="admin">admin</option>
             </select>
             <button id="submit" type="submit">Sign me in</button>
             <button class="back" type="button">Back</button>
@@ -66,51 +64,48 @@
         </form>
         <?php echo validation_errors('<p class="error">'); ?>
     </div>
-
 </body>
-<script>
-	function ajaxCheck(username){
-		var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("show").innerHTML = xmlhttp.responseText;
-            }
-        }
-        xmlhttp.open("post","<?=site_url('register/checkUnique')?>",true);
- 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
- 		xmlhttp.send("username="+username);
-	}
-	$(document).ready(function(){
-	
-		$("#button1").click(function(){
-			$("#container1").css("display","none");
-			$("#container2").css("display","block");
-		});
-       
-		$("#button2").click(function(){
-			$("#container1").css("display","none");
-			$("#container3").css("display","block");
-		});  
 
-		$(".back").click(function(){
-			$("#container2").css("display","none");
-			$("#container3").css("display","none");
-			$("#container1").css("display","block");
-		}); 
-	
-	});
-	function identity(){
-		var option=document.getElementById('profession');
-   		var form=document.forms['login'];
-   		var profession=option.value;
-   		var url="<?=base_url('register')?>"+"/"+profession;
-		form.action=url;
-		}
-	<?php if(isset($error)){?>
-	alert("<?=$error?>");
-	<?php } ?>
-  <?php if(isset($confirm)){?>
-  alert("<?=$confirm?>");
-  <?php } ?>
-</script>
+  <script>
+    function ajaxCheck(username){
+  		var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("show").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.open("post","<?=site_url('register/checkUnique')?>",true);
+   		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+   		xmlhttp.send("username="+username);
+  	}
+  	$(document).ready(function(){
+      $("#button1").click(function(){
+  		  $("#container1").css("display","none");
+  		  $("#container2").css("display","block");
+      });
+      $("#button2").click(function(){
+  			$("#container1").css("display","none");
+  			$("#container3").css("display","block");
+  		});  
+      $(".back").click(function(){
+  			$("#container2").css("display","none");
+  			$("#container3").css("display","none");
+  			$("#container1").css("display","block");
+  		}); 
+  	
+  	});
+  	function identity(){
+  		var option=document.getElementById('profession');
+     	var form=document.forms['login'];
+     	var profession=option.value;
+     	var url="<?=base_url('register')?>"+"/"+profession;
+  		form.action=url;
+    }
+  	<?php if(isset($error)){?>
+      alert("<?=$error?>");
+  	<?php } ?>
+    <?php if(isset($confirm)){?>
+      alert("<?=$confirm?>");
+    <?php } ?>
+  </script>
 </html>

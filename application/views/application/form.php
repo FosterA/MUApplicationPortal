@@ -67,7 +67,7 @@
 		-ms-transition: all .2s;
 
 }
-.calender{ width:319px;margin:50px auto;top:0;left:0;border:4px #D6D6D6 solid;background:#EBEBEB;position:absolute;display:none;z-index:999;}
+/*.calender{ width:319px;margin:50px auto;top:0;left:0;border:4px #D6D6D6 solid;background:#EBEBEB;position:absolute;display:none;z-index:999;}
 .calendertb{width:100%;}
 .calendertb td{width:35px;height:35px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;font-size:14px;font-weight:bold;}
 .calendertb td.hover,.calendertb td.weekendhover{background:#D6D6D6;}
@@ -77,7 +77,7 @@
 .preMonth{ font-size:14px;font-weight:bold;cursor:pointer;margin-right:18px;color:#0080FF;}
 .nextMonth{ font-size:14px;font-weight:bold;cursor:pointer;margin-left:18px;color:#0080FF;}
 .mh_date{width:319px;height:30px;line-height:20px;padding:5px;cursor:pointer;background:white url("<?=base_url('images/dateIco.png')?>") no-repeat right center;}
-.zhezhao{width:100%;height:100%;position:fixed;z-index:998;background:#fff;filter:alpha(opacity=10);opacity:0.1;display:none;}
+.zhezhao{width:100%;height:100%;position:fixed;z-index:998;background:#fff;filter:alpha(opacity=10);opacity:0.1;display:none;}*/
 
 
 
@@ -85,8 +85,8 @@
 
 
 <link rel="stylesheet" href="<?=base_url('docsupport/prism.css')?>">
-<script  src="<?=base_url('jquery-ui-1.11.2/js/jquery-1.7.2.min.js')?>"></script>
-<script src="<?=base_url('jquery-ui-1.11.2/js/manhuaDate.1.0.js')?>"></script>
+<!--<script  src="<?=base_url('jquery-ui-1.11.2/js/jquery-1.7.2.min.js')?>"></script>
+<script src="<?=base_url(/*'jquery-ui-1.11.2/js/manhuaDate.1.0.js'*/)?>"></script>-->
 </head>
 <body>
 <div class="container">
@@ -137,8 +137,9 @@
 		<br>
 		<?php }?>
 		
-		<br>&nbsp;Anticipated graduation date:&nbsp;
- 		<input type="text" class="mh_date" name='gradDate' id='date'>
+		<br><!--&nbsp;Anticipated graduation date:&nbsp;
+ 		<input type="text" class="mh_date" name='gradDate' id='date'>-->
+ 			<p>Anticipated Graduation Date: <input type="text" id="gradDate"></p>
 		<br>
 
 		<br>&nbsp;Course(s) You Are Currently Teaching: <br>&nbsp;(Select multiple by holding command)<br>
@@ -273,9 +274,14 @@
 		form.submit();
 		}
 		
+	$(function() {
+    	$( "#gradDate" ).datepicker({
+    		minDate: 0,
+      		dateFormat: "yy-mm-dd",
+    	});
+	});
 
-
-$(document).ready(function(){
+/*$(document).ready(function(){
     $("input.mh_date").manhuaDate({					       
 		Event : "click",//可选				       
 		Left : 0,//弹出时间停靠的左边位置
@@ -285,7 +291,7 @@ $(document).ready(function(){
 		beginY : 1949,//年份的开始默认为1949
 		endY :2100//年份的结束默认为2049
 	});
-});
+});*/
   </script>
 </body>
 </html>

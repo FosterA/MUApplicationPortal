@@ -8,6 +8,7 @@
 			$this->db->query("use applicationportal");
 		}
 
+		//Method to check if the entered login credentials exist in the database.
 		public function validate(){
 			$profession = $this->input->post('profession');
 
