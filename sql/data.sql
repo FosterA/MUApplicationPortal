@@ -44,6 +44,36 @@ create table app(
 	foreign key(student_id) references student(student_id) on delete cascade
 )engine=InnoDB;
 
+create table agree(
+	student_id varchar(128),
+	firstName varchar(128),
+	lastName varchar(128),
+	gpa double,
+	phoneNumber varchar(128),
+	email varchar(128),
+	graduateDate date,
+	workPlace varchar(256),
+	primary key(student_id),
+	foreign key(student_id) references student(student_id) on delete cascade
+)engine=InnoDB;
+
+
+create table disagree(
+	student_id varchar(128),
+	firstName varchar(128),
+	lastName varchar(128),
+	gpa double,
+	phoneNumber varchar(128),
+	email varchar(128),
+	graduateDate date,
+	workPlace varchar(256),
+	primary key(student_id),
+	foreign key(student_id) references student(student_id) on delete cascade
+)engine=InnoDB;
+
+
+
+
 create table undergraduate(
 	student_id varchar(128),
 	program varchar(128),
@@ -130,7 +160,7 @@ create table comment(
 CREATE TABLE `status` (
   `student_id` varchar(128) NOT NULL DEFAULT '',
   `nation` varchar(128) DEFAULT NULL,
-  `degree` varchar(128) DEFAULT NULL
+  `Degrees` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ALTER TABLE `status`
   ADD PRIMARY KEY (`student_id`);
@@ -142,8 +172,7 @@ select *
 from status natural join app natural join undergraduate natural join interStudent;
 
 create view interGra as
-select *
-from status natural join app natural join graduate natural join interStudent;
+select * from status natural join app natural join graduate natural join interStudent;
 
 create view nativeUnder as
 select *
@@ -154,5 +183,5 @@ select *
 from status natural join app natural join graduate;
 
 create view statusname as
-select student_id,firstName,lastName,nation,degree
+select student_id,firstName,lastName,nation,Degrees
 from status natural join app; 

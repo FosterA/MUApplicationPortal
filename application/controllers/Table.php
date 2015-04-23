@@ -70,7 +70,9 @@ class Table extends CI_Controller {
 		$id=$this->uri->segment('3');
 		$info=$this->table_model->getInfor($id);
 		$i=0;
-		
+		echo "<pre>";
+			print_r($info);
+		echo "<pre>";
 		foreach($info['res'][0] as $key=>$value){
 			$data[$i][0]=$key;
 			$data[$i++][1]=$value;

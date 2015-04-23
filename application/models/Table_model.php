@@ -18,12 +18,12 @@
 			return $res;
 		}
 		public function getInfor($id){
-			$sql="select nation,degree from status where student_id=?";
+			$sql="select nation,Degrees from status where student_id=?";
 			$data['student_id']=$id;
 			$res=$this->db->query($sql,$id);
 			$array=$res->result_array();
 			$nation=$array[0]['nation'];
-			$degree=$array[0]['degree'];
+			$degree=$array[0]['Degrees'];
 			if($nation=='international'){
 				if($degree=='undergraduate'){
 					$sql="select * from interUnder where student_id=?";
