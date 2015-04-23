@@ -2,12 +2,17 @@
 <html>
 <head>
 <title>Application Form</title>
-
+<link href="<?=base_url();?>css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
 <style>
 	body {
  background-image:url(<?=base_url('images/old_paper_background-wallpaper-1280x800.jpg')?>);
  background-size: cover;
  }
+ 	.ms-container{
+  		background: transparent url(<?=base_url('images/switch.png')?>) no-repeat 50% 50%;
+  		width: 370px;
+	}
+	
 	.chosen-select:hover{
   		height:200px;
   	}
@@ -85,8 +90,7 @@
 
 
 <link rel="stylesheet" href="<?=base_url('docsupport/prism.css')?>">
-<!--<script  src="<?=base_url('jquery-ui-1.11.2/js/jquery-1.7.2.min.js')?>"></script>
-<script src="<?=base_url(/*'jquery-ui-1.11.2/js/manhuaDate.1.0.js'*/)?>"></script>-->
+
 </head>
 <body>
 <div class="container">
@@ -144,20 +148,21 @@
 
 		<br>&nbsp;Course(s) You Are Currently Teaching: <br>&nbsp;(Select multiple by holding command)<br>
 		&nbsp;
-		<select name="teaching[]" style="width:350px;" class="chosen-select" multiple tabindex="6">
-        	<?php foreach($course as $val):?>
+		
+		<select name="teaching[]" style="width:350px;" id="teaching" class="chosen-select" multiple tabindex="6">  
+          	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
-        		 <optgroup label="<?=$dept?>">
+        		<optgroup label="<?=$dept?>">
         		 	<?php foreach($$dept as $name):?>
         		 		<option><?=$name['courseName']?></option>
         		 	<?php endforeach;?>
         		 </optgroup>
           	<?php endforeach;?>
-          </select>
+        </select>
 
 		<br>&nbsp;Course(s) You Have Previously Taught: <br>&nbsp;(Select multiple by holding command)<br>
 		&nbsp;
-		<select name="taught[]" style="width:350px;" class="chosen-select" multiple tabindex="6">
+		<select name="taught[]" style="width:350px;" class="chosen-select" id='taught' multiple tabindex="6">
         	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
         		 <optgroup label="<?=$dept?>">
@@ -169,7 +174,10 @@
           </select>
 		<br>&nbsp;Course(s) You Would Like to Teach: <br>&nbsp;(Select multiple by holding command)<br>
 		&nbsp;
-		<select name="teach[]" style="width:350px;" class="chosen-select" onchange="fun()" id='taught' class="select" multiple tabindex="6">
+
+
+
+		<select name="teach[]" style="width:350px;" class="chosen-select" onchange="fun()" id='teach' class="select" multiple tabindex="6">
         	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
         		 <optgroup label="<?=$dept?>">
@@ -180,6 +188,17 @@
           	<?php endforeach;?>
           </select>
 		<br>
+		
+
+
+
+
+
+
+
+
+
+
 		<div id="show"></div>
 		<br>&nbsp;Other Places You Work:&nbsp;
 		<input type="text" name="work">
@@ -200,26 +219,28 @@
 	</div>
 	</div>
 	
-	
+	<script src="<?=base_url('js/jquery.multi-select.js');?>" type="text/javascript"></script>
     <script type="text/javascript">
+
    	function fun(){
    		
    
-   		for(var i=0;i<choose.length;i++){
+   		for(var i=0;i<teach.length;i++){
    			var node=document.createElement("input");
    			var label=document.createElement("label");
 			var br=document.createElement("br");
    			node.type='text';
-   			node.name=choose[i];
-   			node.id=choose[i];
+   			node.name=teach[i];
+   			node.id=teach[i];
    			node.class="course";
-   			label.for=choose[i];
-   			label.innerHTML=choose[i]+" score:";
+   			label.for=teach[i];
+   			label.innerHTML=teach[i]+" score:";
    			content.appendChild(label);
    			content.appendChild(node);
    			content.appendChild(br);
    		}
    	} 
+
    	function sub(){
    		var form=document.forms['application'];
    		var x=form['fname'].value;
@@ -273,13 +294,23 @@
 		<?php }}?>
 		form.submit();
 		}
-		
+	
+	//JavaScript function for choosing gradDate from calandar	
 	$(function() {
     	$( "#gradDate" ).datepicker({
     		minDate: 0,
       		dateFormat: "yy-mm-dd",
     	});
 	});
+
+	//JavaScript function for courses the applicant is currently teaching multiselect box
+	$('#teaching').multiSelect()
+
+	//JavaScript function for courses the applicant has taught multiselect box
+	$('#taught').multiSelect()
+
+	//JavaScript function for courses the applicant has taught multiselect box
+	$('#teach').multiSelect()	
 
 /*$(document).ready(function(){
     $("input.mh_date").manhuaDate({					       
