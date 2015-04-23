@@ -4,7 +4,10 @@
 <title>Application Form</title>
 
 <style>
-	
+	body {
+ background-image:url(<?=base_url('images/old_paper_background-wallpaper-1280x800.jpg')?>);
+ background-size: cover;
+ }
 	.chosen-select:hover{
   		height:200px;
   	}
