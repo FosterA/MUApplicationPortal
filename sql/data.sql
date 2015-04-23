@@ -177,6 +177,27 @@ create table course(
 	primary key(courseName)
 )engine=innodb;
 
+
+INSERT INTO `course` (`courseName`, `deptment`) VALUES
+('bio_1010', 'biology'),
+('bio_1011', 'biology'),
+('bio_1012', 'biology'),
+('bio_1013', 'biology'),
+('bio_1014', 'biology'),
+('cs_1010', 'computerScience'),
+('cs_1011', 'computerScience'),
+('cs_1012', 'computerScience'),
+('cs_1013', 'computerScience'),
+('cs_1014', 'computerScience'),
+('cs_1015', 'computerScience'),
+('phy_1010', 'physics'),
+('phy_1011', 'physics'),
+('phy_1012', 'physics'),
+('phy_1013', 'physics'),
+('phy_1014', 'physics'),
+('qwe', 'cccccc'),
+('qwewqeqw', 'cccccc');
+
 create table curTeach(
 	student_id varchar(128),
 	courseName varchar(128),
