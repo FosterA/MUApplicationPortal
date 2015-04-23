@@ -28,7 +28,7 @@
 	            		</select>
 	            		<br>
 	            		<br>
-						<p>Set Application Submittal Winow</p>
+						<p>Set Application Submittal Window</p>
 						<label for="appfrom">From</label>
 						<input type="text" id="appfrom" name="appfrom">
 						<label for="appto">to</label>
