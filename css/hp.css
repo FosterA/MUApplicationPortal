@@ -203,14 +203,13 @@ hr {
 
 #page {
 	overflow: hidden;
-	padding: 50px 0px 0px 5px;
+	padding: 50px 0px 0px 0px;
 }
 
 /** CONTENT */
 
 #content {
-	margin-left: auto;
-	margin-right: auto;
+	margin:0 auto;
 	width: 640px;
 	text-align: center;
 	text-shadow: 1px 1px 0px #FFFFFF;
