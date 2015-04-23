@@ -9,7 +9,7 @@ class Admin extends CI_Controller {
 		}
 
 		$data=$this->pageData();
-		$this->load->view('templates/header', $data);
+		$this->load->view('templates/header_admin', $data);
 		$this->load->view('admin_home', $data);
 		$this->load->view('templates/footer');
 	}

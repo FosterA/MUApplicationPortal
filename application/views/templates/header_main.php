@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	<link href="https://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css" />
+	<link href="http://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>css/hp.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="<?=base_url();?>images/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?=base_url();?>images/apple-touch-icon-60x60.png">
@@ -51,11 +51,7 @@
 					<h1 style="color: white; padding: 20px 5px 20px 5px; width: 600px; letter-spacing: 4px;">TA / PLA Application Portal</h1>
 				</div>
 				<div id="menu">
-					<ul>
-						<li class="active"><a href="<?=base_url('welcome/home')?>" accesskey="1" title="">Home</a></li>
-						<li><a href="#" accesskey="4" title="">About</a></li>
-						<li><a href="<?=base_url('register/logout')?>" accesskey="5" title="">Logout</a></li>
-					</ul>
+					<p id="command">Sign up to apply for a teaching assistant position, or login to check the status of your existing application.</p>
 				</div>
 			</div>
 		</div>

@@ -4,7 +4,10 @@
 <title>Application Form</title>
 
 <style>
-	
+	body {
+ background-image:url(<?=base_url('images/old_paper_background-wallpaper-1280x800.jpg')?>);
+ background-size: cover;
+ }
 	.chosen-select:hover{
   		height:200px;
   	}
@@ -15,6 +18,55 @@
   		height:200px;
   		margin:-100px 407px;
   	}
+  
+
+  	.form-body{
+  		color: black;
+  		width: auto;
+  		font-size: 14px;
+  	}
+
+	.container{
+	margin-top: 15px;
+	width: 800px;
+	border: 2px solid black;
+	border-radius: 20px;
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+
+	font-size: 16px;
+	color: black;
+	}
+	.btn_wrapper{
+		width: 300px; 
+	  	margin: 0 auto;
+	}
+	.btn{
+	  	cursor: pointer;
+		width: 300px;
+		height: 44px;
+		margin-top: 20px
+		padding: 0;
+		background: #ef4300;
+		-moz-border-radius: 6px;
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+	 	border: 1px solid #ff730e;
+	 	-moz-box-shadow: 0 15px 30px 0 rgba(255,255,255,.25) inset, 0 2px 7px 0 rgba(0,0,0,.2);
+		-webkit-box-shadow: 0 15px 30px 0 rgba(255,255,255,.25) inset, 0 2px 7px 0 rgba(0,0,0,.2);
+		box-shadow: 0 15px 30px 0 rgba(255,255,255,.25) inset, 0 2px 7px 0 rgba(0,0,0,.2);
+		font-size: 14px;
+		font-weight: 700;
+		color: #fff;
+		text-shadow: 0 1px 2px rgba(0,0,0,.1);
+		-o-transition: all .2s;
+		-moz-transition: all .2s;
+		-webkit-transition: all .2s;
+		-ms-transition: all .2s;
+
+}
 .calender{ width:319px;margin:50px auto;top:0;left:0;border:4px #D6D6D6 solid;background:#EBEBEB;position:absolute;display:none;z-index:999;}
 .calendertb{width:100%;}
 .calendertb td{width:35px;height:35px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;font-size:14px;font-weight:bold;}
@@ -31,15 +83,16 @@
 
 </style>
 
-<link rel="stylesheet" href="<?=base_url('docsupport/style.css')?>">
+
 <link rel="stylesheet" href="<?=base_url('docsupport/prism.css')?>">
 <script  src="<?=base_url('jquery-ui-1.11.2/js/jquery-1.7.2.min.js')?>"></script>
 <script src="<?=base_url('jquery-ui-1.11.2/js/manhuaDate.1.0.js')?>"></script>
 </head>
 <body>
+<div class="container">
+	<div class="form-body">
 	<form method="POST" name="application">
-		<br><div align="center">TA/PLA Application Form</div><br>
-		<br><left>
+		<br>
 		<input type="hidden" name="id" value="<?=$this->session->userdata('user')?>">
 		&nbsp;First Name: &nbsp;
 		<input type="text" name="fname">
@@ -141,21 +194,15 @@
 		<br>
 		<?php }?>
 		<br>
-		&nbsp;&nbsp;&nbsp;<button type="button" onclick="sub()">button</button><br><br>
+		&nbsp;&nbsp;&nbsp;<button class="btn" type="button" onclick="sub()">Submit Application</button><br><br>
 	</form>
+	</div>
+	</div>
 	
 	
     <script type="text/javascript">
    	function fun(){
-   		var content=document.getElementById('show');
-   		content.innerHTML="";
-   		var obj=document.getElementById('taught');
-   		var choose=new Array();
-   		for(var i=0;i<obj.length;i++){
-   			if(obj[i].selected){
-   				choose[choose.length]=obj[i].value;
-   			}
-   		}
+   		
    
    		for(var i=0;i<choose.length;i++){
    			var node=document.createElement("input");
