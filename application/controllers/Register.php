@@ -65,7 +65,7 @@ class Register extends CI_Controller {
  				$data['confirm']="Registration sucessful, Please login.";
  				$this->load->view('templates/header');
 				$this->load->view('register',$data);
-				$this->load->view('templates/footer');
+				
 			}
 		}
 	}

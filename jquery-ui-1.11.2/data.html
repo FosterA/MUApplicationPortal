@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+
+
+.calender{ width:319px;margin:50px auto;top:0;left:0;border:4px #D6D6D6 solid;background:#EBEBEB;position:absolute;display:none;z-index:999;}
+.calendertb{width:100%;}
+.calendertb td{width:35px;height:35px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;font-size:14px;font-weight:bold;}
+.calendertb td.hover,.calendertb td.weekendhover{background:#D6D6D6;}
+.calendertb th{width:35px;height:30px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;color:#979797;}
+.tdtoday{ background:#0080FF;color:#fff;width:35px;height:35px;border:1px #CCCCCC solid;text-align:center;vertical-align:middle;cursor:pointer;font-size:14px;font-weight:bold;}
+.getyear{ height:35px;line-height:35px;width:100%;text-align:center;}
+.preMonth{ font-size:14px;font-weight:bold;cursor:pointer;margin-right:18px;color:#0080FF;}
+.nextMonth{ font-size:14px;font-weight:bold;cursor:pointer;margin-left:18px;color:#0080FF;}
+.mh_date{width:319px;height:30px;line-height:20px;padding:5px;cursor:pointer;background:white url('../image1/dateIco.png') no-repeat right center;}
+.zhezhao{width:100%;height:100%;position:fixed;z-index:998;background:#fff;filter:alpha(opacity=10);opacity:0.1;display:none;}
+
+
+</style>
+
+<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+<script src="./js/manhuaDate.1.0.js"></script>
+<script type="text/javascript">
+$(function (){
+
+	$("input.mh_date").manhuaDate({					       
+		Event : "click",//可选				       
+		Left : 0,//弹出时间停靠的左边位置
+		Top : -16,//弹出时间停靠的顶部边位置
+		fuhao : "-",//日期连接符默认为-
+		isTime : false,//是否开启时间值默认为false
+		beginY : 1949,//年份的开始默认为1949
+		endY :2100//年份的结束默认为2049
+	});
+	
+});
+</script>
+
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="container2">
+
+<form method='post' action='../process/personInform.php'> 
+<table>
+<tr>
+ <td><label for='firstName'>FirstName:</lable></td>
+ <td><input type='text' name='firstName' id='firstName'></td>
+</tr>
+<tr>
+ <td><label for='lastName'>LastName:</lable></td>
+ <td><input type='text' name='lastName' id='lastName'></td>
+</tr>
+<tr>
+ <td><label for='date'>Date Of Birth:</lable></td>
+ <td><input type="text" class="mh_date" name='date' id='date'></td>
+</tr>
+<tr>
+ <td><label for='phoneNum'>Phone Num.:</lable></td>
+ <td><input type='text' name='phoneNum' id='phoneNum'></td>
+</tr>
+<tr>
+ <td><input type='submit' value='submit'></td>
+</tr>
+</table>
+</form>
+</div>
+
+
+
+
+
+
+
+<script>
+
+</script>
+</body>
+</html>

@@ -18,29 +18,29 @@
 			return $res;
 		}
 		public function getInfor($id){
-			$sql="select nation,degree from status where student_id=?";
-			$data[0]=$id;
+			$sql="select nation,Degrees from status where student_id=?";
+			$data['student_id']=$id;
 			$res=$this->db->query($sql,$id);
 			$array=$res->result_array();
 			$nation=$array[0]['nation'];
-			$degree=$array[0]['degree'];
+			$degree=$array[0]['Degrees'];
 			if($nation=='international'){
 				if($degree=='undergraduate'){
-					$sql="select * from interunder where student_id=?";
+					$sql="select * from interUnder where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}else{
-					$sql="select * from intergra where student_id=?";
+					$sql="select * from interGra where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}
 			}else{
 				if($degree=='undergraduate'){
-					$sql="select * from nativeunder where student_id=?";
+					$sql="select * from nativeUnder where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}else{
-					$sql="select * from nativegra where student_id=?";
+					$sql="select * from nativeGra where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}

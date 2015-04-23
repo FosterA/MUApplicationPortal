@@ -92,12 +92,16 @@ h1 {
 
 
 </style>
+<link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
+<script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
+<script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
+ 
 </head>
 <body>
 	<?=$table?>
 	<?=$links?>
-	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+	<div id="show"></div>
+
 <script>
 $(document).ready(function(){
 
@@ -105,12 +109,23 @@ $(document).ready(function(){
     for(var i=1;i<tr.length;i++){
     	var str=tr[i].children[1].innerHTML;
     	var a1=tr[i].children[6].children[0];
-    	a1.href="<?=base_url('index.php/table/test')?>"+'/'+str;
+    	a1.value="<?=base_url('index.php/table/test')?>"+'/'+str;
     }
-	
+    
    
 
 });
+function showInfo(href){
+		var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("show").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("post",href,true);
+ 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+ 		xmlhttp.send();
+	}
 
 </script>
 </script>

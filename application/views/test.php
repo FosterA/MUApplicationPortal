@@ -2,49 +2,139 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <style>
-	select:hover{
-  		height:200px;
-  	}
-  </style>
-  <title>Chosen: A jQuery Plugin by Harvest to Tame Unwieldy Select Boxes</title>
-  <link rel="stylesheet" href="<?=base_url('docsupport/style.css')?>">;
-  <link rel="stylesheet" href="<?=base_url('docsupport/prism.css')?>">
-  <link rel="stylesheet" href="<?=base_url('chosen.css')?>">
+  
+<style>
 
+
+body {
+	background: #fafafa url(http://jackrugile.com/images/misc/noise-diagonal.png);
+	color: #444;
+	font: 100%/30px 'Helvetica Neue', helvetica, arial, sans-serif;
+	text-shadow: 0 1px 0 #fff;
+}
+
+strong {
+	font-weight: bold; 
+}
+
+em {
+	font-style: italic; 
+}
+
+table {
+	background: #f5f5f5;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 12px;
+	line-height: 24px;
+	margin: 30px auto;
+	text-align: left;
+	width: 300px;
+}	
+
+th {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+	border-left: 1px solid #555;
+	border-right: 1px solid #777;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #333;
+	box-shadow: inset 0 1px 0 #999;
+	color: #fff;
+  font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;	
+}
+
+th:after {
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+	content: '';
+	display: block;
+	height: 25%;
+	left: 0;
+	margin: 1px 0 0 0;
+	position: absolute;
+	top: 25%;
+	width: 100%;
+}
+
+th:first-child {
+	border-left: 1px solid #777;	
+	box-shadow: inset 1px 1px 0 #999;
+}
+
+th:last-child {
+	box-shadow: inset -1px 1px 0 #999;
+}
+
+td {
+	border-right: 1px solid #fff;
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
+}
+
+td:first-child {
+	box-shadow: inset 1px 0 0 #fff;
+}	
+
+td:last-child {
+	border-right: 1px solid #e8e8e8;
+	box-shadow: inset -1px 0 0 #fff;
+}	
+
+tr {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png);	
+}
+
+tr:nth-child(odd) td {
+	background: #f1f1f1 url(http://jackrugile.com/images/misc/noise-diagonal.png);	
+}
+
+tr:last-of-type td {
+	box-shadow: inset 0 -1px 0 #fff; 
+}
+
+tr:last-of-type td:first-child {
+	box-shadow: inset 1px -1px 0 #fff;
+}	
+
+tr:last-of-type td:last-child {
+	box-shadow: inset -1px -1px 0 #fff;
+}	
+
+tbody:hover td {
+	color: transparent;
+	text-shadow: 0 0 3px #aaa;
+}
+
+tbody:hover tr:hover td {
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
+}</style>
+<link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
+<script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
+<script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
+ 
 </head>
 <body>
-    <div id="container">
-      <div id="content">
-		<?php echo form_open('index.php/test/show'); ?>
-          <em>Multiple Select with Groups</em>
-          <select name="course[]" data-placeholder="Your Favorite Football Team" style="width:350px;" class="chosen-select" id="select" multiple tabindex="6">
-        	<?php foreach($course as $val):?>
-        		<?php $dept=$val['deptment'];?>
-        		 <optgroup label="<?=$dept?>">
-        		 	<?php foreach($$dept as $name):?>
-        		 		<option><?=$name['courseName']?></option>
-        		 	<?php endforeach;?>
-        		 </optgroup>
-          	<?php endforeach;?>
-          </select>
-          <input type="submit" value="Submit" />
-           </form>
-    </div>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    var config = {
-      '.chosen-select'           : {},
-      '.chosen-select-deselect'  : {allow_single_deselect:true},
-      '.chosen-select-no-single' : {disable_search_threshold:10},
-      '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-      '.chosen-select-width'     : {width:"95%"}
-    }
-    for (var selector in config) {
-      $(selector).chosen(config[selector]);
-    }
-  </script>
-
+	<?=$html?>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var ele=$("<div id='div1'>hello word<p>pp</p></div>");
+			$('body').append(ele);
+		});
+		$('body').delegate('p','click',function(){
+			alert('ok');
+		});
+	});
+	var responseText='<?php echo $json; ?>';
+ 	var obj=JSON.parse(responseText);
+	console.log(obj);
+</script>
 </body>
 </html>

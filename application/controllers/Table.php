@@ -47,12 +47,12 @@ class Table extends CI_Controller {
                     'heading_cell_end'    => '</span></th>',
 
                     'row_start'           => "<tr><td><image src='$url'></td>",
-                    'row_end'             => '<td><a class="first" href="#">detail</a></td></tr>',
+                    'row_end'             => '<td><button class="detail" type="button" onclick="showInfo(this.value)">detail</button></td></tr>',
                     'cell_start'          => '<td>',
                     'cell_end'            => '</td>',
 
                     'row_alt_start'       => "<tr><td><image src='$url'></td>",
-                    'row_alt_end'         => '<td><a class="first" href="#">detail</a></td></tr>',
+                    'row_alt_end'         => '<td><button class="detail" type="button" onclick="showInfo(this.value)">detail</button></td></tr>',
                     'cell_alt_start'      => '<td>',
                     'cell_alt_end'        => '</td>',
 
@@ -65,11 +65,67 @@ class Table extends CI_Controller {
 	}
 
 	public function test(){
+		$this->load->library('table');
 		$this->load->model("table_model");
 		$id=$this->uri->segment('3');
-		$data=$this->table_model->getInfor($id);
-		echo "<pre>";
-		echo print_r($data);
-		echo "</pre>";
+		$info=$this->table_model->getInfor($id);
+		$i=0;
+		
+		foreach($info['res'][0] as $key=>$value){
+			$data[$i][0]=$key;
+			$data[$i++][1]=$value;
+		}
+		$tmpl = array (
+                    'table_open'          => '<table class="rwd-table">',
+
+                    'heading_row_start'   => '<tr>',
+                    'heading_row_end'     => '</tr>',
+                    'heading_cell_start'  => '<td>',
+                    'heading_cell_end'    => '</td>',
+
+                    'row_start'           => "<tr>",
+                    'row_end'             => '</tr>',
+                    'cell_start'          => '<td>',
+                    'cell_end'            => '</td>',
+
+                    'row_alt_start'       => "<tr>",
+                    'row_alt_end'         => '</tr>',
+                    'cell_alt_start'      => '<td>',
+                    'cell_alt_end'        => '</td>',
+
+                    'table_close'         => '</table>'
+              );
+
+		$this->table->set_template($tmpl);
+		$app=$this->table->generate($data);
+		$app="<div id='app'>".$app."</div>";
+		
+		$curTeach="<ul>";
+		unset($value);
+		foreach($info['curTeach'] as $value){
+			$curTeach=$curTeach."<li>".$value['courseName']."</li>";
+		}
+		$curTeach=$curTeach."</ul>";
+		$curTeach="<div id='curTeach'>".$curTeach."</div>";
+		
+		$preTeach="<ul>";
+		foreach($info['preTeach'] as $value){
+			$preTeach=$preTeach."<li>".$value['courseName']."</li>";
+		}
+		$preTeach=$preTeach."</ul>";
+		$preTeach="<div id='preTeach'>".$preTeach."</div>";
+		
+		$likeTeach="<select name='likeTeach'>";
+		foreach($info['likeTeach'] as $value){
+			$likeTeach=$likeTeach."<option value=".$value['courseName']."> course name:".$value['courseName']." score:".$value['score']."</option>"; 
+		}
+		$likeTeach=$likeTeach."</select>";
+		$likeTeach="<form action=".base_url('index.php/table/**')."><input type='hidden' value=$id >".$likeTeach."<br><button onclick='agree()' type='button'>agree</button><button onclick='disagree()' type='button'>disagree</button></form>";
+		$likeTeach="<div id='likeTeach'>".$likeTeach."</div>";
+		
+		$allInform=$app.$curTeach.$preTeach.$likeTeach;
+		
+		echo $allInform;
+		
 	}
 }
