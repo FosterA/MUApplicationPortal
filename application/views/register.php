@@ -18,7 +18,7 @@
 
     body::after {
       content: "";
-      background-image:url(<?=base_url('images/mizzou.jpg')?>);
+      background-image:url(<?=base_url('images/mizzoufall.jpg')?>);
       background-position: center;
       background-size: cover;
       opacity: 2;
