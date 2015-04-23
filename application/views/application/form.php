@@ -69,7 +69,7 @@
 		-ms-transition: all .2s;
 
 }
- input {
+#score input {
             width: 270px;
             height: 42px;
             margin-top: 25px;
@@ -90,17 +90,17 @@
             -webkit-transition: all .2s;
             -ms-transition: all .2s;
         }
-	input.score{
+#score input.score{
 		width: 100px;
         height: 30px;
         margin:2px;
 	}
 	div#score {
   	position: absolute;
-  	top: 168%;
+  	top: 138%;
   	left: 55%;
  	 z-index: 100;
- 	 background: #FFF;
+ 	 background:rgba(66, 147, 33, 0.58);
  	 color: #000;
  	 border: 5px outset rgb(49, 140, 85);
  	 border-radius: 5px;
@@ -108,7 +108,7 @@
   	font-size: 12px;
   	overflow:scroll;
   	width:200px;
-  	height:250px;
+  	height:230px;
 	}
 /*.calender{ width:319px;margin:50px auto;top:0;left:0;border:4px #D6D6D6 solid;background:#EBEBEB;position:absolute;display:none;z-index:999;}
 .calendertb{width:100%;}
@@ -261,7 +261,7 @@
    		$("#ms-teach").click(function(){
    			var sel=$("#teach  option:selected");
    			$('#score').remove();
-   			var newele=$("<div id='score'></div>");
+   			var newele=$("<div id='score'><p>Please input scores: </p></div>");
    			$('form').append(newele);
    			for(var i=0;i<sel.length;i++){
    				var data=sel.eq(i).text();
