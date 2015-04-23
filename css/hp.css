@@ -26,6 +26,13 @@ p, ol {
 	line-height: 190%;
 }
 
+#command{
+	float: right;
+	vertical-align: bottom;
+	margin-top: 50px;
+	margin-right:4px;
+}
+
 #windows{
 	padding: 10px;
 	border: 1px solid black;
@@ -222,6 +229,7 @@ hr {
 #footer {
 	overflow: hidden;
 	height: 150px;
+	background-color: black;
 }
 
 #footer p {

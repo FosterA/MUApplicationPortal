@@ -4,7 +4,7 @@ class Register extends CI_Controller {
 	public function index()
 	{
 		//Load registration/signin page
-		$this->load->view('templates/header');
+		$this->load->view('templates/header_main');
 		$this->load->view('register');
 	}
 
