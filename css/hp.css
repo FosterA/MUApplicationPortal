@@ -214,6 +214,7 @@ hr {
 	width: 640px;
 	text-align: center;
 	text-shadow: 1px 1px 0px #FFFFFF;
+	min-height: 500px;
 }
 
 #content h2 {
