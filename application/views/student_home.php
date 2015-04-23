@@ -2,6 +2,9 @@
 		<div id="page" class="container">
 			<div id="content">
 				<div>
+					<?php if (!isset($_SESSION['logged_in'])){
+						$this->load->view('register');
+					}?>
 					<h2>Welcome <?php echo $user?></h2>
 					<?php
 					$this->load->database();

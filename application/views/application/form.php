@@ -293,8 +293,8 @@
     	}
     	
     	var x=form['gpa'].value;
-   		if (x == null || x == "" || !(/^[0-9]*$/.test(x)) || x>5) {
-        	alert("gpa must be filled out and can only contain number and must less that 5");
+   		if (x == null || x == "" || !(/^\d*\.?\d{0,3}$/.test(x)) || x>5) {
+        	alert("GPA must be filled out and can only be a number specified to a thousandth of a point.");
         	return false;
     	}
     	
