@@ -10,11 +10,9 @@
 			$res=$this->db->query($sql);
 			return $res->num_rows();
 		}
-		public function getStatus($offset,$per_page){
-			$data[0]=$offset;
-			$data[1]=$per_page;
-			$sql='select * from statusname limit ?,?';
-			$res=$this->db->query($sql,$data);
+		public function getStatus(){
+			$sql='select * from statusname';
+			$res=$this->db->query($sql);
 			return $res;
 		}
 		public function getInfor($id){
@@ -78,6 +76,14 @@
 			$b2=$this->db->query($sql2,$data);
 			$this->db->trans_complete();
 			return $b1&&$b2;
+		}
+		public function allScore(){
+			$sql="select * from evaluation";
+			return $this->db->query($sql);
+		}
+		public function avgScore(){
+			$sql="select TA_id,courseName,avg(score) as avg_score from evaluation group by TA_id,courseName";
+			return $this->db->query($sql);
 		}
 	}
 ?>
