@@ -385,12 +385,16 @@ insert into likeTeach values('taf','bio_1013',123);
   PRIMARY KEY (`admin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+insert into admin values('admin', md5('password'), 'admin@fakeemail.com');
+
 create table instructor(
 	faculty_id varchar(128),
 	password varchar(128),
 	email varchar(128),
 	primary key(faculty_id)
 )engine=InnoDB;
+
+insert into instructor values('instructor', md5('password'), 'admin@fakeemail.com');
 
 create table comment(
 	student_id varchar(128),
