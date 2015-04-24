@@ -22,30 +22,17 @@ class Table extends CI_Controller {
 	{	if(isset($result)){
 			$data['result']=$result;
 		}
-		$this->load->database();
 		$this->load->library(array('table','pagination'));
 		$this->load->model('table_model');
 		$this->load->helper('url');
-		$config['per_page']=4;
-		$config['total_rows']=$this->table_model->getStatusRow();
-		$config['base_url']=base_url('index.php/table/index');
-		$config['full_tag_open'] = '<div id="links">';
-		$config['full_tag_close'] = '</div>';
-		$config['cur_tag_open'] = '<span id="current">';
-		$config['cur_tag_close'] = '</span>';
-		$config['num_tag_open'] = '&nbsp&nbsp';
-		$config['num_tag_close'] = '&nbsp&nbsp';
-
-		$this->pagination->initialize($config);
-		$data['links']=$this->pagination->create_links();
-		$offset=intval($this->uri->segment(3));
+		
 		$url=base_url('images/user.gif');
 		$tmpl = array (
-                    'table_open'          => '<table id="keywords">',
+                    'table_open'          => '<table id="myTable">',
 
-                    'heading_row_start'   => '<tr><th>image</th>',
-                    'heading_row_end'     => '<th>Details</th></tr>',
-                    'heading_cell_start'  => '<th><span>',
+                    'heading_row_start'   => '<tr><th type="string">image</th>',
+                    'heading_row_end'     => '<th type="string">Details</th></tr>',
+                    'heading_cell_start'  => '<th type="string"><span>',
                     'heading_cell_end'    => '</span></th>',
 
                     'row_start'           => "<tr><td><image src='$url'></td>",
@@ -60,9 +47,8 @@ class Table extends CI_Controller {
 
                     'table_close'         => '</table>'
               );
-
 		$this->table->set_template($tmpl);
-		$data['table']=$this->table->generate($this->table_model->getStatus($offset,$config['per_page']));
+		$data['table']=$this->table->generate($this->table_model->getStatus());
 		$this->load->view('table',$data);
 	}
 
@@ -78,7 +64,7 @@ class Table extends CI_Controller {
 			$data[$i++][1]=$value;
 		}
 		$tmpl = array (
-                    'table_open'          => '<table class="rwd-table">',
+                    'table_open'          => '<table id="myTable">',
 
                     'heading_row_start'   => '<tr>',
                     'heading_row_end'     => '</tr>',
@@ -145,5 +131,100 @@ class Table extends CI_Controller {
 		$result['status']=$this->table_model->denyStudent();
 		$result['student_id']=$this->input->post('student_id');
 		$this->index($result);
+	}
+	
+	public function general(){
+	$this->load->library(array('table','pagination'));
+		$this->load->model('table_model');
+		$this->load->helper('url');
+		$url=base_url('images/user.gif');
+		$tmpl = array (
+                    'table_open'          => '<table id="myTable">',
+
+                    'heading_row_start'   => '<tr><th type="string">image</th>',
+                    'heading_row_end'     => '<th type="string">Details</th></tr>',
+                    'heading_cell_start'  => '<th type="string"><span>',
+                    'heading_cell_end'    => '</span></th>',
+
+                    'row_start'           => "<tr><td><image src='$url'></td>",
+                    'row_end'             => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'cell_start'          => '<td>',
+                    'cell_end'            => '</td>',
+
+                    'row_alt_start'       => "<tr><td><image src='$url'></td>",
+                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'cell_alt_start'      => '<td>',
+                    'cell_alt_end'        => '</td>',
+
+                    'table_close'         => '</table>'
+              );
+		$this->table->set_template($tmpl);
+		$data['table']=$this->table->generate($this->table_model->getStatus());
+		$json=json_encode($data);
+		echo $json;
+	}
+	
+	public function avgScore(){
+		
+		$this->load->library('table');
+		$this->load->model('table_model');
+		$this->load->helper('url');
+		$url=base_url('images/user.gif');
+		$result=$this->table_model->avgScore();
+		$tmpl = array (
+                    'table_open'          => '<table id="myTable">',
+
+                    'heading_row_start'   => '<tr><th type="string">image</th>',
+                    'heading_row_end'     => '<th type="string">Details</th></tr>',
+                    'heading_cell_start'  => '<th type="string"><span>',
+                    'heading_cell_end'    => '</span></th>',
+
+                    'row_start'           => "<tr><td><image src='$url'></td>",
+                    'row_end'             => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'cell_start'          => '<td>',
+                    'cell_end'            => '</td>',
+
+                    'row_alt_start'       => "<tr><td><image src='$url'></td>",
+                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'cell_alt_start'      => '<td>',
+                    'cell_alt_end'        => '</td>',
+
+                    'table_close'         => '</table>'
+              );
+		$this->table->set_template($tmpl);
+		$data['table']=$this->table->generate($result);
+		$json=json_encode($data);
+		echo $json;
+	}
+	public function allScore(){
+		$this->load->library('table');
+		$this->load->model('table_model');
+		$this->load->helper('url');
+		$url=base_url('images/user.gif');
+		$result=$this->table_model->allScore();
+		$tmpl = array (
+                    'table_open'          => '<table id="myTable">',
+
+                    'heading_row_start'   => '<tr><th type="string">image</th>',
+                    'heading_row_end'     => '<th type="string">Details</th></tr>',
+                    'heading_cell_start'  => '<th type="string"><span>',
+                    'heading_cell_end'    => '</span></th>',
+
+                    'row_start'           => "<tr><td><image src='$url'></td>",
+                    'row_end'             => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'cell_start'          => '<td>',
+                    'cell_end'            => '</td>',
+
+                    'row_alt_start'       => "<tr><td><image src='$url'></td>",
+                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'cell_alt_start'      => '<td>',
+                    'cell_alt_end'        => '</td>',
+
+                    'table_close'         => '</table>'
+              );
+		$this->table->set_template($tmpl);
+		$data['table']=$this->table->generate($result);
+		$json=json_encode($data);
+		echo $json;
 	}
 }

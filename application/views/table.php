@@ -96,47 +96,9 @@ h1 {
 
 
 /** page structure **/
-
-#keywords {
-  margin: 0 auto;
-  font-size: 1.2em;
-  margin-bottom: 15px;
+#myTable{
+	text-align:center;
 }
-
-#keywords thead tr th { 
-  font-weight: bold;
-  padding: 12px 30px;
-  padding-left: 42px;
-}
-#keywords thead tr th span { 
-  padding-right: 20px;
-  background-repeat: no-repeat;
-  background-position: 100% 100%;
-}
-
-#keywords thead tr {
-  background: #1B9930;
-}
-
-#keywords thead tr th.headerSortUp span {
-  background-image: url('http://i.imgur.com/SP99ZPJ.png');
-}
-#keywords thead tr th.headerSortDown span {
-  background-image: url('http://i.imgur.com/RkA9MBo.png');
-}
-
-
-#keywords tbody tr { 
-  color: #555;
-}
-#keywords tbody tr td {
-  text-align: center;
-  padding: 15px 10px;
-}
-#keywords tbody tr td.lalign {
-  text-align: left;
-}
-
 #app table {
 	background: #f5f5f5;
 	border-collapse: separate;
@@ -293,9 +255,12 @@ p,ul{
 }
 
 </style>
+<link href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
+
 <script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
 <script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
+<script src="http://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
  <script>
  	<?php
  		if(isset($result)){
@@ -323,13 +288,18 @@ p,ul{
 </head>
 <body>
 	<div id="overlay"></div>
+	<select id="type">
+		<option value="general">all applicants</option>
+		<option value="avgScore">avg score</option>
+		<option value="allScore">all score</option>
+	</select>
+	<div id="content">
 	<?=$table?>
-	<?=$links?>
-	
+	</div>
 
 <script>
 $(document).ready(function(){
-
+	 $('#myTable').DataTable();
     var tr = document.getElementsByTagName('tr');
     for(var i=1;i<tr.length;i++){
     	var str=tr[i].children[1].innerHTML;
@@ -337,7 +307,7 @@ $(document).ready(function(){
     	a1.value="<?=base_url('index.php/table/test')?>"+'/'+str;
     }
     
-   $("button.detail").click(function(value){
+   $("body").on('click','button.detail',function(value){
    		var href=$(this).attr('value');
    		var xmlhttp = new XMLHttpRequest();
    		var overlay = document.getElementById('overlay');
@@ -365,6 +335,31 @@ $(document).ready(function(){
 	$('body').delegate('#disagreeButton','click',function(){
 	 	$("form").attr('action',"<?=base_url('index.php/table/denyStudent')?>");
 	 });
+	 
+	 $("select#type").change(function(){
+	 	var sel=$("select#type  option:selected");
+	 	var url="<?=base_url('index.php/table')?>/"+sel.prop('value');
+	 	//console.log(url);
+	 	var xmlhttp = new XMLHttpRequest();
+	 	xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var json=xmlhttp.responseText;
+                var obj = JSON.parse(json);
+                console.log(obj.table);
+                $("div#content").html(obj.table);
+                $('#myTable').DataTable();
+                var tr = document.getElementsByTagName('tr');
+    			for(var i=1;i<tr.length;i++){
+    				var str=tr[i].children[1].innerHTML;
+    				var a1=tr[i].children[6].children[0];
+    				a1.value="<?=base_url('index.php/table/test')?>"+'/'+str;
+    			}
+            }
+        }
+        xmlhttp.open("post",url,true);
+ 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+ 		xmlhttp.send();
+	 });
 });
 
 
@@ -372,6 +367,6 @@ $(document).ready(function(){
 
 
 </script>
-</script>
+
 </body>
 </html>
