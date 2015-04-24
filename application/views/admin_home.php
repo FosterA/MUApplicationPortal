@@ -40,6 +40,8 @@
 						<input type="text" id="commentfrom" name="commentfrom">
 						<label for="commentto">to</label>
 						<input type="text" id="commentto" name="commentto">
+						<br>
+						<br>
 						<button id="submit" type="submit">Set Dates</button>
 					</form>
 				</div>
