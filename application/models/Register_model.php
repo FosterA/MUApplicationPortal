@@ -60,20 +60,6 @@
 			$data[0]=$id;
 			$res=$this->db->query($sql,$data);
 			return $res->num_rows();
-		}
-
-		public function checkForApp($user){
-			$sql = "SELECT * FROM app WHERE student_id = ?";
-			$lower = strtolower($user);
-			$data[0]=$lower;
-			$valid = $this->db->query($sql,$data);
-
-			if($valid->num_rows()==0){
-				return false;
-			}
-			else{
-				return true;
-			}
 		}	
 	}
 ?>
