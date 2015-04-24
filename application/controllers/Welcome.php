@@ -10,7 +10,7 @@ class Welcome extends CI_Controller {
 
 	public function home(){
 		if (!isset($_SESSION['logged_in'])){
-			$this->load->view('register');
+			redirect('register');
 		}			
 
 		$page_data = array(
@@ -19,9 +19,7 @@ class Welcome extends CI_Controller {
 		);
 
 		if ($this->session->userdata('profession') == 'student'){
-			$this->load->view('templates/header', $page_data);
-			$this->load->view('student_home', $page_data);
-			$this->load->view('templates/footer');
+			redirect('student');
 		}
 		else if ($this->session->userdata('profession') == 'instructor'){
 			$this->load->view('templates/header', $page_data);
@@ -29,7 +27,6 @@ class Welcome extends CI_Controller {
 			$this->load->view('templates/footer');
 		}
 		else if ($this->session->userdata('profession') == 'admin'){
-			//$this->load->view('admin_home', $page_data);
 			redirect('admin');
 		}
 		else{
