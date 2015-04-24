@@ -10,6 +10,8 @@ DROP TABLE IF EXISTS undergraduate;
 DROP TABLE IF EXISTS graduate;
 DROP TABLE IF EXISTS interStudent;
 DROP TABLE IF EXISTS app;
+DROP TABLE IF EXISTS agree;
+DROP TABLE IF EXISTS disagree;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS instructor;
 DROP VIEW IF EXISTS interUnder, interGra, nativeUnder, nativeGra, statusname; 
