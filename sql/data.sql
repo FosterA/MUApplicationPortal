@@ -14,6 +14,75 @@ DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS instructor;
 DROP VIEW IF EXISTS interUnder, interGra, nativeUnder, nativeGra, statusname; 
 
+
+
+CREATE TABLE `evaluation` (
+  `student_id` varchar(128) NOT NULL DEFAULT '',
+  `TA_id` varchar(128) NOT NULL DEFAULT '',
+  `courseName` varchar(128) NOT NULL DEFAULT '',
+  `score` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD PRIMARY KEY (`student_id`,`TA_id`,`courseName`);
+
+insert into evaluation values('studen1','aaa','bio_1010',90);
+insert into evaluation values('studen2','aaa','bio_1010',91);
+insert into evaluation values('studen4','aaa','bio_1010',92);
+insert into evaluation values('studen5','aaa','bio_1010',93);
+insert into evaluation values('studen6','aaa','bio_1010',94);
+
+insert into evaluation values('studen1','aaa','cs_1010',90);
+insert into evaluation values('studen2','aaa','cs_1010',91);
+insert into evaluation values('studen4','aaa','cs_1010',92);
+insert into evaluation values('studen5','aaa','cs_1010',93);
+insert into evaluation values('studen6','aaa','cs_1010',94);
+
+insert into evaluation values('studen1','bbb','bio_1010',90);
+insert into evaluation values('studen2','bbb','bio_1010',91);
+insert into evaluation values('studen4','bbb','bio_1010',92);
+insert into evaluation values('studen5','bbb','bio_1010',93);
+insert into evaluation values('studen6','bbb','bio_1010',94);
+
+insert into evaluation values('studen1','bbb','cs_1010',90);
+insert into evaluation values('studen2','bbb','cs_1010',9);
+insert into evaluation values('studen4','bbb','cs_1010',92);
+insert into evaluation values('studen5','bbb','cs_1010',93);
+insert into evaluation values('studen6','bbb','cs_1010',94);
+
+insert into evaluation values('studen1','ccc','phy_1012',90);
+insert into evaluation values('studen2','ccc','phy_1012',91);
+insert into evaluation values('studen4','ccc','phy_1012',92);
+insert into evaluation values('studen5','ccc','phy_1012',9);
+insert into evaluation values('studen6','ccc','phy_1012',94);
+
+insert into evaluation values('studen1','ccc','cs_1010',90);
+insert into evaluation values('studen2','ccc','cs_1010',91);
+insert into evaluation values('studen4','ccc','cs_1010',92);
+insert into evaluation values('studen5','ccc','cs_1010',93);
+insert into evaluation values('studen6','ccc','cs_1010',94);
+
+insert into evaluation values('studen1','ddd','phy_1012',90);
+insert into evaluation values('studen2','ddd','phy_1012',91);
+insert into evaluation values('studen4','ddd','phy_1012',92);
+insert into evaluation values('studen5','ddd','phy_1012',9);
+insert into evaluation values('studen6','ddd','phy_1012',94);
+
+insert into evaluation values('studen1','ddd','cs_1010',90);
+insert into evaluation values('studen2','ddd','cs_1010',91);
+insert into evaluation values('studen4','ddd','cs_1010',92);
+insert into evaluation values('studen5','ddd','cs_1010',93);
+insert into evaluation values('studen6','ddd','cs_1010',94);
+
+
+
 create table windows(
 	semester varchar(15),
 	appOpen date,
