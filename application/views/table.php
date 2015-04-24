@@ -255,12 +255,12 @@ p,ul{
 }
 
 </style>
-<link href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
 
 <script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
 <script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
-<script src="http://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
  <script>
  	<?php
  		if(isset($result)){
