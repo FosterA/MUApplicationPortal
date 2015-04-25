@@ -253,7 +253,21 @@ div#specialBox {
 p,ul{
 	margin:2px;
 }
-
+#specialBox p{
+	margin:20px 10px;
+}
+#specialBox ul{
+	margin:20px;
+}
+#infomation{
+	font-size:16px;
+	width:800px;
+	height:100px;
+	margin :10px auto 0px;
+}
+#goback{
+	font-size:20px;
+}
 </style>
 <link href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
@@ -288,24 +302,35 @@ p,ul{
 </head>
 <body>
 	<div id="overlay"></div>
+	<div id='infomation'>In this page, you can assign applicants as TA/PLA and you can view each students score given by students for each course this applicants previous taught.
+	Additionally, you can view the applicants who have already be assigned as TA/PLA and who have already be denied.  </div>
 	<select id="type">
 		<option value="general">all applicants</option>
 		<option value="avgScore">avg score</option>
 		<option value="allScore">all score</option>
+		<option value="Accept">Accept</option>
+		<option value="Deny">Deny</option>
 	</select>
 	<div id="content">
 	<?=$table?>
 	</div>
-
+	<?=anchor('index.php/admin', 'Main Page', array('id' => 'goback'));?>
 <script>
 $(document).ready(function(){
 	 $('#myTable').DataTable();
-    var tr = document.getElementsByTagName('tr');
-    for(var i=1;i<tr.length;i++){
-    	var str=tr[i].children[1].innerHTML;
-    	var a1=tr[i].children[6].children[0];
-    	a1.value="<?=base_url('index.php/table/test')?>"+'/'+str;
+    //var tr = document.getElementsByTagName('tr');
+    var tr=$('tbody tr');
+    for(var i=0;i<tr.length;i++){
+    	var str=tr.eq(i).children('td').eq(1).text();
+    	tr.eq(i).find('td button').attr('value',"<?=base_url('index.php/table/test')?>"+'/'+str);
     }
+    
+   // for(var i=1;i<tr.length;i++){
+    	//var str=tr[i].children[1].innerHTML;
+    	//var a1=tr[i].children[6].children[0];
+    	//a1.value="<?=base_url('index.php/table/test')?>"+'/'+str;
+    	
+   // }
     
    $("body").on('click','button.detail',function(value){
    		var href=$(this).attr('value');
@@ -348,11 +373,10 @@ $(document).ready(function(){
                 console.log(obj.table);
                 $("div#content").html(obj.table);
                 $('#myTable').DataTable();
-                var tr = document.getElementsByTagName('tr');
-    			for(var i=1;i<tr.length;i++){
-    				var str=tr[i].children[1].innerHTML;
-    				var a1=tr[i].children[6].children[0];
-    				a1.value="<?=base_url('index.php/table/test')?>"+'/'+str;
+                var tr=$('tbody tr');
+    			for(var i=0;i<tr.length;i++){
+    				var str=tr.eq(i).children('td').eq(1).text();
+    				tr.eq(i).find('td button').attr('value',"<?=base_url('index.php/table/test')?>"+'/'+str);
     			}
             }
         }

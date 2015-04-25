@@ -15,6 +15,12 @@
 			$res=$this->db->query($sql);
 			return $res;
 		}
+		public function getRow($id){
+			$sql='select * from app where student_id=?';
+			$data[0]=$id;
+			$res=$this->db->query($sql,$data);
+			return $res->num_rows();
+		}
 		public function getInfor($id){
 			$sql="select nation,Degrees from status where student_id=?";
 			$data['student_id']=$id;
@@ -83,6 +89,14 @@
 		}
 		public function avgScore(){
 			$sql="select TA_id,courseName,avg(score) as avg_score from evaluation group by TA_id,courseName";
+			return $this->db->query($sql);
+		}
+		public function Accept(){
+			$sql="select student_id,courseName as TeachCourse,firstName,lastName from agree natural join preapp";
+			return $this->db->query($sql);
+		}
+		public function Deny(){
+			$sql="select student_id,firstName,lastName from disagree natural join preapp";
 			return $this->db->query($sql);
 		}
 	}
