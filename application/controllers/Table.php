@@ -64,7 +64,7 @@ class Table extends CI_Controller {
 		if($bool){
 		$info=$this->table_model->getInfor($id);
 		$i=0;
-		
+		//print_r($info);
 		foreach($info['res'][0] as $key=>$value){
 			$data[$i][0]=$key;
 			$data[$i++][1]=$value;
@@ -156,17 +156,17 @@ class Table extends CI_Controller {
                     'table_open'          => '<table id="myTable">',
 
                     'heading_row_start'   => '<tr><th type="string">image</th>',
-                    'heading_row_end'     => '<th type="string">Details</th></tr>',
+                    'heading_row_end'     => '<th>Details</th><th>Comment</th></tr>',
                     'heading_cell_start'  => '<th type="string"><span>',
                     'heading_cell_end'    => '</span></th>',
 
                     'row_start'           => "<tr><td><image src='$url'></td>",
-                    'row_end'             => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'row_end'             => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></td></tr>',
                     'cell_start'          => '<td>',
                     'cell_end'            => '</td>',
 
                     'row_alt_start'       => "<tr><td><image src='$url'></td>",
-                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></tr>',
                     'cell_alt_start'      => '<td>',
                     'cell_alt_end'        => '</td>',
 
