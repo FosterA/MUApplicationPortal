@@ -325,24 +325,18 @@ margin :100px 270px;
 <script>
 $(document).ready(function(){
 	 $('#myTable').DataTable();
-    //var tr = document.getElementsByTagName('tr');
+    
     var tr=$('tbody tr');
     for(var i=0;i<tr.length;i++){
     	var str=tr.eq(i).children('td').eq(1).text();
-    	tr.eq(i).find('td button').eq(0).attr('value',"<?=base_url('index.php/table/test')?>"+'/'+str);
+    	//tr.eq(i).find('td button').eq(0).attr('value',"<?=base_url('index.php/table/test')?>"+'/'+str);
     	tr.eq(i).find('td button').eq(1).attr('value',"<?=base_url('index.php/table/comment')?>"+'/'+str);
     }
     
-   // for(var i=1;i<tr.length;i++){
-    	//var str=tr[i].children[1].innerHTML;
-    	//var a1=tr[i].children[6].children[0];
-    	//a1.value="<?=base_url('index.php/table/test')?>"+'/'+str;
-    	
-   // }
-    
-   $("body").on('click','button.detail',function(value){
-   		var href=$(this).attr('value');
-   		var xmlhttp = new XMLHttpRequest();
+    $("body").on('click','button.detail',function(value){
+    	var str=$(this).parent().parent().children().eq(1).text();
+    	var href="<?=base_url('index.php/table/test')?>"+'/'+str;
+    	var xmlhttp = new XMLHttpRequest();
    		var overlay = document.getElementById('overlay');
    		overlay.style.display = "block";
    		overlay.style.opacity = .8;
@@ -357,9 +351,13 @@ $(document).ready(function(){
  		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  		xmlhttp.send();
    });
+    
+    
+   
    
    $("body").on('click','button.comment',function(value){
-   		var href=$(this).attr('value');
+   		var str=$(this).parent().parent().children().eq(1).text();
+    	var href="<?=base_url('index.php/table/comment')?>"+'/'+str;
    		var xmlhttp = new XMLHttpRequest();
    		var overlay = document.getElementById('overlay');
    		overlay.style.display = "block";
@@ -376,7 +374,6 @@ $(document).ready(function(){
  		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  		xmlhttp.send();
    }); 
-   
    
    
    
@@ -406,17 +403,13 @@ $(document).ready(function(){
                 console.log(obj.table);
                 $("div#content").html(obj.table);
                 $('#myTable').DataTable();
-                var tr=$('tbody tr');
-    			for(var i=0;i<tr.length;i++){
-    				var str=tr.eq(i).children('td').eq(1).text();
-    				tr.eq(i).find('td button').attr('value',"<?=base_url('index.php/table/test')?>"+'/'+str);
-    			}
             }
         }
         xmlhttp.open("post",url,true);
  		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  		xmlhttp.send();
 	 });
+	 
 });
 
 
