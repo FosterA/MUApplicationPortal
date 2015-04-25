@@ -56,6 +56,8 @@ class Table extends CI_Controller {
 		$this->load->library('table');
 		$this->load->model("table_model");
 		$id=$this->uri->segment('3');
+		$bool=$this->table_model->getRow($id);
+		if($bool){
 		$info=$this->table_model->getInfor($id);
 		$i=0;
 		
@@ -114,7 +116,15 @@ class Table extends CI_Controller {
 		$allInform=$app.$curTeach.$preTeach.$likeTeach."<div id='divClose'><button type='button' id='close'>close</button></div>";
 		
 		echo $allInform;
-		
+		}else{
+		$allInform="<p id='noResult'>Currently, we can not find this student's application information. There are three kinds of situation</p>
+					<ul>
+  						<li>This student didn't apply to TA/PLA</li>
+  						<li>You have already accepted this student's application, if that you can go to Accept table to find this student</li>
+  						<li>You have already denied this student's application, if that you can go to Deny table to find this student</li>
+					</ul><div id='divClose'><button type='button' id='close'>close</button></div>";
+		echo $allInform;
+		}
 	}
 	
 	public function addStudent(){
@@ -217,6 +227,68 @@ class Table extends CI_Controller {
 
                     'row_alt_start'       => "<tr><td><image src='$url'></td>",
                     'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'cell_alt_start'      => '<td>',
+                    'cell_alt_end'        => '</td>',
+
+                    'table_close'         => '</table>'
+              );
+		$this->table->set_template($tmpl);
+		$data['table']=$this->table->generate($result);
+		$json=json_encode($data);
+		echo $json;
+	}
+	public function Accept(){
+		$this->load->library('table');
+		$this->load->model('table_model');
+		$this->load->helper('url');
+		$url=base_url('images/user.gif');
+		$result=$this->table_model->Accept();
+		$tmpl = array (
+                    'table_open'          => '<table id="myTable">',
+
+                    'heading_row_start'   => '<tr><th type="string">image</th>',
+                    'heading_row_end'     => '</tr>',
+                    'heading_cell_start'  => '<th><span>',
+                    'heading_cell_end'    => '</span></th>',
+
+                    'row_start'           => "<tr><td><image src='$url'></td>",
+                    'row_end'             => '</tr>',
+                    'cell_start'          => '<td>',
+                    'cell_end'            => '</td>',
+
+                    'row_alt_start'       => "<tr><td><image src='$url'></td>",
+                    'row_alt_end'         => '</tr>',
+                    'cell_alt_start'      => '<td>',
+                    'cell_alt_end'        => '</td>',
+
+                    'table_close'         => '</table>'
+              );
+		$this->table->set_template($tmpl);
+		$data['table']=$this->table->generate($result);
+		$json=json_encode($data);
+		echo $json;
+	}
+	public function Deny(){
+		$this->load->library('table');
+		$this->load->model('table_model');
+		$this->load->helper('url');
+		$url=base_url('images/user.gif');
+		$result=$this->table_model->Deny();
+		$tmpl = array (
+                    'table_open'          => '<table id="myTable">',
+
+                    'heading_row_start'   => '<tr><th type="string">image</th>',
+                    'heading_row_end'     => '</tr>',
+                    'heading_cell_start'  => '<th><span>',
+                    'heading_cell_end'    => '</span></th>',
+
+                    'row_start'           => "<tr><td><image src='$url'></td>",
+                    'row_end'             => '</tr>',
+                    'cell_start'          => '<td>',
+                    'cell_end'            => '</td>',
+
+                    'row_alt_start'       => "<tr><td><image src='$url'></td>",
+                    'row_alt_end'         => '</tr>',
                     'cell_alt_start'      => '<td>',
                     'cell_alt_end'        => '</td>',
 
