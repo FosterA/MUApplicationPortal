@@ -19,7 +19,11 @@ class Table extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index($result=NULL)
-	{	if(isset($result)){
+	{	
+	if (!isset($_SESSION['logged_in'])){
+			redirect('register');
+		}
+	if(isset($result)){
 			$data['result']=$result;
 		}
 		$this->load->library(array('table','pagination'));
@@ -31,17 +35,17 @@ class Table extends CI_Controller {
                     'table_open'          => '<table id="myTable">',
 
                     'heading_row_start'   => '<tr><th type="string">image</th>',
-                    'heading_row_end'     => '<th type="string">Details</th></tr>',
+                    'heading_row_end'     => '<th>Details</th><th>Comment</th></tr>',
                     'heading_cell_start'  => '<th type="string"><span>',
                     'heading_cell_end'    => '</span></th>',
 
                     'row_start'           => "<tr><td><image src='$url'></td>",
-                    'row_end'             => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'row_end'             => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></td></tr>',
                     'cell_start'          => '<td>',
                     'cell_end'            => '</td>',
 
                     'row_alt_start'       => "<tr><td><image src='$url'></td>",
-                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td></tr>',
+                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></tr>',
                     'cell_alt_start'      => '<td>',
                     'cell_alt_end'        => '</td>',
 
@@ -299,4 +303,41 @@ class Table extends CI_Controller {
 		$json=json_encode($data);
 		echo $json;
 	}
+	
+	public function comment(){
+		$this->load->library('table');
+		$this->load->model("table_model");
+		$id=$this->uri->segment('3');
+		$bool=$this->table_model->getCommentRow($id);
+		if($bool){
+		$result=$this->table_model->getComment($id);
+		$tmpl = array (
+                    'table_open'          => '<table id="myTable">',
+
+                    'heading_row_start'   => '<tr>',
+                    'heading_row_end'     => '</tr>',
+                    'heading_cell_start'  => '<td>',
+                    'heading_cell_end'    => '</td>',
+
+                    'row_start'           => "<tr>",
+                    'row_end'             => '</tr>',
+                    'cell_start'          => '<td>',
+                    'cell_end'            => '</td>',
+
+                    'row_alt_start'       => "<tr>",
+                    'row_alt_end'         => '</tr>',
+                    'cell_alt_start'      => '<td>',
+                    'cell_alt_end'        => '</td>',
+
+                    'table_close'         => '</table>'
+              );
+
+		$this->table->set_template($tmpl);
+		$app=$this->table->generate($result);
+		//$app="<div id='comment'>".$app."</div>";
+		echo $app;
+	}else{
+		echo "<div id='noComment'>There isn't any comment about this student.<div>";
+	}
+}
 }
