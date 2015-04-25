@@ -27,6 +27,13 @@ class Admin extends CI_Controller {
 		// Set the headings
 		$this->table->set_heading($header);
 
+		/*Template to prevent wrapping
+		$template = array(
+			'cell_start' => '<td>'
+		);
+
+		$this->table->set_template($template);*/
+
 		//Get the admin's profession and username
 		$data['title'] = ucfirst($this->session->userdata('profession') . ' ' . 'Home');
 		$data['user'] = ucfirst($this->session->userdata('user'));

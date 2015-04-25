@@ -5,11 +5,14 @@ DROP TABLE IF EXISTS preTeach;
 DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS status;
 DROP TABLE IF EXISTS curTeach;
-DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS undergraduate;
 DROP TABLE IF EXISTS graduate;
 DROP TABLE IF EXISTS interStudent;
 DROP TABLE IF EXISTS app;
+DROP TABLE IF EXISTS agree;
+DROP TABLE IF EXISTS disagree;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS evaluation;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS instructor;
 DROP VIEW IF EXISTS interUnder, interGra, nativeUnder, nativeGra, statusname; 
@@ -464,12 +467,16 @@ insert into likeTeach values('taf','bio_1013',123);
   PRIMARY KEY (`admin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+insert into admin values('admin', md5('password'), 'admin@fakeemail.com');
+
 create table instructor(
 	faculty_id varchar(128),
 	password varchar(128),
 	email varchar(128),
 	primary key(faculty_id)
 )engine=InnoDB;
+
+insert into instructor values('instructor', md5('password'), 'admin@fakeemail.com');
 
 create table comment(
 	student_id varchar(128),

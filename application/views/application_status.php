@@ -35,7 +35,7 @@
 				<div>
 					<h2 style="font-family: Fantasy"><?php echo $user?> Application Status</h2>
 					<!--Add display application status here-->	
-					<p>Comming Soon</p>
+					<h2><strong><?php echo $status?></strong></h2>
 				</div>
 			</div>
 		</div>

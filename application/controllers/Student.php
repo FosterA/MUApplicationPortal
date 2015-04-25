@@ -22,6 +22,9 @@ class Student extends CI_Controller {
 			redirect('register');
 		}
 		$data['user'] = ucfirst($this->session->userdata('user'));
+
+		$this->load->model('student_model');
+		$data['status'] = $this->student_model->checkAppStatus($data['user']);
 		$this->load->view('templates/header');
 		$this->load->view('application_status', $data);
 		$this->load->view('templates/footer');	

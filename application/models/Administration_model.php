@@ -17,7 +17,7 @@ class Administration_model extends CI_Model{
 		$res=$this->db->query($sql,$data);
 
 		if ($res->num_rows() >= 1){
-				return true;
+			return true;
 		}else{
 			return false;
 		}

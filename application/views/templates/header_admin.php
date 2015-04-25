@@ -33,6 +33,10 @@
 		font-size: .5em;
 		background: url(<?=base_url('images/mu_bw_line.png')?>) no-repeat left top;
 	}
+
+	td {
+    	white-space: nowrap;
+	}
 </style>
 </head>
 <body>
