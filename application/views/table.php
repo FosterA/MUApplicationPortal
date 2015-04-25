@@ -213,6 +213,7 @@ div#specialBox {
   top: 15%;
   width: 640px;
   height: 450px;
+  overflow:scroll;
   background: #FFF;
   color: #000;
   border: 5px outset rgb(49, 140, 85);
@@ -268,6 +269,12 @@ p,ul{
 #goback{
 	font-size:20px;
 }
+#specialBox .close{
+margin : 10px 270px
+}
+#noComment{
+margin :100px 270px;
+}
 </style>
 <link href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
@@ -322,7 +329,8 @@ $(document).ready(function(){
     var tr=$('tbody tr');
     for(var i=0;i<tr.length;i++){
     	var str=tr.eq(i).children('td').eq(1).text();
-    	tr.eq(i).find('td button').attr('value',"<?=base_url('index.php/table/test')?>"+'/'+str);
+    	tr.eq(i).find('td button').eq(0).attr('value',"<?=base_url('index.php/table/test')?>"+'/'+str);
+    	tr.eq(i).find('td button').eq(1).attr('value',"<?=base_url('index.php/table/comment')?>"+'/'+str);
     }
     
    // for(var i=1;i<tr.length;i++){
@@ -349,6 +357,31 @@ $(document).ready(function(){
  		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  		xmlhttp.send();
    });
+   
+   $("body").on('click','button.comment',function(value){
+   		var href=$(this).attr('value');
+   		var xmlhttp = new XMLHttpRequest();
+   		var overlay = document.getElementById('overlay');
+   		overlay.style.display = "block";
+   		overlay.style.opacity = .8;
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            	var ele=$("<div id='specialBox'></div>");
+            	$('body').prepend(ele);
+                ele.html(xmlhttp.responseText);
+                ele.append('<button type="button" class="close" id="close">close</button>');
+            }
+        }
+        xmlhttp.open("post",href,true);
+ 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+ 		xmlhttp.send();
+   }); 
+   
+   
+   
+   
+   
+   
 	 $('body').delegate('#close','click',function(){
 	 	$('#specialBox').remove();
 	 	$('#overlay').css('display','none');
