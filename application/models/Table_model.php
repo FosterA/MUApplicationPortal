@@ -21,6 +21,21 @@
 			$res=$this->db->query($sql,$data);
 			return $res->num_rows();
 		}
+		//
+		public function getCommentRow($id){
+			$sql='select * from comment where student_id=?';
+			$data[0]=$id;
+			$res=$this->db->query($sql,$data);
+			return $res->num_rows();
+		}
+		
+		public function getComment($id){
+			$sql='select faculty_id,comment from comment where student_id=?';
+			$data[0]=$id;
+			$res=$this->db->query($sql,$data);
+			return $res;
+		}
+		
 		public function getInfor($id){
 			$sql="select nation,Degrees from status where student_id=?";
 			$data['student_id']=$id;
