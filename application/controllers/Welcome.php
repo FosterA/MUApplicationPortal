@@ -22,7 +22,7 @@ class Welcome extends CI_Controller {
 			redirect('student');
 		}
 		else if ($this->session->userdata('profession') == 'instructor'){
-			$this->load->view('templates/header', $page_data);
+			$this->load->view('templates/header_instructor', $page_data);
 			$this->load->view('instructor_home', $page_data);
 			$this->load->view('templates/footer');
 		}
