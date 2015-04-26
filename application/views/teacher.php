@@ -256,6 +256,13 @@ margin: 13px 19px;
   height: 361px;
   font-size:20px;
 }
+#infomation{
+	font-size:16px;
+	width:800px;
+	height:100px;
+	margin :10px auto 0px;
+}
+
 </style>
 <link href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
@@ -281,8 +288,8 @@ margin: 13px 19px;
 <body>
 
 	<div id="overlay"></div>
-	<div id='infomation'>In this page, you can assign applicants as TA/PLA and you can view each students score given by students for each course this applicants previous taught.
-	Additionally, you can view the applicants who have already be assigned as TA/PLA and who have already be denied.  </div>
+	<div id='infomation'>In this page, you can make comment on each student, and you can make several comments on each student. 
+	Additionally, you can view comment on each student that made by your self, in other word, you couldn't view comment that made by other instructors.  </div>
 	<div id="content">
 	<?=$table?>
 	</div>
