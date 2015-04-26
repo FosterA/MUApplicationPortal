@@ -126,7 +126,7 @@ insert into student values('aatreraa',md5('aaa'),'liu@gmail.com');
 insert into student values('aadsfaaa',md5('aaa'),'liu@gmail.com');
 insert into student values('aatea',md5('aaa'),'liu@gmail.com');
 insert into student values('ytr',md5('aaa'),'liu@gmail.com');
-
+insert into student values('liuqitn',md5('aaa'),'liu@gmail.com');
 
 create table app(
 	student_id varchar(128),
@@ -159,7 +159,7 @@ insert into app values('aatreraa','first','last',5,'234','liu@gmail.com','2015-1
 insert into app values('aadsfaaa','first','last',5,'234','liu@gmail.com','2015-12-30','beijing');
 insert into app values('aatea','first','last',5,'234','liu@gmail.com','2015-12-30','beijing');
 insert into app values('ytr','first','last',5,'234','liu@gmail.com','2015-12-30','beijing');
-
+insert into app values('liuqitn','first','last',5,'234','liu@gmail.com','2015-12-30','beijing');
 
 
 
@@ -200,7 +200,7 @@ insert into graduate values('aatreraa','master','bill');
 insert into graduate values('aadsfaaa','master','bill');
 insert into graduate values('aatea','master','bill');
 insert into graduate values('ytr','master','bill');
-
+insert into graduate values('liuqitn','master','bill');
 
 
 create table interStudent(
@@ -221,6 +221,7 @@ insert into interStudent values('aatreraa','23','fall');
 insert into interStudent values('aadsfaaa','12','fall');
 insert into interStudent values('aatea','12','fall');
 insert into interStudent values('ytr','123','fall');
+insert into interStudent values('liuqitn','123','fall');
 
 
 
@@ -318,6 +319,10 @@ insert into curTeach values('taf','bio_1011');
 insert into curTeach values('taf','bio_1012');
 insert into curTeach values('taf','bio_1013');
 
+insert into curTeach values('liuqitn','bio_1010');
+insert into curTeach values('liuqitn','bio_1011');
+insert into curTeach values('liuqitn','bio_1012');
+insert into curTeach values('liuqitn','bio_1013');
 
 
 create table preTeach(
@@ -387,6 +392,10 @@ insert into preTeach values('taf','bio_1011');
 insert into preTeach values('taf','bio_1012');
 insert into preTeach values('taf','bio_1013');
 
+insert into preTeach values('liuqitn','bio_1010');
+insert into preTeach values('liuqitn','bio_1011');
+insert into preTeach values('liuqitn','bio_1012');
+insert into preTeach values('liuqitn','bio_1013');
 
 create table likeTeach(
 	student_id varchar(128),
@@ -455,6 +464,11 @@ insert into likeTeach values('taf','bio_1011',123);
 insert into likeTeach values('taf','bio_1012',123);
 insert into likeTeach values('taf','bio_1013',123);
 
+insert into likeTeach values('liuqitn','bio_1010',123);
+insert into likeTeach values('liuqitn','bio_1011',123);
+insert into likeTeach values('liuqitn','bio_1012',123);
+insert into likeTeach values('liuqitn','bio_1013',123);
+
 
 
  CREATE TABLE `admin` (
@@ -471,14 +485,61 @@ create table instructor(
 	primary key(faculty_id)
 )engine=InnoDB;
 
-create table comment(
-	student_id varchar(128),
-	faculty_id varchar(128),
-	comment text,
-	primary key(student_id,faculty_id),
-	foreign key(student_id) references student(student_id) on delete cascade,
-	foreign key(faculty_id) references instructor(faculty_id) on delete cascade
-)engine=InnoDB;
+insert into instructor values('teacher1',md5('123'),'email');
+insert into instructor values('teacher2',md5('123'),'email');
+insert into instructor values('teacher3',md5('123'),'email');
+insert into instructor values('teacher4',md5('123'),'email');
+insert into instructor values('teacher5',md5('123'),'email');
+insert into instructor values('teacher6',md5('123'),'email');
+
+
+
+CREATE TABLE `comment` (
+  `student_id` varchar(128) NOT NULL DEFAULT '',
+  `faculty_id` varchar(128) NOT NULL DEFAULT '',
+  `time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `comment` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`student_id`,`faculty_id`,`time`), ADD KEY `faculty_id` (`faculty_id`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE,
+ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`faculty_id`) REFERENCES `instructor` (`faculty_id`) ON DELETE CASCADE;
+
+insert into comment values('ggg','teacher1',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+insert into comment values('ggg','teacher2',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+insert into comment values('ggg','teacher3',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+
+
+insert into comment values('ggg','teacher4',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+insert into comment values('ggg','teacher5',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+insert into comment values('ggg','teacher6',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+
+
+insert into comment values('liuqitn','teacher1',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+insert into comment values('liuqitn','teacher2',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+insert into comment values('liuqitn','teacher3',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+
+
+insert into comment values('hhh','teacher1',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+insert into comment values('hhh','teacher2',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
+insert into comment values('hhh','teacher3',now(),"Catch the star that holds your destiny, the one that forever twinkles within your heart. Take advantage of precious opportunities while they still sparkle before you. Always believe that your ultimate goal is attainable as long as you commit yourself to it. Though barriers may sometimes stand in the way of your dreams, remember that your destiny is hiding behind them. Accept the fact that not everyone is going to approve of the choices you’ve made. Have faith in your judgment. Catch the star that twinkles in your heart and it will lead you to your destiny’s path. Follow that pathway and uncover the sweet sunrises that await you. ");
 
 
 CREATE TABLE `status` (
@@ -508,6 +569,7 @@ insert into status values('aatreraa','international','graduate');
 insert into status values('aadsfaaa','international','graduate');
 insert into status values('aatea','international','graduate');
 insert into status values('ytr','international','graduate');
+insert into status values('liuqitn','international','graduate');
 
 
 
@@ -604,4 +666,7 @@ from status natural join app natural join graduate;
 
 create view statusname as
 select student_id,firstName,lastName,nation,Degrees
-from status natural join app; 
+from status natural join app;
+
+create view allapp as
+(select * from app)union(select * from preapp); 

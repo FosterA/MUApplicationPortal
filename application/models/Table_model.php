@@ -114,5 +114,27 @@
 			$sql="select student_id,firstName,lastName from disagree natural join preapp";
 			return $this->db->query($sql);
 		}
+		public function getAllStudent(){
+			$sql="select student_id,firstName,lastName from allapp";
+			$res=$this->db->query($sql);
+			return $res;
+		}
+		public function write($data){
+			$sql="insert into comment values(?,?,now(),?)";
+			$bool=$this->db->query($sql,$data);
+			return $sql;
+		}
+		
+		public function getCommentRow1($data){
+			$sql='select * from comment where student_id=? and faculty_id=?';
+			$res=$this->db->query($sql,$data);
+			return $res->num_rows();
+		}
+		
+		public function getComment1($data){
+			$sql='select time,comment from comment where student_id=? and faculty_id=?';
+			$res=$this->db->query($sql,$data);
+			return $res;
+		}
 	}
 ?>
