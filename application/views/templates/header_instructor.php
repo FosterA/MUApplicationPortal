@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	<link href="http://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>css/hp.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="<?=base_url();?>images/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?=base_url();?>images/apple-touch-icon-60x60.png">
@@ -33,10 +33,6 @@
 		font-size: .5em;
 		background: url(<?=base_url('images/mu_bw_line.png')?>) no-repeat left top;
 	}
-
-	td {
-    	white-space: nowrap;
-	}
 </style>
 </head>
 <body>
@@ -57,9 +53,8 @@
 				<div id="menu">
 					<ul>
 						<li class="active"><a href="<?=base_url('welcome/home')?>" accesskey="1" title="">Home</a></li>
-						<li class="active"><a href="<?=base_url('table/index')?>" accesskey="1" title="">Review Applications</a></li>
-						<li class="active"><a href="<?=base_url('table/course')?>" accesskey="4" title="">Add course</a></li>
-						<li class="active"><a href="<?=base_url('register/logout')?>" accesskey="5" title="">Logout</a></li>
+						<li><a href="<?=base_url('teacher/index')?>" accesskey="4" title="">Comment</a></li>
+						<li><a href="<?=base_url('register/logout')?>" accesskey="5" title="">Logout</a></li>
 					</ul>
 				</div>
 			</div>

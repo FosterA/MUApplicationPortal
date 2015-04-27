@@ -222,30 +222,7 @@ div#specialBox {
   font-size: 16px;
 }
 
-#curTeach {
-  position: absolute;
-  top: 2%;
-  left: 51%;
-  width: 320px;
-  height: 110px;
-  overflow: scroll;
-}
-#preTeach {
-  position: absolute;
-  top: 26%;
-  left: 51%;
-  width: 320px;
-  height: 110px;
-  overflow: scroll;
-}
-#likeTeach {
-  position: absolute;
-  top: 51%;
-  left: 51%;
-  width: 320px;
-  height: 110px;
-  overflow: scroll;
-}
+
 #divClose {
   position: absolute;
   top: 77%;
@@ -254,11 +231,30 @@ div#specialBox {
 p,ul{
 	margin:2px;
 }
-#specialBox p{
-	margin:20px 10px;
+
+
+#goback{
+	font-size:20px;
 }
-#specialBox ul{
-	margin:20px;
+#specialBox .close{
+position: absolute;
+  top: 389px;
+  left: 400px;
+}
+#specialBox #sumbit{
+position: absolute;
+  top: 389px;
+  left: 130px;
+  z-index: 999;
+}
+#noComment{
+margin :100px 270px;
+}
+#textComment{
+margin: 13px 19px;
+  width: 598px;
+  height: 361px;
+  font-size:20px;
 }
 #infomation{
 	font-size:16px;
@@ -266,15 +262,7 @@ p,ul{
 	height:100px;
 	margin :10px auto 0px;
 }
-#goback{
-	font-size:20px;
-}
-#specialBox .close{
-margin : 10px 270px
-}
-#noComment{
-margin :100px 270px;
-}
+
 </style>
 <link href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
@@ -282,54 +270,37 @@ margin :100px 270px;
 <script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
 <script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
 <script src="https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
- <script>
- 	<?php
+</head>
+<script>
+<?php
  		if(isset($result)){
  		$student_id=$result['student_id'];
- 		if($result['type']=='add'){
- 			
- 			if($result['status']){
- 				echo "alert('You have already accept $student_id application')";
+ 		$status=$result['status'];
+ 			if($status){
+ 				echo "alert('You have already added successfully comment to $student_id !')";
  			}else{
- 				echo "alert('You FAILED TO accept $student_id application')";
- 			}
- 			}else{
- 			
- 			if($result['status']){
- 				echo "alert('You have already deny $student_id application')";
- 			}else{
- 				echo "alert('You FAILED TO deny $student_id application')";
- 			}
- 			
+ 				echo "alert('You FAILED TO add comment to $student_id !')";
  			}
  			
  		}
  	?>
- </script>
-</head>
+</script>
 <body>
+
 	<div id="overlay"></div>
-	<div id='infomation'>In this page, you can assign applicants as TA/PLA and you can view each students score given by students for each course this applicants previous taught.
-	Additionally, you can view the applicants who have already be assigned as TA/PLA and who have already be denied.  </div>
-	<select id="type">
-		<option value="general">all applicants</option>
-		<option value="avgScore">avg score</option>
-		<option value="allScore">all score</option>
-		<option value="Accept">Accept</option>
-		<option value="Deny">Deny</option>
-	</select>
+	<div id='infomation'>In this page, you can make comment on each student, and you can make several comments on each student. 
+	Additionally, you can view comment on each student that made by your self, in other word, you couldn't view comment that made by other instructors.  </div>
 	<div id="content">
 	<?=$table?>
 	</div>
-	<?=anchor('index.php/admin', 'Main Page', array('id' => 'goback'));?>
+	<?=anchor('welcome/home', 'Main Page', array('id' => 'goback'));?>
 <script>
 $(document).ready(function(){
 	 $('#myTable').DataTable();
     
-    
-    $("body").on('click','button.detail',function(value){
+    $("body").on('click','button.write',function(value){
     	var str=$(this).parent().parent().children().eq(1).text();
-    	var href="<?=base_url('index.php/table/test')?>"+'/'+str;
+    	var href="<?=base_url('index.php/teacher/create')?>"+'/'+str;
     	var xmlhttp = new XMLHttpRequest();
    		var overlay = document.getElementById('overlay');
    		overlay.style.display = "block";
@@ -339,6 +310,7 @@ $(document).ready(function(){
             	var ele=$("<div id='specialBox'></div>");
             	$('body').prepend(ele);
                 ele.html(xmlhttp.responseText);
+                ele.append('<button type="button" class="close" id="close">close</button>');
             }
         }
         xmlhttp.open("post",href,true);
@@ -349,9 +321,9 @@ $(document).ready(function(){
     
    
    
-   $("body").on('click','button.comment',function(value){
+   $("body").on('click','button.view',function(value){
    		var str=$(this).parent().parent().children().eq(1).text();
-    	var href="<?=base_url('index.php/table/comment')?>"+'/'+str;
+    	var href="<?=base_url('index.php/teacher/view')?>"+'/'+str;
    		var xmlhttp = new XMLHttpRequest();
    		var overlay = document.getElementById('overlay');
    		overlay.style.display = "block";
@@ -385,25 +357,7 @@ $(document).ready(function(){
 	 	$("form").attr('action',"<?=base_url('index.php/table/denyStudent')?>");
 	 });
 	 
-	 $("select#type").change(function(){
-	 	var sel=$("select#type  option:selected");
-	 	var url="<?=base_url('index.php/table')?>/"+sel.prop('value');
-	 	//console.log(url);
-	 	var xmlhttp = new XMLHttpRequest();
-	 	xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var json=xmlhttp.responseText;
-                var obj = JSON.parse(json);
-                console.log(obj.table);
-                $("div#content").html(obj.table);
-                $('#myTable').DataTable();
-            }
-        }
-        xmlhttp.open("post",url,true);
- 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
- 		xmlhttp.send();
-	 });
-	 
+	
 });
 
 

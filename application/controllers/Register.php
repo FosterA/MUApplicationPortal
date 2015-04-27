@@ -25,12 +25,14 @@ class Register extends CI_Controller {
 				'title' => ucfirst($this->session->userdata('profession') . ' ' . 'Home'),
 				'user' => ucfirst($this->session->userdata('user'))
 			);
+			
 
 			//Redirect to Welcome.php controller and home method
 			redirect('welcome/home');
 		}
 
 		else{
+			echo "asdffasdfsdfad";
 			$data['error']="Sorry, your username or password is incorrect.";
 			$this->load->view('templates/header');
 			$this->load->view('register',$data);

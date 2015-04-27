@@ -25,7 +25,7 @@
 				$res=$this->db->query($sql,$data);
 			}
 			else{
-				$sql='select * from student where student_id=? and password=md5(?)';
+				$sql='SELECT * FROM student WHERE student_id=? AND password=md5(?)';
 				$data[0]=$this->input->post('username');
 				$data[1]=$this->input->post('password');
 				$res=$this->db->query($sql,$data);
@@ -60,6 +60,6 @@
 			$data[0]=$id;
 			$res=$this->db->query($sql,$data);
 			return $res->num_rows();
-		}
+		}	
 	}
 ?>

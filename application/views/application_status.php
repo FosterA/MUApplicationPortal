@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<html lang="en">
 
 <head>	
 <style>
@@ -27,20 +28,14 @@
     background: linear-gradient(top, #FF6633, #FF6633);
 }
 </style>
-</head>
+
 <body>
 		<div id="page" class="container">
 			<div id="content">
 				<div>
-					<h2 style="font-family: Fantasy">Welcome <?php echo $user?></h2>
-					<?php 
-						if($existingApp){?>
-							<p><a href="<?=base_url('student/appStatus')?>" class="button1" style="font-family: Fantasy; color: black">Application Status</a></p>
-					<?php }?>
-					<?php
-						if(!$existingApp){?>
-							<p><a href="<?=base_url('index.php/form/index')?>" class="button1" style="font-family: Fantasy; color:black">Begin Application</a></p>
-					<?php }?>		
+					<h2 style="font-family: Fantasy"><?php echo $user?> Application Status</h2>
+					<!--Add display application status here-->	
+					<h2><strong><?php echo $status?></strong></h2>
 				</div>
 			</div>
 		</div>
@@ -48,4 +43,5 @@
 	</div>
 </div>
 </body>
+</head>
 </html>

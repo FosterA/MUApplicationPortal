@@ -184,7 +184,7 @@
  			<p>Anticipated Graduation Date: <input type="text" id="gradDate"></p>
 		<br>
 
-		<br>&nbsp;Course(s) You Are Currently Teaching: <br>&nbsp;(Select multiple by holding command)<br>
+		<br>&nbsp;Course(s) You Are Currently Teaching: <br>&nbsp;(Select all that apply)<br>
 		&nbsp;
 		
 		<select name="teaching[]" style="width:350px;" id="teaching" class="chosen-select" multiple tabindex="6">  
@@ -198,7 +198,7 @@
           	<?php endforeach;?>
         </select>
 
-		<br>&nbsp;Course(s) You Have Previously Taught: <br>&nbsp;(Select multiple by holding command)<br>
+		<br>&nbsp;Course(s) You Have Previously Taught: <br>&nbsp;(Select all that apply)<br>
 		&nbsp;
 		<select name="taught[]" style="width:350px;" class="chosen-select" id='taught' multiple tabindex="6">
         	<?php foreach($course as $val):?>
@@ -210,7 +210,7 @@
         		 </optgroup>
           	<?php endforeach;?>
           </select>
-		<br>&nbsp;Course(s) You Would Like to Teach: <br>&nbsp;(Select multiple by holding command)<br>
+		<br>&nbsp;Course(s) You Would Like to Teach: <br>&nbsp;(Select all that apply)<br>
 		&nbsp;
 
 
@@ -293,12 +293,12 @@
     	}
     	
     	var x=form['gpa'].value;
-   		if (x == null || x == "" || !(/^[0-9]*\.[0-9]*$/.test(x)) || x>5) {
-        	alert("gpa must be filled out and can only contain number and must less that 5");
+   		if (x == null || x == "" || !(/^\d*\.?\d{0,3}$/.test(x)) || x>5) {
+        	alert("GPA must be filled out and can only be a number specified to a thousandth of a point.");
         	return false;
     	}
     	
-    	var obj=document.getElementById('taught');
+    	var obj=document.getElementById('teach');
    		if(obj.selectedIndex ==-1){
    			alert('you must select at least one course you Would Like to Teach');
    			return false;

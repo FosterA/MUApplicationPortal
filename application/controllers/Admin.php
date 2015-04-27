@@ -5,7 +5,7 @@ class Admin extends CI_Controller {
 	
 	public function index(){
 		if (!isset($_SESSION['logged_in'])){
-			$this->load->view('register');
+			redirect('register');
 		}
 
 		$data=$this->pageData();
@@ -26,6 +26,13 @@ class Admin extends CI_Controller {
 		
 		// Set the headings
 		$this->table->set_heading($header);
+
+		/*Template to prevent wrapping
+		$template = array(
+			'cell_start' => '<td>'
+		);
+
+		$this->table->set_template($template);*/
 
 		//Get the admin's profession and username
 		$data['title'] = ucfirst($this->session->userdata('profession') . ' ' . 'Home');
