@@ -33,14 +33,17 @@
 			<div id="content">
 				<div>
 					<h2 style="font-family: Fantasy">Welcome <?php echo $user?></h2>
+					<br>
+					<h2><?php echo $windowStatus?></h2>
 					<?php 
 						if($existingApp){?>
 							<p><a href="<?=base_url('student/appStatus')?>" class="button1" style="font-family: Fantasy; color: black">Application Status</a></p>
 					<?php }?>
 					<?php
-						if(!$existingApp){?>
-							<p><a href="<?=base_url('index.php/form/index')?>" class="button1" style="font-family: Fantasy; color:black">Begin Application</a></p>
-					<?php }?>		
+						if ($window){
+							if(!$existingApp){?>
+								<p><a href="<?=base_url('index.php/form/index')?>" class="button1" style="font-family: Fantasy; color:black">Begin Application</a></p>
+					<?php }}?>		
 				</div>
 			</div>
 		</div>

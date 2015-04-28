@@ -3,7 +3,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 class Student_model extends CI_Model{
 
-	//Establlish database connection
+	//Establish database connection
 	public function __construct(){
 		parent::__construct();
 		$this->load->database();
@@ -58,5 +58,32 @@ class Student_model extends CI_Model{
 			return "Sorry, your application cannot be found, please contact your advisor.";
 		}
 	}
+
+	public function checkWindow(){
+		$sql = "SELECT * FROM windows WHERE appOpen <= now() AND appClose >= now()";
+		$result = $this->db->query($sql);
+
+		if($result->num_rows() == 0){
+			return FALSE;
+		}
+		else{
+			return TRUE;
+		}
+	}
+
+	public function getWindowStatus(){
+		$window = $this->checkWindow();
+		if ($window){
+			$sql = "SELECT * FROM windows WHERE appOpen <= now() AND appClose >= now()";
+			$result = $this->db->query($sql);
+			$row = $result->row();
+
+			$message = "Now accepting applications for " . strval($row->semester) . " until " . strval($row->appClose);
+			return $message;
+		}
+		else{
+			return "We are currently not accepting applications. Check back soon.";
+		}
+	}
 }
-?>	
+?>

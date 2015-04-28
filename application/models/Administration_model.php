@@ -48,5 +48,37 @@ class Administration_model extends CI_Model{
 		if($bol)
 			return true;
 	}
+
+	public function addnew($array){
+		//$profession = $this->input->post('profession');
+		$profession = $array['profession'];
+		$bol=null;
+		if($profession='instructor'){
+			$sql="INSERT INTO instructor VALUES(?,?,?)";
+			$data[0]=$array['username'];
+			$data[1]=md5($array['password']);
+			$data[2]=$array['email'];
+			$bol=$this->db->query($sql,$data);
+			if($bol){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else{
+			$sql="INSERT INTO admin VALUES(?,?,?)";
+			$data[0]=$array['username'];
+			$data[1]=md5($array['password']);
+			$data[2]=$array['email'];
+			$bol=$this->db->query($sql,$data);
+			if($bol){
+				return true;
+			}
+			else{
+					return false;
+			}
+		}
+	}
 }
 ?>	

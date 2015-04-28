@@ -10,7 +10,8 @@
 
 		//Method to check if the entered login credentials exist in the database.
 		public function validate(){
-			$profession = $this->input->post('profession');
+
+		$profession = $this->input->post('profession');
 
 			if ($profession == 'admin'){
 				$sql='select * from admin where admin_id=? and password=md5(?)';

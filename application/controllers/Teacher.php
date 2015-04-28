@@ -24,6 +24,26 @@ class Teacher extends CI_Controller {
 			redirect('register');
 		}
 	}
+
+	public function home(){
+		if (!isset($_SESSION['logged_in'])||$this->session->userdata('profession')!='instructor'){
+			redirect('register');
+		}
+		//Get the teacher's profession and username
+		$data['title'] = ucfirst($this->session->userdata('profession') . ' ' . 'Home');
+		$data['user'] = ucfirst($this->session->userdata('user'));
+
+		$this->load->model('teacher_model');
+		$data['window'] = $this->teacher_model->checkWindow();
+		$data['message'] = $this->teacher_model->getWindowStatus();
+
+
+		$this->load->view('templates/header_instructor', $data);
+		$this->load->view('instructor_home', $data);
+		$this->load->view('templates/footer');
+	}
+	
+
 	public function index($result=NULL)
 	{	
 	if(isset($result)){

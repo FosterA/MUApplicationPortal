@@ -1,3 +1,5 @@
+use applicationportal;
+
 DROP TABLE IF EXISTS windows;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS likeTeach;
