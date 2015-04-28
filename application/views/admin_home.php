@@ -91,7 +91,7 @@ $(function() {
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 3,
-      minDate: 0,
+      //minDate: 0,
       dateFormat: "yy-mm-dd",
       onClose: function( selectedDate ) {
         $( "#appto" ).datepicker( "option", "minDate", selectedDate );
@@ -101,7 +101,7 @@ $(function() {
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 3,
-      minDate: 0,
+      //minDate: 0,
       dateFormat: "yy-mm-dd",
       onClose: function( selectedDate ) {
         $( "#appfrom" ).datepicker( "option", "maxDate", selectedDate );
@@ -112,7 +112,7 @@ $(function() {
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 3,
-      minDate: 0,
+      //minDate: 0,
       dateFormat: "yy-mm-dd",
       onClose: function( selectedDate ) {
         $( "#commentto" ).datepicker( "option", "minDate", selectedDate );
@@ -122,7 +122,7 @@ $(function() {
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 3,
-      minDate: 0,
+      //minDate: 0,
       dateFormat: "yy-mm-dd",
       onClose: function( selectedDate ) {
         $( "#commentfrom" ).datepicker( "option", "maxDate", selectedDate );
