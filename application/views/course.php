@@ -1,33 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-	<link href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url();?>css/hp.css">
-	<link rel="apple-touch-icon" sizes="57x57" href="<?=base_url();?>images/apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="<?=base_url();?>images/apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="<?=base_url();?>images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="<?=base_url();?>images/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="<?=base_url();?>images/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="<?=base_url();?>images/apple-touch-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="<?=base_url();?>images/apple-touch-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="<?=base_url();?>images/apple-touch-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="<?=base_url();?>images/apple-touch-icon-180x180.png">
-	<link rel="icon" type="image/png" href="<?=base_url();?>images/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="<?=base_url();?>images/android-chrome-192x192.png" sizes="192x192">
-	<link rel="icon" type="image/png" href="<?=base_url();?>images/favicon-96x96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="<?=base_url();?>images/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="<?=base_url();?>images/manifest.json">
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="msapplication-TileImage" content="<?=base_url();?>images/mstile-144x144.png">
-	<meta name="theme-color" content="#ffffff">
-	<script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
-    <script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
-    <link rel="stylesheet" href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>">
 <style>
 	#mulogo:hover{
 		text-indent: -9999em;
@@ -39,9 +9,17 @@
     	white-space: nowrap;
 	}
 	#courseType{
-		margin: 10px -126px;
-  		text-align: left;
+
+		/*margin: 10px -126px;*/
+  		text-align: center;
 	}
+
+    .container{
+        border: 1px solid black;
+        border-radius: 5px;
+        background: #f5f5f5;
+    }
+
 	input {
     width: 270px;
     height: 42px;
@@ -126,13 +104,13 @@ button:active {
  		$course=$result['course'];
  		$dept=$result['dept'];
  		if($result['status']){
- 			echo "alert('You have already add $course in $dept department')";
+ 			echo "alert('You have added $course in $dept department')";
  		}else{
  			echo "alert('You failed to add $course in $dept department')";
  		}}
  	?>
  </script>
-<body>
+<!--<body>
 <div id="wrapper">
 	<div id="wrapper-bgtop">
 		<div id="header-wrapper">
@@ -149,26 +127,31 @@ button:active {
 				</div>
 				<div id="menu">
 					<ul>
-						<li class="active"><a href="<?=base_url('welcome/home')?>" accesskey="1" title="">Home</a></li>
-						<li class="active"><a href="<?=base_url('table/index')?>" accesskey="1" title="">Review Applications</a></li>
-						<li class="active"><a href="<?=base_url('table/course')?>" accesskey="4" title="">Add course</a></li>
-						<li class="active"><a href="<?=base_url('register/logout')?>" accesskey="5" title="">Logout</a></li>
+						<li class="active"><a href="<?=base_url(/*'welcome/home'*/)?>" accesskey="1" title="">Home</a></li>
+						<li class="active"><a href="<?=base_url(/*'table/index'*/)?>" accesskey="1" title="">Review Applications</a></li>
+						<li class="active"><a href="<?=base_url(/*'table/course'*/)?>" accesskey="4" title="">Add course</a></li>
+						<li class="active"><a href="<?=base_url(/*'register/logout'*/)?>" accesskey="5" title="">Logout</a></li>
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div>-->
+<br>        
 <div id='page' class='container'>
-	<div id='content'>
-		<div id='courseType'>
-			<select id="type">
-				<option value="showcourse">Show Course</option>
-				<option value="addcourse">Add course</option>
-			</select>
-		</div>
+	<div id='courseType'>
+        <h3>Select an Action</h3>    
+        <select id="type">
+            <option value="showcourse">Show Courses</option>
+            <option value="addcourse">Add course</option>
+        </select>
+    </div>
+    <div id='content'>
 		<div id='show'>
 			<?=$list?>
 		</div>
 	</div>
+    <br>
+</div>
+</div>
 </div>
 <script src="https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
 
