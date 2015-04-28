@@ -42,7 +42,7 @@
 		margin: 10px -126px;
   		text-align: left;
 	}
-	input {
+	#inputCourse{
     width: 270px;
     height: 42px;
     margin-top: 25px;

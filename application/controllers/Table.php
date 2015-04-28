@@ -379,7 +379,7 @@ public function course($result=NULL){
 public function addcourse(){
 $this->load->helper('url');
 $url=base_url('index.php/table/add');
-	echo "</div id='courselist'><form action='$url' method='post'><select name='dept' tabindex='52' size='1' style='width:194px; '>
+	echo "</div id='courselist'><form action='$url' method='post'><label for='selectDept'>Please select a department</label><br><br><select name='dept' id='selectDept' tabindex='52' size='1' style='width:194px; '>
 <option value='' selected='selected'>&nbsp; </option>
 <option value='ACCTCY'>Accountancy</option>
 <option value='AERO'>Aerospace Studies</option>
@@ -513,7 +513,7 @@ $url=base_url('index.php/table/add');
 <option value='VMED_I'>Veterinary Medicine - Interdis</option>
 <option value='V_PBIO'>Veterinary Pathobiology</option>
 <option value='WGST'>Women's &amp; Gender Studies</option>
-</select><input type='text' name='course' placeholder='course name'><button type='submit' id='addCourse'>button</button></form></div>	";
+</select><br><br><label for='inputCourse'>Please input the course name:</label><br><input id='inputCourse' type='text' name='course' placeholder='course name'><br><button type='submit' id='addCourse'>button</button></form></div>	";
 }
 public function showcourse(){
 $this->load->library('table');
