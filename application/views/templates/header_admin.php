@@ -37,6 +37,11 @@
 	td {
     	white-space: nowrap;
 	}
+	
+	#menu {
+	position: relative;
+	right: -10px;
+	}
 </style>
 </head>
 <body>
