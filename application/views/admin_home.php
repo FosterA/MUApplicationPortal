@@ -1,16 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+	body {
+		 background-image:url(<?=base_url('images/Missouri.jpg')?>);
+		 background-size: cover;
+		 background-repeat: no-repeat;
+
+	 }
+	.form-wrapper{
+		border: 2px solid black;
+		border-radius: 20px;
+		background-color: white;
+		padding: 5px;
+		font-size: 16px;
+		color: black;
+	
+	}
+	#submit {
+		background: white;
+		width: 120px;
+		height: 30px;
+		border-radius: 6px;
+		font-size: 14px;
+	}
+</style>
+</head>
+<body>
 		<div id="page" class="container">
 			<div id="content">
 				<div>
 					<h2>Welcome <?php echo $user?></h2>
 				</div>
 				<?php echo validation_errors(); ?>
-				<div id="windows">
-					<h3>Current Set Action Windows</h3>
+				<div class="form-wrapper">
+				<div class="windows">
+					<h3>Current Application Windows</h3>
 					<br>
 					<div id='results'>
 						<?php echo $this->table->generate($windows); ?>
 					</div>
-					<h3>Set Action Windows</h3>
+					<h3>Set Application Windows</h3>
 					<br>
 					<p>Select Semester</P>
 					<form action="<?=base_url('admin/setwindows')?>" method="post" name="setwindows" id="setwindows">	
@@ -49,13 +79,11 @@
 		</div>
 		<br>
 		<br>
-		<div id="content" class="container">
-			<img src="<?=base_url('images/mizzou.jpg')?>" width="1000" height="500" alt="" />
-		</div>
-
-		
+	
+	</div>
 	</div>
 </div>
+</body>
 <script>
 
 $(function() {
@@ -108,3 +136,4 @@ $(function() {
 	alert("<?=$confirm?>");
 <?php } ?>
 </script>
+</html>

@@ -9,6 +9,7 @@ body {
 	font-family: 'Arvo', serif;
 	font-size: 13px;
 	color: #837F7F;
+	height: 100%;
 }
 
 h1, h2, h3 {
@@ -111,11 +112,15 @@ hr {
 #wrapper-bgtop {
 	overflow: hidden;
 	padding: 0px 0px 50px 0px;
+	min-height: 100%;
+	position: relative;
 }
 
 .container {
 	width: 1000px;
 	margin: 0px auto;
+	min-height:100%;
+	padding-bottom: 110px;
 }
 
 .clearfix {
@@ -203,7 +208,7 @@ hr {
 
 #page {
 	overflow: hidden;
-	padding: 50px 0px 0px 0px;
+	padding: 20px 0px 0px 0px;
 }
 
 /** CONTENT */
@@ -213,7 +218,7 @@ hr {
 	width: 640px;
 	text-align: center;
 	text-shadow: 1px 1px 0px #FFFFFF;
-	min-height: 500px;
+	min-height:100%;
 }
 
 #content h2 {
@@ -228,8 +233,12 @@ hr {
 
 #footer {
 	overflow: hidden;
-	height: 150px;
+	height: 40px;
 	background-color: black;
+	bottom:0;
+	width:100%;
+	left:0;
+
 }
 
 #footer p {
