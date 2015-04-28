@@ -41,11 +41,35 @@
         <form action="<?=base_url('register/student')?>" method="post" name="login" id="login">
             <input type="text" name="username" class="username" placeholder="Username">
             <input type="password" name="password" class="password" placeholder="Password">
-            <select name='profession' id="profession" onchange="identity()">
+            <!--<select name='profession' id="profession" onchange="identity()">
             	<option value="student">student</option>
            		<option value="instructor">instructor</option>
           		<option value="admin">admin</option>
-            </select>
+            </select>-->
+         <!--   <?php $profession = null;
+            $sql = 'SELECT * FROM student WHERE student_id=?';
+            $data[0]=$this->input->post('username');
+            $res=$this->db->query($sql,$data);
+           if($res->num_rows()==1){
+              $profession = 'student';
+              echo "hit on student";
+           }
+           else if($res->num_rows()==0){
+              $sql = 'SELECT * FROM instructor WHERE faculty_id=?';
+              $res2=$this->db->query($sql,$data);
+              if($res2->num_rows()==1){
+                $profession='instructor';
+              }
+              else
+                $sql = 'SELECT * FROM admin WHERE admin_id=?';
+                $res3 = $this->db->query($sql,$data);
+                if($res3->num_rows()==1){
+                  $profession='admin';
+                  //echo $profession;
+                }
+          }?>-->
+          <input type="hidden" name='profession'> <!-- value='<?php echo $profession;?>'>-->
+          
             <button id="submit" type="submit">Sign me in</button>
             <button class="back" type="button">Back</button>
         </form>

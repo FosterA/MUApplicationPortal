@@ -10,7 +10,32 @@
 
 		//Method to check if the entered login credentials exist in the database.
 		public function validate(){
-			$profession = $this->input->post('profession');
+			$profession = null;
+            $sql = 'SELECT * FROM student WHERE student_id=?';
+            $data[0]=$this->input->post('username');
+            $res=$this->db->query($sql,$data);
+           if($res->num_rows()==1){
+              $profession = 'student';
+              //echo "hit on student";
+           }
+           else if($res->num_rows()==0){
+              $sql = 'SELECT * FROM instructor WHERE faculty_id=?';
+              $res2=$this->db->query($sql,$data);
+              if($res2->num_rows()==1){
+                $profession='instructor';
+              }
+              else
+                $sql = 'SELECT * FROM admin WHERE admin_id=?';
+                $res3 = $this->db->query($sql,$data);
+                if($res3->num_rows()==1){
+                  $profession='admin';
+                  //echo $profession;
+                }
+          	}
+          //$this->input->post('profession') = $profession;
+
+
+		//$profession = $this->input->post('profession');
 
 			if ($profession == 'admin'){
 				$sql='select * from admin where admin_id=? and password=md5(?)';
