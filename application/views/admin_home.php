@@ -1,32 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<style>
-	body {
-		 background-image:url(<?=base_url('images/Missouri.jpg')?>);
-		 background-size: cover;
-		 background-repeat: no-repeat;
-
-	 }
-	.form-wrapper{
-		border: 2px solid black;
-		border-radius: 20px;
-		background-color: white;
-		padding: 5px;
-		font-size: 16px;
-		color: black;
-	
-	}
-	#submit {
-		background: white;
-		width: 120px;
-		height: 30px;
-		border-radius: 6px;
-		font-size: 14px;
-	}
-</style>
-</head>
-<body>
 		<div id="page" class="container">
 			<div id="content">
 				<div>
@@ -76,14 +47,12 @@
 					</form>
 				</div>
 			</div>
-		</div>
 		<br>
 		<br>
-	
-	</div>
-	</div>
 </div>
-</body>
+</div>
+</div>
+</div>	
 <script>
 
 $(function() {
