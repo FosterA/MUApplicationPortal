@@ -47,15 +47,15 @@ class Student_model extends CI_Model{
 		}
 		else if ($agree->num_rows()==1){
 			$result = $agree->row();		
-			$status = "Congratulations, you have been accepted as a TA or PLA for " . strval($result->courseName);
+			$status = "Congratulations, you have been accepted as a TA or PLA for " . strval($result->courseName) . ".";
 			return $status;
 		}
 		else if ($disagree->num_rows()==1){
-			$status = "Sorry, you were not accepted as a TA or PLA";
+			$status = "Sorry, you were not accepted as a TA or PLA.";
 			return $status;
 		}
 		else{
-			return "Sorry, your application cannot be found, please contact your advisor";
+			return "Sorry, your application cannot be found, please contact your advisor.";
 		}
 	}
 }
