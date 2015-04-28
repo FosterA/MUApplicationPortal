@@ -38,9 +38,12 @@
     	white-space: nowrap;
 	}
 	
-	#menu {
-	position: relative;
-	right: -10px;
+	#logo {
+		position: relative;
+		left: 10px;
+	}
+	#header {
+		width:1250px;
 	}
 </style>
 </head>
