@@ -13,6 +13,28 @@ class Register extends CI_Controller {
 		$query = $this->register_model->validate();
 
 		if ($query){
+			$profession = null;
+            $sql = 'SELECT * FROM student WHERE student_id=? AND password=md5(?)';
+            $data[0]=$this->input->post('username');
+            $data[1]=$this->input->post('password');
+            $res=$this->db->query($sql,$data);
+           if($res->num_rows()==1){
+              $profession='student';
+           }
+           else {
+              $sql = 'SELECT * FROM instructor WHERE faculty_id=? AND password=md5(?)';
+              $res2=$this->db->query($sql,$data);
+              if($res2->num_rows()==1){
+                $profession='instructor';
+              }
+              else{
+                $sql = 'SELECT * FROM admin WHERE admin_id=? AND password=md5(?)';
+                $res3 = $this->db->query($sql,$data);
+                if($res3->num_rows()==1){
+                   $profession='admin';
+                }
+          	   }
+          	}
 			$data = array(
 				'user' => $this->input->post('username'),
 				'profession' => $this->input->post('profession'),
@@ -32,7 +54,7 @@ class Register extends CI_Controller {
 		}
 
 		else{
-			echo "asdffasdfsdfad";
+			//echo "asdffasdfsdfad";
 			$data['error']="Sorry, your username or password is incorrect.";
 			$this->load->view('templates/header');
 			$this->load->view('register',$data);

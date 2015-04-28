@@ -46,6 +46,7 @@
            		<option value="instructor">instructor</option>
           		<option value="admin">admin</option>
             </select>
+         
             <button id="submit" type="submit">Sign me in</button>
             <button class="back" type="button">Back</button>
         </form>
