@@ -97,7 +97,7 @@
 	}
 	div#score {
   	position: absolute;
-  	top: 138%;
+  	top: 63%;
   	left: 55%;
  	 z-index: 100;
  	 background:rgba(66, 147, 33, 0.58);
