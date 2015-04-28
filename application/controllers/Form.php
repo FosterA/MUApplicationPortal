@@ -20,31 +20,40 @@ class Form extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nation', 'nation', 'required');
-		$this->form_validation->set_rules('degree', 'degree', 'required');
-	if($this->form_validation->run() == FALSE)
-		{
-			$this->load->view('templates/header.php');
-   			$this->load->view('application/status');
-   			$this->load->view('templates/footer.php');
-		}
-  		else
-		{
-   			$data['nation']=$this->input->post('nation');
-   			$data['degree']=$this->input->post('degree');
-   			
-   			$this->load->model("test_model","test");
-			$data['course']=$this->test->showDept();
-			foreach($data['course'] as $value){
-				$dept=$value['deptment'];
-				$data[$dept]=$this->test->showCourse($dept);
+		$this->load->model('student_model');
+		$check=$this->student_model->checkWindow();
+
+		if($check){
+
+			$this->load->helper(array('form', 'url'));
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('nation', 'nation', 'required');
+			$this->form_validation->set_rules('degree', 'degree', 'required');
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('templates/header.php');
+	   			$this->load->view('application/status');
+	   			$this->load->view('templates/footer.php');
 			}
-			$this->load->view('templates/header.php');
-			$this->load->view('application/form',$data);
-			$this->load->view('templates/footer.php');
+	  		else
+			{
+	   			$data['nation']=$this->input->post('nation');
+	   			$data['degree']=$this->input->post('degree');
+	   			
+	   			$this->load->model("test_model","test");
+				$data['course']=$this->test->showDept();
+				foreach($data['course'] as $value){
+					$dept=$value['deptment'];
+					$data[$dept]=$this->test->showCourse($dept);
+				}
+				$this->load->view('templates/header.php');
+				$this->load->view('application/form',$data);
+				$this->load->view('templates/footer.php');
+			}
 		}
+		else{
+			redirect('student');
+		}	
 	}
 	
 	public function interUnder(){
