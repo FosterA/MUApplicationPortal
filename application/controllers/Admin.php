@@ -110,6 +110,41 @@ class Admin extends CI_Controller {
 				$this->load->view('templates/footer');
 			}
 
+		}}
+	public function add_User(){
+		$data=$this->pageData();
+		$this->load->library('form_validation');
+
+		//Validation rules
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|max_length[128]');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[128]');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+	
+		if($this->form_validation->run() == FALSE)
+		{
+			$this->load->view('templates/header_admin');
+ 	   		$this->load->view('admin_newUsers');
+		}
+  	
+  		else
+		{
+   			$this->load->model('administration_model');
+   			$bol=$this->administration_model->addnew($_POST);
+   			
+   			if($bol){
+ 				$data['confirm']="New user added sucessfully";
+ 				$this->load->view('templates/header_admin',$data);
+				$this->load->view('admin_home',$data);
+				$this->load->view('templates/footer',$data);	
+			}
+			else
+			{
+				$data=$this->pageData();
+				$data['error'] = "Unable to add new user.";
+				$this->load->view('templates/header_admin', $data);
+				$this->load->view('admin_home', $data);
+				$this->load->view('templates/footer');
+			}
 		}
 	}
 }

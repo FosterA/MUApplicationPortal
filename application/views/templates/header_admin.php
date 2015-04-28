@@ -59,6 +59,7 @@
 						<li class="active"><a href="<?=base_url('welcome/home')?>" accesskey="1" title="">Home</a></li>
 						<li class="active"><a href="<?=base_url('table/index')?>" accesskey="1" title="">Review Applications</a></li>
 						<li class="active"><a href="<?=base_url('table/course')?>" accesskey="4" title="">Add course</a></li>
+						<li class="active"><a href="<?=base_url('Admin/add_User')?>" accesskey="3" title="">Add New User</a></li>
 						<li class="active"><a href="<?=base_url('register/logout')?>" accesskey="5" title="">Logout</a></li>
 					</ul>
 				</div>
