@@ -11,7 +11,11 @@ class Student extends CI_Controller {
 
 		$this->load->model('student_model');
 		$data['existingApp'] = $this->student_model->checkForApp($data['user']);
-		
+		$data['window'] = $this->student_model->checkWindow();
+
+		$data['windowStatus'] = $this->student_model->getWindowStatus();
+
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('student_home', $data);
 		$this->load->view('templates/footer');
