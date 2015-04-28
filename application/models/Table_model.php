@@ -136,5 +136,16 @@
 			$res=$this->db->query($sql,$data);
 			return $res;
 		}
+		public function showcourse(){
+			$sql='select deptment as department,courseName from course';
+			$res=$this->db->query($sql);
+			return $res;
+		}
+		public function addCourse(){
+		$data[0]=$this->input->post('course');
+		$data[1]=$this->input->post('dept');
+		$sql="insert into course values(?,?)";
+		return $this->db->query($sql,$data);
+		}
 	}
 ?>
