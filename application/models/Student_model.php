@@ -3,7 +3,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	
 class Student_model extends CI_Model{
 
-	//Establlish database connection
+	//Establish database connection
 	public function __construct(){
 		parent::__construct();
 		$this->load->database();
