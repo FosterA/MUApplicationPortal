@@ -29,6 +29,29 @@
     <script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
     <link rel="stylesheet" href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>">
 <style>
+	body {
+		 background-image:url(<?=base_url('images/Missouri.jpg')?>);
+		 background-size: cover;
+		 background-repeat: no-repeat;
+
+	 }
+	.form-wrapper{
+		border: 2px solid black;
+		border-radius: 20px;
+		background-color: white;
+		padding: 5px;
+		font-size: 16px;
+		color: black;
+	
+	}
+	#submit {
+		background: white;
+		width: 120px;
+		height: 30px;
+		border-radius: 6px;
+		font-size: 14px;
+	}
+
 	#mulogo:hover{
 		text-indent: -9999em;
 		font-size: .5em;
@@ -39,9 +62,12 @@
     	white-space: nowrap;
 	}
 	
-	#menu {
-	position: relative;
-	right: -10px;
+	#logo {
+		position: relative;
+		left: 10px;
+	}
+	#header {
+		width:1250px;
 	}
 </style>
 </head>
@@ -50,13 +76,9 @@
 	<div id="wrapper-bgtop">
 		<div id="header-wrapper">
 			<div id="header">
-
 				<div id="logo">
-
 					<a href="<?=base_url();?>" id="mulogo">
-
-  						<img src="<?=base_url();?>images/mu_color_line.png" alt="MU Logo">
-
+						<img src="<?=base_url();?>images/mu_color_line.png" alt="MU Logo">
 					</a>
 					<h1 style="color: white; padding: 20px 5px 20px 5px; width: 600px; letter-spacing: 4px;">TA / PLA Application Portal</h1>
 				</div>

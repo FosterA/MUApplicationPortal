@@ -1,5 +1,7 @@
 html, body {
 	height: 100%;
+	margin: 0px;
+	padding: 0px;
 }
 
 body {
@@ -37,15 +39,6 @@ p, ol {
 #windows{
 	padding: 10px;
 	border: 1px solid black;
-}
-
-#footer{
-	border-top: 1px solid black;
-	padding: 10px;
-}
-
-#footerhr{
-	height: 10px;
 }
 
 /*strong {
@@ -109,6 +102,10 @@ hr {
 	}
 
 /** WRAPPER */
+#wrapper{
+	min-height: 100%;
+	position: relative;
+}
 #wrapper-bgtop {
 	overflow: hidden;
 	padding: 0px 0px 50px 0px;
@@ -231,17 +228,21 @@ hr {
 
 /** FOOTER */
 
-#footer {
+footer {
+	position: relative;
+	border-top: 1px solid black;
+	padding: 10px;
 	overflow: hidden;
 	height: 40px;
 	background-color: black;
 	bottom:0;
 	width:100%;
 	left:0;
+	margin: 0px auto;
 
 }
 
-#footer p {
+footer p {
 	margin: 0px;
 	padding: 50px 0px 0px 0px;
 	text-align: center;
@@ -250,7 +251,7 @@ hr {
 	color: #837F7F;
 }
 
-#footer a {
+footer a {
 	color: #5E5C5C;
 }
 

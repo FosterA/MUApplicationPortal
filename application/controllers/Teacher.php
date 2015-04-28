@@ -45,38 +45,47 @@ class Teacher extends CI_Controller {
 	
 
 	public function index($result=NULL)
-	{	
-	if(isset($result)){
-			$data['result']=$result;
+	{
+		$this->load->model('teacher_model');
+		$check=$this->teacher_model->checkWindow();
+
+		if($check){
+
+			if(isset($result)){
+				$data['result']=$result;
+			}
+			$this->load->library(array('table','pagination'));
+			$this->load->model('table_model');
+			$this->load->helper('url');
+			$id=$this->session->userdata('user');
+			$url=base_url('images/user.gif');
+			$tmpl = array (
+	                    'table_open'          => '<table id="myTable">',
+
+	                    'heading_row_start'   => '<tr><th type="string">image</th>',
+	                    'heading_row_end'     => '<th>View comment</th><th>Write comment</th></tr>',
+	                    'heading_cell_start'  => '<th type="string"><span>',
+	                    'heading_cell_end'    => '</span></th>',
+
+	                    'row_start'           => "<tr><td><image src='$url'></td>",
+	                    'row_end'             => '<td><button class="view" type="button">view</button></td><td><button class="write" type="button">write</button></td></tr>',
+	                    'cell_start'          => '<td>',
+	                    'cell_end'            => '</td>',
+
+	                    'row_alt_start'       => "<tr><td><image src='$url'></td>",
+	                    'row_alt_end'         => '<td><button class="view" type="button">view</button></td><td><button class="write" type="button">write</button></tr>',
+	                    'cell_alt_start'      => '<td>',
+	                    'cell_alt_end'        => '</td>',
+
+	                    'table_close'         => '</table>'
+	              );
+			$this->table->set_template($tmpl);
+			$data['table']=$this->table->generate($this->table_model->getAllStudent());
+			$this->load->view('teacher',$data);
 		}
-		$this->load->library(array('table','pagination'));
-		$this->load->model('table_model');
-		$this->load->helper('url');
-		$id=$this->session->userdata('user');
-		$url=base_url('images/user.gif');
-		$tmpl = array (
-                    'table_open'          => '<table id="myTable">',
-
-                    'heading_row_start'   => '<tr><th type="string">image</th>',
-                    'heading_row_end'     => '<th>View comment</th><th>Write comment</th></tr>',
-                    'heading_cell_start'  => '<th type="string"><span>',
-                    'heading_cell_end'    => '</span></th>',
-
-                    'row_start'           => "<tr><td><image src='$url'></td>",
-                    'row_end'             => '<td><button class="view" type="button">view</button></td><td><button class="write" type="button">write</button></td></tr>',
-                    'cell_start'          => '<td>',
-                    'cell_end'            => '</td>',
-
-                    'row_alt_start'       => "<tr><td><image src='$url'></td>",
-                    'row_alt_end'         => '<td><button class="view" type="button">view</button></td><td><button class="write" type="button">write</button></tr>',
-                    'cell_alt_start'      => '<td>',
-                    'cell_alt_end'        => '</td>',
-
-                    'table_close'         => '</table>'
-              );
-		$this->table->set_template($tmpl);
-		$data['table']=$this->table->generate($this->table_model->getAllStudent());
-		$this->load->view('teacher',$data);
+		else{
+			redirect('teacher/home');
+		}
 	}
 
 	
