@@ -53,7 +53,6 @@
 				<div id="menu">
 					<ul>
 						<li class="active"><a href="<?=base_url('welcome/home')?>" accesskey="1" title="">Home</a></li>
-						<li><a href="<?=base_url('teacher/index')?>" accesskey="4" title="">Comment</a></li>
 						<li><a href="<?=base_url('register/logout')?>" accesskey="5" title="">Logout</a></li>
 					</ul>
 				</div>
