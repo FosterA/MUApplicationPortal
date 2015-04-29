@@ -181,7 +181,7 @@
 		
 		<br><!--&nbsp;Anticipated graduation date:&nbsp;
  		<input type="text" class="mh_date" name='gradDate' id='date'>-->
- 			<p>Anticipated Graduation Date: <input type="text" id="gradDate"></p>
+ 			<p>Anticipated Graduation Date: <input type="text" name="gradDate" id="gradDate"></p>
 		<br>
 
 		<br>&nbsp;Course(s) You Are Currently Teaching: <br>&nbsp;(Select all that apply)<br>
