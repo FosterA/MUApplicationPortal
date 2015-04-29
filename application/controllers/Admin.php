@@ -78,7 +78,7 @@ class Admin extends CI_Controller {
 				$bol=$this->administration_model->updateDates($_POST);
 				if($bol){
 					$data=$this->pageData();
-					$data['confirm'] = "The action window dates have been updated.";		
+					$data['confirm'] = "The dates have been updated.";		
 				}
 			}	
 
@@ -88,7 +88,7 @@ class Admin extends CI_Controller {
 	   			$bol=$this->administration_model->insert($_POST);
 	   			if($bol){
 	   				$data=$this->pageData();
-	   				$data['confirm'] = "The action window dates have been set.";
+	   				$data['confirm'] = "The dates have been set.";
 	   			}	
 	   		}
 
@@ -124,26 +124,37 @@ class Admin extends CI_Controller {
 		{
 			$this->load->view('templates/header_admin');
  	   		$this->load->view('admin_newUsers');
+ 	   		$this->load->view('templates/footer');
 		}
   	
   		else
 		{
-   			$this->load->model('administration_model');
-   			$bol=$this->administration_model->addnew($_POST);
-   			
-   			if($bol){
- 				$data['confirm']="New user added sucessfully";
- 				$this->load->view('templates/header_admin',$data);
-				$this->load->view('admin_home',$data);
-				$this->load->view('templates/footer',$data);	
+			$this->load->model('register_model');
+			if($this->register_model->ajxCheck($this->input->post('username'))!=0){
+				$data['error'] = "Username already exists.";
+				$this->load->view('templates/header_admin',$data);
+				$this->load->view('admin_newUsers',$data);
+				$this->load->view('templates/footer',$data);
 			}
-			else
-			{
-				$data=$this->pageData();
-				$data['error'] = "Unable to add new user.";
-				$this->load->view('templates/header_admin', $data);
-				$this->load->view('admin_home', $data);
-				$this->load->view('templates/footer');
+			else{
+
+   				$this->load->model('administration_model');
+   				$bol=$this->administration_model->addnew($_POST);
+   			
+   				if($bol){
+ 					$data['confirm']="New user added sucessfully";
+ 					$this->load->view('templates/header_admin',$data);
+					$this->load->view('admin_home',$data);
+					$this->load->view('templates/footer',$data);	
+				}
+				else
+				{
+					$data=$this->pageData();
+					$data['error'] = "Unable to add new user.";
+					$this->load->view('templates/header_admin', $data);
+					$this->load->view('admin_home', $data);
+					$this->load->view('templates/footer');
+				}
 			}
 		}
 	}

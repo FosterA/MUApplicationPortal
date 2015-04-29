@@ -12,32 +12,15 @@ class Register extends CI_Controller {
 		$this->load->model('register_model');
 		$query = $this->register_model->validate();
 
-		if ($query){
-			$profession = null;
-            $sql = 'SELECT * FROM student WHERE student_id=? AND password=md5(?)';
-            $data[0]=$this->input->post('username');
-            $data[1]=$this->input->post('password');
-            $res=$this->db->query($sql,$data);
-           if($res->num_rows()==1){
-              $profession='student';
-           }
-           else {
-              $sql = 'SELECT * FROM instructor WHERE faculty_id=? AND password=md5(?)';
-              $res2=$this->db->query($sql,$data);
-              if($res2->num_rows()==1){
-                $profession='instructor';
-              }
-              else{
-                $sql = 'SELECT * FROM admin WHERE admin_id=? AND password=md5(?)';
-                $res3 = $this->db->query($sql,$data);
-                if($res3->num_rows()==1){
-                   $profession='admin';
-                }
-          	   }
-          	}
+		if (!$query){
+			$data['error']="Sorry, your username or password is incorrect.";
+			$this->load->view('templates/header_main');
+			$this->load->view('register',$data);
+		}
+		else{
 			$data = array(
 				'user' => $this->input->post('username'),
-				'profession' => $this->input->post('profession'),
+				'profession' => $query,
 				'logged_in' => TRUE
 			);
 
@@ -52,13 +35,7 @@ class Register extends CI_Controller {
 			//Redirect to Welcome.php controller and home method
 			redirect('welcome/home');
 		}
-
-		else{
-			//echo "asdffasdfsdfad";
-			$data['error']="Sorry, your username or password is incorrect.";
-			$this->load->view('templates/header');
-			$this->load->view('register',$data);
-		}
+			
 	}
 
 	public function add_student(){
@@ -80,7 +57,12 @@ class Register extends CI_Controller {
 		{
    			$this->load->model('register_model');
    			$user=$this->input->post('username');
-   			$bol=$this->register_model->insert($_POST);
+   			if($this->register_model->ajxCheck($user)==0){
+   				$bol=$this->register_model->insert($_POST);
+   			}
+   			else{
+				$bol=FALSE;
+   			}
    			
    			if($bol){
    				$this->session->set_userdata('logged_in', TRUE);
@@ -90,6 +72,11 @@ class Register extends CI_Controller {
  				$this->load->view('templates/header_main');
 				$this->load->view('register',$data);
 				
+			}
+			else{
+				$data['error']="Registration failed. Please try again.";
+				$this->load->view('templates/header_main');
+				$this->load->view('register',$data);
 			}
 		}
 	}
@@ -126,7 +113,10 @@ class Register extends CI_Controller {
 	public function checkUnique(){
 	 	$username=$this->input->post('username');
 	 	$this->load->model('register_model');
-	 	echo $this->register_model->ajxCheck($username);
+	 	$chk = $this->register_model->ajxCheck($username);
+	 	if($this->register_model->ajxCheck($username) !=0){
+	 		echo "Username is already in use.";
+	 	}
 	 }
 
  	public function student(){

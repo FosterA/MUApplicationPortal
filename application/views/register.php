@@ -41,12 +41,6 @@
         <form action="<?=base_url('register/student')?>" method="post" name="login" id="login">
             <input type="text" name="username" class="username" placeholder="Username">
             <input type="password" name="password" class="password" placeholder="Password">
-            <select name='profession' id="profession" onchange="identity()">
-            	<option value="student">student</option>
-           		<option value="instructor">instructor</option>
-          		<option value="admin">admin</option>
-            </select>
-         
             <button id="submit" type="submit">Sign me in</button>
             <button class="back" type="button">Back</button>
         </form>

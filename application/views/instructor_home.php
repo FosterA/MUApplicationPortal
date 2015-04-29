@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<div id="content" class="container">
-		<img src="<?=base_url('images/mizzou.jpg')?>" width="1000" height="500" alt="" />
+		
 		</div>
 
 	</div>
