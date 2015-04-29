@@ -57,7 +57,12 @@ class Register extends CI_Controller {
 		{
    			$this->load->model('register_model');
    			$user=$this->input->post('username');
-   			$bol=$this->register_model->insert($_POST);
+   			if($this->register_model->ajxCheck($user)==0){
+   				$bol=$this->register_model->insert($_POST);
+   			}
+   			else{
+				$bol=FALSE;
+   			}
    			
    			if($bol){
    				$this->session->set_userdata('logged_in', TRUE);
@@ -67,6 +72,11 @@ class Register extends CI_Controller {
  				$this->load->view('templates/header_main');
 				$this->load->view('register',$data);
 				
+			}
+			else{
+				$data['error']="Registration failed. Please try again.";
+				$this->load->view('templates/header_main');
+				$this->load->view('register',$data);
 			}
 		}
 	}
