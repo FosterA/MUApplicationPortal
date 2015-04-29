@@ -24,7 +24,7 @@
     width: 270px;
     height: 42px;
     margin-top: 25px;
-    padding: 0 15px;
+    padding: 0 0px;
     background: rgba(45,45,45,.15);
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;

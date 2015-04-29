@@ -65,12 +65,15 @@ button:active {
     border: 0px solid #ef4300;
 }
 body { 
-  background: #eee url('http://i.imgur.com/eeQeRmk.png'); /* http://subtlepatterns.com/weave/ */
+  /*background: #eee url('http://i.imgur.com/eeQeRmk.png'); *//* http://subtlepatterns.com/weave/ */
+  background-image:url(<?=base_url('images/Missouri.jpg')?>);
+  background-size: cover;
+  background-repeat: no-repeat;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 62.5%;
   line-height: 1;
   color: #585858;
-  padding: 22px 10px;
+  padding: 0px;
   padding-bottom: 55px;
 }
 

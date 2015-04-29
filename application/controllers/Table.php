@@ -19,6 +19,8 @@ class Table extends CI_Controller {
 		$this->load->library(array('table','pagination'));
 		$this->load->model('table_model');
 		$this->load->helper('url');
+		$this->load->view('templates/header_admin');
+		$this->load->view('templates/footer');
 		
 		$url=base_url('images/user.gif');
 
