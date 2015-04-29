@@ -12,10 +12,15 @@ class Register extends CI_Controller {
 		$this->load->model('register_model');
 		$query = $this->register_model->validate();
 
-		if ($query){
+		if (!$query){
+			$data['error']="Sorry, your username or password is incorrect.";
+			$this->load->view('templates/header_main');
+			$this->load->view('register',$data);
+		}
+		else{
 			$data = array(
 				'user' => $this->input->post('username'),
-				'profession' => $this->input->post('profession'),
+				'profession' => $query,
 				'logged_in' => TRUE
 			);
 
@@ -30,12 +35,7 @@ class Register extends CI_Controller {
 			//Redirect to Welcome.php controller and home method
 			redirect('welcome/home');
 		}
-
-		else{
-			$data['error']="Sorry, your username or password is incorrect.";
-			$this->load->view('templates/header_main');
-			$this->load->view('register',$data);
-		}
+			
 	}
 
 	public function add_student(){
@@ -114,7 +114,7 @@ class Register extends CI_Controller {
 	 	$username=$this->input->post('username');
 	 	$this->load->model('register_model');
 	 	$chk = $this->register_model->ajxCheck($username);
-	 	if($this->register_model->ajxCheck($username) == 1){
+	 	if($this->register_model->ajxCheck($username) !=0){
 	 		echo "Username is already in use.";
 	 	}
 	 }
