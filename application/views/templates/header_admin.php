@@ -67,7 +67,7 @@
 		left: 10px;
 	}
 	#header {
-		width:1250px;
+		width:1230px;
 	}
 </style>
 </head>
