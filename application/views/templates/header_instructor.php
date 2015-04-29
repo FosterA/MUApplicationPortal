@@ -43,7 +43,7 @@
 
 				<div id="logo">
 
-					<a href="<?=base_url();?>" id="mulogo">
+						<a href="<?=base_url("teacher/home");?>" id="mulogo">
 
   						<img src="<?=base_url();?>images/mu_color_line.png" alt="MU Logo">
 

@@ -33,7 +33,7 @@ class Register extends CI_Controller {
 
 		else{
 			$data['error']="Sorry, your username or password is incorrect.";
-			$this->load->view('templates/header');
+			$this->load->view('templates/header_main');
 			$this->load->view('register',$data);
 		}
 	}

@@ -42,11 +42,8 @@
 			<div id="header">
 
 				<div id="logo">
-
-					<a href="<?=base_url();?>" id="mulogo">
-
+							<a href="<?=base_url("student");?>" id="mulogo">
   						<img src="<?=base_url();?>images/mu_color_line.png" alt="MU Logo">
-
 					</a>
 					<h1 style="color: white; padding: 20px 5px 20px 5px; width: 600px; letter-spacing: 4px;">TA / PLA Application Portal</h1>
 				</div>
