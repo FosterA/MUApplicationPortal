@@ -289,16 +289,16 @@ margin :100px 270px;
  		if($result['type']=='add'){
  			
  			if($result['status']){
- 				echo "alert('You have already accept $student_id application')";
+ 				echo "alert('You have already accepted $student_id 's application')";
  			}else{
- 				echo "alert('You FAILED TO accept $student_id application')";
+ 				echo "alert('You FAILED TO accept $student_id 's application')";
  			}
  			}else{
  			
  			if($result['status']){
- 				echo "alert('You have already deny $student_id application')";
+ 				echo "alert('You have already denied $student_id 's application')";
  			}else{
- 				echo "alert('You FAILED TO deny $student_id application')";
+ 				echo "alert('You FAILED TO deny $student_id 's application')";
  			}
  			
  			}

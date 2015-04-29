@@ -78,7 +78,7 @@ class Admin extends CI_Controller {
 				$bol=$this->administration_model->updateDates($_POST);
 				if($bol){
 					$data=$this->pageData();
-					$data['confirm'] = "The action window dates have been updated.";		
+					$data['confirm'] = "The dates have been updated.";		
 				}
 			}	
 
@@ -88,7 +88,7 @@ class Admin extends CI_Controller {
 	   			$bol=$this->administration_model->insert($_POST);
 	   			if($bol){
 	   				$data=$this->pageData();
-	   				$data['confirm'] = "The action window dates have been set.";
+	   				$data['confirm'] = "The dates have been set.";
 	   			}	
 	   		}
 

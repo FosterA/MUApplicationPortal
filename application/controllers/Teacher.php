@@ -81,6 +81,7 @@ class Teacher extends CI_Controller {
 	              );
 			$this->table->set_template($tmpl);
 			$data['table']=$this->table->generate($this->table_model->getAllStudent());
+			$this->load->view('templates/header_instructor');
 			$this->load->view('teacher',$data);
 		}
 		else{
