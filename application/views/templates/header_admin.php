@@ -6,7 +6,7 @@
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url();?>css/hp.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="<?=base_url();?>images/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?=base_url();?>images/apple-touch-icon-60x60.png">
