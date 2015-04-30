@@ -40,7 +40,6 @@ class Teacher extends CI_Controller {
 
 		$this->load->view('templates/header_instructor', $data);
 		$this->load->view('instructor_home', $data);
-		$this->load->view('templates/footer');
 	}
 	
 
@@ -83,7 +82,6 @@ class Teacher extends CI_Controller {
 			$data['table']=$this->table->generate($this->table_model->getAllStudent());
 			$this->load->view('templates/header_instructor');
 			$this->load->view('teacher',$data);
-			$this->load->view('templates/footer');
 		}
 		else{
 			redirect('teacher/home');

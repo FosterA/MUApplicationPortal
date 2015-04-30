@@ -67,7 +67,6 @@ body {
   /*background: #eee url('http://i.imgur.com/eeQeRmk.png'); *//* http://subtlepatterns.com/weave/ */
   background-image:url(<?=base_url('images/Missouri.jpg')?>);
   background-size: cover;
-  background-repeat: no-repeat;
   line-height: 1;
   color: #585858;
   padding: 0px;
@@ -84,16 +83,6 @@ strong, b { font-weight: bold; }
 
 table,tr { border-collapse: collapse; border-spacing: 0; border:2px inset #24A198; }
 
-/*
-h1 { 
-  font-family: 'Amarante', Tahoma, sans-serif;
-  font-weight: bold;
-  font-size: 3.6em;
-  line-height: 1.7em;
-  margin-bottom: 10px;
-  text-align: center;
-}
-*/
 
 /** page structure **/
 #myTable{
@@ -323,7 +312,10 @@ margin :100px 270px;
 	</select>
 </center>
 	<div id="content">
+  <div style="display:table-cell;">
+  <div style="margin-left:auto;margin-right:auto;"></div>
 	<?=$table?>
+  </div>
 	</div>
 <script>
 $(document).ready(function(){
