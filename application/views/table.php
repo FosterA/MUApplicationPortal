@@ -321,7 +321,10 @@ margin :100px 270px;
 	</select>
 </center>
 	<div id="content">
+  <div style="display:table-cell;">
+  <div style="margin-left:auto;margin-right:auto;"></div>
 	<?=$table?>
+  </div>
 	</div>
 	<?=anchor('index.php/admin', 'Main Page', array('id' => 'goback'));?>
 <script>

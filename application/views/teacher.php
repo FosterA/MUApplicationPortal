@@ -5,7 +5,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
   
 <style>
-@import url('http://fonts.googleapis.com/css?family=Amarante');
 
 
 html { overflow-y: scroll; }
@@ -69,8 +68,6 @@ body {
   background-image:url(<?=base_url('images/jesse3.jpg')?>);
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 62.5%;
   line-height: 1;
   color: #585858;
   padding: 0px;
@@ -86,17 +83,6 @@ br { display: block; line-height: 1.6em; }
 strong, b { font-weight: bold; } 
 
 table,tr { border-collapse: collapse; border-spacing: 0; border:2px inset #24A198; }
-
-
-h1 { 
-  font-family: 'Amarante', Tahoma, sans-serif;
-  font-weight: bold;
-  font-size: 3.6em;
-  line-height: 1.7em;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
 
 /** page structure **/
 #myTable{
