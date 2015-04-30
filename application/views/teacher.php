@@ -67,7 +67,6 @@ body {
   /*background: #eee url('http://i.imgur.com/eeQeRmk.png'); *//* http://subtlepatterns.com/weave/ */
   background-image:url(<?=base_url('images/jesse3.jpg')?>);
   background-size: cover;
-  background-repeat: no-repeat;
   line-height: 1;
   color: #585858;
   padding: 0px;
@@ -283,7 +282,6 @@ margin: 13px 19px;
 	<div id="content">
 	<?=$table?>
 	</div>
-	<?=anchor('welcome/home', 'Main Page', array('id' => 'goback'));?>
 <script>
 $(document).ready(function(){
 	 $('#myTable').DataTable();

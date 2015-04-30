@@ -11,7 +11,6 @@ class Admin extends CI_Controller {
 		$data=$this->pageData();
 		$this->load->view('templates/header_admin', $data);
 		$this->load->view('admin_home', $data);
-		$this->load->view('templates/footer');
 	}
 
 	public function pageData(){
@@ -60,7 +59,6 @@ class Admin extends CI_Controller {
 			$data=$this->pageData();
 			$this->load->view('templates/header_admin', $data);
 			$this->load->view('admin_home', $data);
-			$this->load->view('templates/footer');
 		}
 
 		//If form was completed properly
@@ -97,7 +95,6 @@ class Admin extends CI_Controller {
 			{
 				$this->load->view('templates/header_admin', $data);
 				$this->load->view('admin_home', $data);
-				$this->load->view('templates/footer');
 			}
 
 			//If table was not successfully changed, display error message
@@ -107,7 +104,6 @@ class Admin extends CI_Controller {
 				$data['error'] = "Unable to set window dates.";
 				$this->load->view('templates/header_admin', $data);
 				$this->load->view('admin_home', $data);
-				$this->load->view('templates/footer');
 			}
 
 		}}
@@ -124,7 +120,6 @@ class Admin extends CI_Controller {
 		{
 			$this->load->view('templates/header_admin');
  	   		$this->load->view('admin_newUsers');
- 	   		$this->load->view('templates/footer');
 		}
   	
   		else
@@ -134,7 +129,6 @@ class Admin extends CI_Controller {
 				$data['error'] = "Username already exists.";
 				$this->load->view('templates/header_admin',$data);
 				$this->load->view('admin_newUsers',$data);
-				$this->load->view('templates/footer',$data);
 			}
 			else{
 
@@ -145,7 +139,6 @@ class Admin extends CI_Controller {
  					$data['confirm']="New user added sucessfully";
  					$this->load->view('templates/header_admin',$data);
 					$this->load->view('admin_home',$data);
-					$this->load->view('templates/footer',$data);	
 				}
 				else
 				{
@@ -153,7 +146,6 @@ class Admin extends CI_Controller {
 					$data['error'] = "Unable to add new user.";
 					$this->load->view('templates/header_admin', $data);
 					$this->load->view('admin_home', $data);
-					$this->load->view('templates/footer');
 				}
 			}
 		}

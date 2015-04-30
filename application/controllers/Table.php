@@ -47,7 +47,6 @@ class Table extends CI_Controller {
 		$data['table']=$this->table->generate($this->table_model->getStatus());
 		$this->load->view('templates/header_admin');
 		$this->load->view('table',$data);
-		$this->load->view('templates/footer');
 	}
 
 	public function test(){
@@ -369,7 +368,6 @@ class Table extends CI_Controller {
 		$this->load->view('templates/header_admin');
 		$data['result']=$result;
 		$this->load->view('course',$data);
-		$this->load->view('templates/footer');
 	}
 	public function addcourse(){
 		$this->load->helper('url');

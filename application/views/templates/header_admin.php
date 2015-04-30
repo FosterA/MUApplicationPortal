@@ -32,7 +32,6 @@
 	body {
 		 background-image:url(<?=base_url('images/Missouri.jpg')?>);
 		 background-size: cover;
-		 background-repeat: no-repeat;
 
 	 }
 	.form-wrapper{
