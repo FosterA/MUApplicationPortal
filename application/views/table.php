@@ -314,13 +314,15 @@ margin :100px 270px;
 	<div id="overlay"></div>
 	<div id='infomation'>In this page, you can assign applicants as TA/PLA and you can view each students score given by students for each course this applicants previous taught.
 	Additionally, you can view the applicants who have already be assigned as TA/PLA and who have already be denied.  </div>
-	<select id="type">
+	<center>
+  <select id="type">
 		<option value="general">all applicants</option>
 		<option value="avgScore">avg score</option>
 		<option value="allScore">all score</option>
 		<option value="Accept">Accept</option>
 		<option value="Deny">Deny</option>
 	</select>
+</center>
 	<div id="content">
 	<?=$table?>
 	</div>
