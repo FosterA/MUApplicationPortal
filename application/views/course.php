@@ -12,12 +12,18 @@
 
 		/*margin: 10px -126px;*/
   		text-align: center;
+        color: black;
 	}
 
     .container{
+        border: 2px solid black;
+        border-radius: 20px;
+        background-color: white;
+
+    }
+    #myTable {
+        color: black;
         border: 1px solid black;
-        border-radius: 5px;
-        background: #f5f5f5;
     }
 
 	input {
@@ -28,13 +34,15 @@
     background: rgba(45,45,45,.15);
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,.15);
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white;
+
     -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
     -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
     box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
     font-size: 14px;
-    color: #07F;
+    color: black;
     text-shadow: 0 1px 2px rgba(0,0,0,.1);
     -o-transition: all .2s;
     -moz-transition: all .2s;
@@ -63,7 +71,7 @@ button {
         0 2px 7px 0 rgba(0,0,0,.2);
     font-size: 14px;
     font-weight: 700;
-    color: #fff;
+    color: black;
     text-shadow: 0 1px 2px rgba(0,0,0,.1);
     -o-transition: all .2s;
     -moz-transition: all .2s;
@@ -94,7 +102,7 @@ button:active {
         0 5px 8px 0 rgba(0,0,0,.1) inset,
         0 1px 4px 0 rgba(0,0,0,.1);
 
-    border: 0px solid #ef4300;
+    border: 0px solid black;
 }
 </style>
 </head>
@@ -138,7 +146,7 @@ button:active {
 <br>        
 <div id='page' class='container'>
 	<div id='courseType'>
-        <h3>Select an Action</h3>    
+        <h2>Select an Action</h2>    
         <select id="type">
             <option value="showcourse">Show Courses</option>
             <option value="addcourse">Add course</option>

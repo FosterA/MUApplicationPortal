@@ -264,7 +264,7 @@ p,ul{
   padding: 10px;
 	font-size:18px;
 	width:800px;
-	height:100px;
+	height:70px;
 	margin :10px auto 0px;
   color: black;
 }
