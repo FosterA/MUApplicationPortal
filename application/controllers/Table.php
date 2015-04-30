@@ -506,7 +506,8 @@ class Table extends CI_Controller {
 			<option value='VMED_I'>Veterinary Medicine - Interdis</option>
 			<option value='V_PBIO'>Veterinary Pathobiology</option>
 			<option value='WGST'>Women's &amp; Gender Studies</option>
-		</select><input type='text' name='course' placeholder='course name'><button type='submit' id='addCourse'>button</button></form></div>	";
+		</select>
+		&nbsp;<input type='text' name='course' placeholder=' Course Name'><button type='submit' id='addCourse'>Add Course</button></form></div>	";
 	}
 
 	public function showcourse(){
