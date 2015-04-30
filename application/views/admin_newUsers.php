@@ -35,7 +35,7 @@
 					<h3>Add A New User</h3><br>
 					<p>Select Type:</p>
 					<form action="<?=base_url('admin/add_User')?>" method="post" name="submit">
-						<select name='profession' id="profession" onchange="identity()">
+						<select name='profession' id='profession' onchange="identity()">
            					<option value="instructor">instructor</option>
      		     			<option value="admin">admin</option>
            			 	</select>
