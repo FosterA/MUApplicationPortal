@@ -261,10 +261,12 @@ p,ul{
 	margin:20px;
 }
 #infomation{
-	font-size:16px;
+  padding: 10px;
+	font-size:18px;
 	width:800px;
 	height:100px;
 	margin :10px auto 0px;
+  color: black;
 }
 #goback{
 	font-size:20px;
@@ -309,13 +311,13 @@ margin :100px 270px;
 </head>
 <body>
 	<div id="overlay"></div>
-	<div id='infomation'>In this page, you can assign applicants as TA/PLA and you can view each students score given by students for each course this applicants previous taught.
-	Additionally, you can view the applicants who have already be assigned as TA/PLA and who have already be denied.  </div>
+	<div id='infomation'>    On this page, you can assign applicants as TA/PLA's and you can view each students grade for each course this applicant has previous taken.
+	Additionally, you can view the applicants who have already be assigned as TA/PLA's and who have already be denied. </div>
 	<center>
   <select id="type">
-		<option value="general">all applicants</option>
-		<option value="avgScore">avg score</option>
-		<option value="allScore">all score</option>
+		<option value="general">All Applicants</option>
+		<option value="avgScore">Avg Score</option>
+		<option value="allScore">All Scores</option>
 		<option value="Accept">Accept</option>
 		<option value="Deny">Deny</option>
 	</select>
@@ -323,7 +325,6 @@ margin :100px 270px;
 	<div id="content">
 	<?=$table?>
 	</div>
-	<?=anchor('index.php/admin', 'Main Page', array('id' => 'goback'));?>
 <script>
 $(document).ready(function(){
 	 $('#myTable').DataTable();
