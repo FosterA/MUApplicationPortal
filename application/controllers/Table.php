@@ -546,4 +546,5 @@ class Table extends CI_Controller {
 		$array['dept']=$this->input->post('dept');
 		$this->course($array);
 	}
+	/*code*/
 }
