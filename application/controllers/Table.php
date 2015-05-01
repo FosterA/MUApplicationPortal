@@ -131,6 +131,9 @@ class Table extends CI_Controller {
 		$result['type']='add';
 		$result['status']=$this->table_model->addStudent();
 		$result['student_id']=$this->input->post('student_id');
+		//The following code will email the student an acceptance email.
+		$this->load->model("administration_model");
+		$this->administration_model->sendEmail($result['student_id'],"TA/PLA IMPORTANT INFORMATION","You have been accepted as a TA/PLA! Log on to view what course!");
 		$this->index($result);
 	}
 	
@@ -139,6 +142,9 @@ class Table extends CI_Controller {
 		$result['type']='deny';
 		$result['status']=$this->table_model->denyStudent();
 		$result['student_id']=$this->input->post('student_id');
+		//The following code will email the student a denial email.
+		$this->load->model("administrator_model");
+		$this->administration_model->sendEmail($result['student_id'],"TA/PLA INMPORTANT INFORMATION","We regret to inform you that you have not been accepted as a TA/PLA.");
 		$this->index($result);
 	}
 	

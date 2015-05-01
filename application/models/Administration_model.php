@@ -80,5 +80,23 @@ class Administration_model extends CI_Model{
 			}
 		}
 	}
+
+	public function sendEmail($user,$subject,$message){
+					$this->load->helper('url');
+					$this->load->helper('email');
+					$this->load->library('email');
+					$sql = 'SELECT email FROM student WHERE student_id=?';
+					$data[0] = $user;
+					$emailQuery = $this->db->query($sql,$data);
+					$email=null;
+					foreach($emailQuery->result() as $row){
+						$email = $row->email;
+					}
+					$this->email->from('taApp@tamissouri.edu');
+					$this->email->to($email);
+					$this->email->subject($subject);
+					$this->email->message($message);
+					$this->email->send();
+	}
 }
 ?>	

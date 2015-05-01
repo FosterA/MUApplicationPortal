@@ -37,6 +37,10 @@
 					<h2><?php echo $windowStatus?></h2>
 					<?php 
 						if($existingApp){?>
+							<font color="red">
+							<font size="3pt">
+							You will receive an email when a decision is made, or you may check back here.<br>
+						</font></font>
 							<p><a href="<?=base_url('student/appStatus')?>" class="button1" style="font-family: Fantasy; color: black">Application Status</a></p>
 					<?php }?>
 					<?php
