@@ -33,7 +33,6 @@ class Form extends CI_Controller {
 			{
 				$this->load->view('templates/header.php');
 	   			$this->load->view('application/status');
-	   			$this->load->view('templates/footer.php');
 			}
 	  		else
 			{
@@ -48,7 +47,6 @@ class Form extends CI_Controller {
 				}
 				$this->load->view('templates/header.php');
 				$this->load->view('application/form',$data);
-				$this->load->view('templates/footer.php');
 			}
 		}
 		else{
