@@ -277,8 +277,9 @@ margin: 13px 19px;
 <body>
 
 	<div id="overlay"></div>
-	<div id='infomation'>In this page, you can make comment on each student, and you can make several comments on each student. 
-	Additionally, you can view comment on each student that made by your self, in other word, you couldn't view comment that made by other instructors.  </div>
+	<div id='infomation'><br><center>
+    <font color="red">On this page, you can make and view comments on each student. </font></center>
+  </div>
 	<div id="content">
 	<?=$table?>
 	</div>

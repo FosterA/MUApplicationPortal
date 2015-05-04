@@ -300,9 +300,11 @@ margin :100px 270px;
 </head>
 <body>
 	<div id="overlay"></div>
-	<div id='infomation'>    On this page, you can assign applicants as TA/PLA's and you can view each students grade for each course this applicant has previous taken.
-	Additionally, you can view the applicants who have already be assigned as TA/PLA's and who have already be denied. </div>
+	<div id='infomation'>    
+    <font color="red">On this page, you can assign applicants as TA/PLA's and you can view each students grade for each course this applicant has previous taken.
+	To edit which applicants are shown, change the drop down box or search.</font></div>
 	<center>
+  Table Options:&nbsp;
   <select id="type">
 		<option value="general">All Applicants</option>
 		<option value="avgScore">Avg Score</option>
