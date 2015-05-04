@@ -99,7 +99,7 @@
 			return $b1&&$b2;
 		}
 		public function allScore(){
-			$sql="select * from evaluation";
+			$sql="select TA_id,student_id,courseName,score from evaluation";
 			return $this->db->query($sql);
 		}
 		public function avgScore(){
@@ -146,6 +146,24 @@
 		$data[1]=$this->input->post('dept');
 		$sql="insert into course values(?,?)";
 		return $this->db->query($sql,$data);
+		}
+		public function rankScore($id,$admin){
+			$sql="select score from ranking where admin_id='$admin' and student_id='$id'";
+			$res=$this->db->query($sql);
+			if($res->num_rows()>0){
+				$arr=$res->row_array();
+				return $arr['score'];
+			}else{
+				return 0;
+			}
+		}
+		public function putScore($data){
+			$sql="insert into ranking values(?,?,?)";
+			return $this->db->query($sql,$data);
+		}
+		public function rankScore1(){
+			$sql="select * from ranking";
+			return $this->db->query($sql);
 		}
 	}
 ?>

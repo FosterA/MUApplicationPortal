@@ -26,17 +26,17 @@ class Table extends CI_Controller {
                     'table_open'          => '<table id="myTable">',
 
                     'heading_row_start'   => '<tr><th type="string">image</th>',
-                    'heading_row_end'     => '<th>Details</th><th>Comment</th></tr>',
+                    'heading_row_end'     => '<th>Details</th><th>Comment</th><th>Ranking</th></tr>',
                     'heading_cell_start'  => '<th type="string"><span>',
                     'heading_cell_end'    => '</span></th>',
 
                     'row_start'           => "<tr><td><image src='$url'></td>",
-                    'row_end'             => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></td></tr>',
+                    'row_end'             => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></td><td><button class="ranking" type="button">Ranking</button></td></tr>',
                     'cell_start'          => '<td>',
                     'cell_end'            => '</td>',
 
                     'row_alt_start'       => "<tr><td><image src='$url'></td>",
-                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></tr>',
+                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button><td><button class="ranking" type="button">Ranking</button></td></tr>',
                     'cell_alt_start'      => '<td>',
                     'cell_alt_end'        => '</td>',
 
@@ -157,22 +157,22 @@ class Table extends CI_Controller {
                     'table_open'          => '<table id="myTable">',
 
                     'heading_row_start'   => '<tr><th type="string">image</th>',
-                    'heading_row_end'     => '<th>Details</th><th>Comment</th></tr>',
+                    'heading_row_end'     => '<th>Details</th><th>Comment</th><th>Ranking</th></tr>',
                     'heading_cell_start'  => '<th type="string"><span>',
                     'heading_cell_end'    => '</span></th>',
 
                     'row_start'           => "<tr><td><image src='$url'></td>",
-                    'row_end'             => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></td></tr>',
+                    'row_end'             => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></td><td><button class="ranking" type="button">Ranking</button></td></tr>',
                     'cell_start'          => '<td>',
                     'cell_end'            => '</td>',
 
                     'row_alt_start'       => "<tr><td><image src='$url'></td>",
-                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button></tr>',
+                    'row_alt_end'         => '<td><button class="detail" type="button">detail</button></td><td><button class="comment" type="button">comment</button><td><button class="ranking" type="button">Ranking</button></td></tr>',
                     'cell_alt_start'      => '<td>',
                     'cell_alt_end'        => '</td>',
 
                     'table_close'         => '</table>'
-              );
+		);
 		$this->table->set_template($tmpl);
 		$data['table']=$this->table->generate($this->table_model->getStatus());
 		$json=json_encode($data);
@@ -551,6 +551,64 @@ class Table extends CI_Controller {
 		$array['course']=$this->input->post('course');
 		$array['dept']=$this->input->post('dept');
 		$this->course($array);
+	}
+	public function ranking(){
+		$this->load->model("table_model");
+		$id=$this->uri->segment('3');
+		$admin=$this->session->userdata('user');
+		//$admin='test';
+		$score=$this->table_model->rankScore($id,$admin);
+		if($score){
+			echo "<div id='noComment'>You have already given this student socre : $score <div>";
+		}else{
+			$url=base_url('index.php/table/putScore');
+	 	echo "Please input the score you want to have this student :<br>
+	 	<form method='post' action='$url'>
+	 	<input type='hidden' name='student_id' value='$id'>
+	 	<input type='text' name='score'></input>
+	 	<button type='submit'>submit</button>
+	 	</form>";
+		}
+	}
+	
+	public function putScore(){
+	$this->load->model("table_model");
+		$data[0]=$this->session->userdata('user');
+		//$data[0]='test';
+		$data[1]=$this->input->post('student_id');
+		$data[2]=$this->input->post('score');
+		$this->table_model->putScore($data);
+		redirect('table/index');
+	}
+	public function rankScore(){
+	$this->load->library('table');
+		$this->load->model("table_model");
+		$tmpl = array (
+	                    'table_open'          => '<table id="myTable">',
+
+	                    'heading_row_start'   => '<tr>',
+	                    'heading_row_end'     => '</tr>',
+	                    'heading_cell_start'  => '<td>',
+	                    'heading_cell_end'    => '</td>',
+
+	                    'row_start'           => "<tr>",
+	                    'row_end'             => '</tr>',
+	                    'cell_start'          => '<td>',
+	                    'cell_end'            => '</td>',
+
+	                    'row_alt_start'       => "<tr>",
+	                    'row_alt_end'         => '</tr>',
+	                    'cell_alt_start'      => '<td>',
+	                    'cell_alt_end'        => '</td>',
+
+	                    'table_close'         => '</table>'
+	        );
+			
+			$this->table->set_template($tmpl);
+			$result=$this->table_model->rankScore1();
+			$data['table']=$this->table->generate($result);
+			$json=json_encode($data);
+			echo $json;
 	}
 	/*code*/
 }

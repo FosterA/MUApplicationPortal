@@ -311,6 +311,7 @@ margin :100px 270px;
 		<option value="allScore">All Scores</option>
 		<option value="Accept">Accept</option>
 		<option value="Deny">Deny</option>
+		<option value="rankScore">rankScore</option>
 	</select>
 </center>
 	<div id="content">
@@ -366,7 +367,25 @@ $(document).ready(function(){
  		xmlhttp.send();
    }); 
    
-   
+    $("body").on('click','button.ranking',function(value){
+   		var str=$(this).parent().parent().children().eq(1).text();
+    	var href="<?=base_url('index.php/table/ranking')?>"+'/'+str;
+   		var xmlhttp = new XMLHttpRequest();
+   		var overlay = document.getElementById('overlay');
+   		overlay.style.display = "block";
+   		overlay.style.opacity = .8;
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            	var ele=$("<div id='specialBox'></div>");
+            	$('body').prepend(ele);
+                ele.html(xmlhttp.responseText);
+                ele.append('<button type="button" class="close" id="close">close</button>');
+            }
+        }
+        xmlhttp.open("post",href,true);
+ 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+ 		xmlhttp.send();
+   }); 
    
    
    
@@ -391,7 +410,7 @@ $(document).ready(function(){
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 var json=xmlhttp.responseText;
                 var obj = JSON.parse(json);
-                console.log(obj.table);
+              //  console.log(obj.table);
                 $("div#content").html(obj.table);
                 $('#myTable').DataTable();
             }
