@@ -200,9 +200,13 @@ div#specialBox {
   z-index: 3;
   left: 20%;
   top: 15%;
-  width: 640px;
-  height: 450px;
-  overflow:scroll;
+  /*Edit for box width*/
+  /*width: 800px;*/
+  width: 65%;
+  /*Edit to change box height*/
+  /*height: 200px;*/
+  height: 85%;
+  overflow:visible;
   background: #FFF;
   color: #000;
   border: 5px outset rgb(49, 140, 85);
@@ -214,26 +218,29 @@ div#specialBox {
 #curTeach {
   position: absolute;
   top: 2%;
-  left: 51%;
+  /*changes the position of the current teaching*/
+  left: 60%;
   width: 320px;
-  height: 110px;
-  overflow: scroll;
+  height: 500px;
+  overflow: visible;
 }
 #preTeach {
   position: absolute;
-  top: 26%;
-  left: 51%;
+  top: 28%;
+  /*changes the position of the pre teaching*/
+  left: 60%;
   width: 320px;
-  height: 110px;
-  overflow: scroll;
+  height: 500px;
+  overflow: visible;
 }
 #likeTeach {
   position: absolute;
-  top: 51%;
-  left: 51%;
+  top: 55%;
+  /*changes the position of the like teaching*/
+  left: 60%;
   width: 320px;
-  height: 110px;
-  overflow: scroll;
+  height: 500px;
+  overflow: visible;
 }
 #divClose {
   position: absolute;
