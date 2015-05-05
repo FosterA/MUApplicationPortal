@@ -133,7 +133,13 @@ class Table extends CI_Controller {
 		$result['student_id']=$this->input->post('student_id');
 		//The following code will email the student an acceptance email.
 		$this->load->model("administration_model");
-		$this->administration_model->sendEmail($result['student_id'],"TA/PLA IMPORTANT INFORMATION","You have been accepted as a TA/PLA! Log on to view what course!");
+		$sql = "SELECT courseName FROM agree WHERE student_id=?";
+		$data[0]=$this->input->post('student_id');
+		$courseSql = $this->db->query($sql,$data);
+		foreach($courseSql->result() as $row){
+						$course = $row->courseName;
+					}
+		$this->administration_model->sendEmail($result['student_id'],"TA/PLA IMPORTANT INFORMATION","You have been accepted as a TA/PLA for ".$course."!");
 		$this->index($result);
 	}
 	
@@ -143,8 +149,14 @@ class Table extends CI_Controller {
 		$result['status']=$this->table_model->denyStudent();
 		$result['student_id']=$this->input->post('student_id');
 		//The following code will email the student a denial email.
-		$this->load->model("administrator_model");
-		$this->administration_model->sendEmail($result['student_id'],"TA/PLA INMPORTANT INFORMATION","We regret to inform you that you have not been accepted as a TA/PLA.");
+		$this->load->model("administration_model");
+		$sql = "SELECT courseName FROM disagree WHERE student_id=?";
+		$data[0]=$this->input->post('student_id');
+		$courseSql = $this->db->query($sql,$data);
+		foreach($courseSql->result() as $row){
+						$course = $row->courseName;
+					}
+		$this->administration_model->sendEmail($result['student_id'],"TA/PLA INMPORTANT INFORMATION","We regret to inform you that you have not been accepted as a TA/PLA for ".$course.".");
 		$this->index($result);
 	}
 	
