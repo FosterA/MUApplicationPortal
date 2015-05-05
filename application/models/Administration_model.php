@@ -99,6 +99,7 @@ class Administration_model extends CI_Model{
 					if(!$this->email->send()){
 						echo "Error sending mail";
 					}
+					$this->email->print_debugger();
 	}
 }
 ?>	
