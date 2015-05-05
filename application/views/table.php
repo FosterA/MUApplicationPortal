@@ -318,14 +318,16 @@ margin :100px 270px;
 		<option value="allScore">All Scores</option>
 		<option value="Accept">Accept</option>
 		<option value="Deny">Deny</option>
-		<option value="rankScore">rankScore</option>
+		<option value="rankScore">Ranking Score</option>
 	</select>
 </center>
 	<div id="content">
   <div style="display:table-cell;">
-  <div style="margin-left:auto;margin-right:auto;"></div>
+  <div style="margin-left:auto;margin-right:auto;">
 	<?=$table?>
   </div>
+  </div>
+
 	</div>
 <script>
 $(document).ready(function(){
