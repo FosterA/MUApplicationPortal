@@ -85,6 +85,17 @@ class Administration_model extends CI_Model{
 					$this->load->helper('url');
 					$this->load->helper('email');
 					$this->load->library('email');
+		$config['protocol']='smtp';
+		$config['smtp_host']='ssl://smtp.gmail.com';
+		$config['smtp_port']='465';
+		$config['smtp_timeout']='7';
+		$config['smtp_user']='taappSWE15@gmail.com';
+		$config['smtp_pass']='taappSWE';
+		$config['charset']='utf-8';
+		$config['newline']="\r\n";
+		$config['mailtype'] = 'text';
+		$config['validation']=TRUE;
+		$this->email->initialize($config);
 					$sql = 'SELECT email FROM student WHERE student_id=?';
 					$data[0] = $user;
 					$emailQuery = $this->db->query($sql,$data);
@@ -92,7 +103,7 @@ class Administration_model extends CI_Model{
 					foreach($emailQuery->result() as $row){
 						$email = $row->email;
 					}
-					$this->email->from('taApp@tamissouri.edu');
+					$this->email->from('taappswe15@gmail.com');
 					$this->email->to($email);
 					$this->email->subject($subject);
 					$this->email->message($message);
