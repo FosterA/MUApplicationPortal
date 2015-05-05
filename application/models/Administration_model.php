@@ -107,9 +107,7 @@ class Administration_model extends CI_Model{
 					$this->email->to($email);
 					$this->email->subject($subject);
 					$this->email->message($message);
-					if(!$this->email->send()){
-						echo "Error sending mail";
-					}
+					$this->email->send();
 					$this->email->print_debugger();
 	}
 }

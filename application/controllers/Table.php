@@ -62,6 +62,16 @@ class Table extends CI_Controller {
 			$data[$i][0]=$key;
 			$data[$i++][1]=$value;
 		}
+			$sql="select score from ranking where student_id=?";
+			$res=$this->db->query($sql,$id);
+			if($res->num_rows()>0){
+				$resultVal = null;
+				$data[$i][0]='Ranking Score';
+				foreach($res->result() as $row){
+					$resultVal = $row->score;
+				}
+				$data[$i++][1]=$resultVal;
+			}
 		$tmpl = array (
                     'table_open'          => '<table id="myTable">',
 

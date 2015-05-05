@@ -147,9 +147,12 @@
 		$sql="insert into course values(?,?)";
 		return $this->db->query($sql,$data);
 		}
+
 		public function rankScore($id,$admin){
-			$sql="select score from ranking where admin_id='$admin' and student_id='$id'";
-			$res=$this->db->query($sql);
+			$sql="select score from ranking where admin_id=? and student_id=?";
+			$data[0]=$admin;
+			$data[1]=$id;
+			$res=$this->db->query($sql,$data);
 			if($res->num_rows()>0){
 				$arr=$res->row_array();
 				return $arr['score'];
