@@ -266,9 +266,9 @@ margin: 13px 19px;
  		$student_id=$result['student_id'];
  		$status=$result['status'];
  			if($status){
- 				echo "alert('You have already added successfully comment to $student_id !')";
+ 				echo "alert('You successfully added a comment for $student_id !')";
  			}else{
- 				echo "alert('You FAILED TO add comment to $student_id !')";
+ 				echo "alert('The comment for $student_id failed to be added!')";
  			}
  			
  		}

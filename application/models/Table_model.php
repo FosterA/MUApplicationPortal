@@ -45,21 +45,21 @@
 			$degree=$array[0]['Degrees'];
 			if($nation=='international'){
 				if($degree=='undergraduate'){
-					$sql="select * from interUnder where student_id=?";
+					$sql="select student_id AS 'Student ID', nation AS 'Nation Status', Degrees AS 'Student Type', firstName AS 'First Name', lastName AS 'Last Name', gpa, phoneNumber AS 'Phone Number', email, graduateDate AS 'Graduation Date', workPlace AS 'Other Workplace', program AS 'Field', level AS 'Year', semester AS 'SPEAK Semester', score AS 'SPEAK Score' from interUnder where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}else{
-					$sql="select * from interGra where student_id=?";
+					$sql="select student_id AS 'Student ID', nation AS 'Nation Status', Degrees AS 'Student Type', firstName AS 'First Name', lastName AS 'Last Name', gpa, phoneNumber AS 'Phone Number', email, graduateDate AS 'Graduation Date', workPlace AS 'Other Workplace', degree AS 'Degree', advisename AS 'Advisor Name', semester AS 'SPEAK Semester', score AS 'SPEAK Score' from interGra where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}
 			}else{
 				if($degree=='undergraduate'){
-					$sql="select * from nativeUnder where student_id=?";
+					$sql="select student_id AS 'Student ID', nation AS 'Nation Status', Degrees AS 'Student Type', firstName AS 'First Name', lastName AS 'Last Name', gpa, phoneNumber AS 'Phone Number', email, graduateDate AS 'Graduation Date', workPlace AS 'Other Workplace', program AS 'Field', level AS 'Year' from nativeUnder where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}else{
-					$sql="select * from nativeGra where student_id=?";
+					$sql="select student_id AS 'Student ID', nation AS 'Nation Status', Degrees AS 'Student Type', firstName AS 'First Name', lastName AS 'Last Name', gpa, phoneNumber AS 'Phone Number', email, graduateDate AS 'Graduation Date', workPlace AS 'Other Workplace', degree AS 'Degree Type', advisename AS 'Advisor Name' from nativeGra where student_id=?";
 					$res=$this->db->query($sql,$id);
 					$data['res']=$res->result_array();
 				}
